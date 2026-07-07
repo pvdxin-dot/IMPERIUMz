@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IMPERIUMz</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+
+background:
+radial-gradient(circle at top, #2b0050, transparent 35%),
+linear-gradient(
+180deg,
+#000000,
+#090014,
+#120022
+);
+color:white;
+}
+
+
+/* Energia roxa flutuando */
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:500px;
+
+height:500px;
+
+background:#8a2be2;
+
+filter:blur(180px);
+
+opacity:.25;
+
+top:20%;
+
+left:-200px;
+
+animation:energia 8s infinite alternate;
+
+z-index:-1;
+
+}
+
+
+@keyframes energia{
+
+from{
+
+transform:translateY(-50px);
+
+}
+
+to{
+
+transform:translateY(150px);
+
+}
+
+}
+
+
+@keyframes energia{
+    from{
+        transform:translateY(-50px);
+    }
+
+    to{
+        transform:translateY(150px);
+    }
+}
+
+nav{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 8%;
+
+background:rgba(10,0,20,.65);
+
+backdrop-filter:blur(15px);
+
+border-bottom:1px solid rgba(184,77,255,.4);
+
+box-shadow:
+0 0 25px rgba(138,43,226,.3);
+
+z-index:999;
+
+transition:.4s;
+
+}
+header div{
+animation:entrada 1.5s ease;
+}
+
+
+@keyframes entrada{
+
+from{
+opacity:0;
+transform:translateY(80px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+.logo{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.logo img{
+
+width:65px;
+
+border-radius:50%;
+
+}
+
+.logo h1{
+
+font-size:28px;
+
+color:#b84dff;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:35px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#b84dff;
+
+}
+
+header{
+
+height:100vh;
+
+background:
+
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.8)),
+
+url("imagens/banner.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+header h2{
+
+font-size:50px;
+
+color:white;
+
+text-shadow:
+
+0 0 15px #8a2be2,
+
+0 0 35px #8a2be2,
+
+0 0 60px #8a2be2;
+
+}
+
+header p{
+
+margin-top:20px;
+
+font-size:22px;
+
+color:#ddd;
+
+}
+
+.botao{
+
+display:inline-block;
+
+margin-top:35px;
+
+padding:18px 40px;
+
+background:#8a2be2;
+
+border-radius:40px;
+
+text-decoration:none;
+
+color:white;
+
+font-size:22px;
+
+font-weight:bold;
+
+transition:.4s;
+
+box-shadow:0 0 20px #8a2be2;
+
+}
+
+.botao:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 35px #8a2be2;
+
+}
+
+section{
+
+padding:90px 10%;
+
+}
+
+.titulo{
+
+font-size:45px;
+
+color:#b84dff;
+
+margin-bottom:25px;
+
+}
+.card{
+
+background:rgba(20,20,20,.65);
+
+backdrop-filter:blur(15px);
+
+padding:35px;
+
+border-radius:25px;
+
+border:1px solid rgba(184,77,255,.3);
+.botao{
+position:relative;
+overflow:hidden;
+}
+
+
+.botao::before{
+
+content:"";
+
+position:absolute;
+
+width:0;
+height:100%;
+
+background:white;
+
+left:0;
+top:0;
+
+opacity:.3;
+
+transition:.5s;
+
+}
+
+
+.botao:hover::before{
+
+width:100%;
+
+}
+box-shadow:
+0 0 30px rgba(138,43,226,.15),
+inset 0 0 20px rgba(255,255,255,.03);
+
+margin-bottom:25px;
+
+opacity:0;
+
+transform:translateY(80px);
+
+transition:.8s;
+
+}
+
+.card.mostrar{
+    opacity:1;
+    transform:translateY(0);
+}
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.card p{
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#ddd;
+
+}
+.grade{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+@media(max-width:600px){
+
+nav{
+    padding:10px 15px;
+}
+
+.logo img{
+    width:40px;
+}
+
+.logo h1{
+    display:none;
+}
+
+nav ul{
+    gap:12px;
+}
+
+nav a{
+    font-size:13px;
+}
+
+header h2{
+    font-size:40px;
+}
+
+header p{
+    font-size:18px;
+}
+
+section{
+    padding:60px 5%;
+}
+
+.titulo{
+    font-size:32px;
+}
+
+.card{
+    padding:20px;
+}
+.scroll{
+margin-top:50px;
+font-size:40px;
+color:#b84dff;
+animation:bater 1.5s infinite;
+}
+
+
+@keyframes bater{
+
+50%{
+transform:translateY(15px);
+}
+
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+<img src="imagens/Logo.png">
+
+<h1>IMPERIUMz</h1>
+
+</div>
+
+<ul>
+
+<li><a href="sobre.html">Sobre</a></li>
+
+<li><a href="#galeria">Galeria</a></li>
+
+<li><a href="#redes">Redes</a></li>
+
+</ul>
+
+</nav>
+
+<header>
+
+<div>
+
+
+
+<h2>IMPERIUMz</h2>
+<div class="scroll">
+↓
+</div>
+<p>
+
+A melhor comunidade de Mobile Legends.
+
+</p>
+
+<a href="#sobre" class="botao">
+
+Conhecer
+
+</a>
+
+</div>
+
+</header>
+
+<section id="sobre">
+
+<h2 class="titulo">
+
+⚔ Sobre a Guilda
+
+</h2>
+
+<div class="card">
+
+<p>
+
+A IMPERIUMz é uma comunidade criada para reunir jogadores de Mobile Legends que procuram amizade, organização e evolução dentro do jogo.
+
+Aqui você encontra um ambiente respeitoso, jogadores ativos e uma comunidade preparada para crescer cada vez mais.
+
+</p>
+
+</div>
+
+<div class="grade">
+
+<div class="card">
+
+<h3>👥 Comunidade</h3>
+
+<p>
+
+Faça novas amizades e jogue com pessoas ativas todos os dias.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>🎯 Organização</h3>
+
+<p>
+
+Sistema organizado para facilitar a formação de equipes e partidas.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>🚀 Evolução</h3>
+
+<p>
+
+Aprenda novas estratégias e evolua junto com outros jogadores.
+
+</p>
+
+</div>
+
+</div>
+</section>
+<section id="galeria">
+
+<h2 class="titulo">
+
+📷 Nossa Comunidade
+
+</h2>
+
+<div class="grade">
+
+<div class="card">
+
+<video class="foto" autoplay muted loop>
+    <source src="imagens/video1.mp4" type="video/mp4">
+</video>
+
+<h3>Momentos da Guilda</h3>
+
+<p>
+Compartilhe prints, vitórias e momentos especiais da comunidade.
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="imagens/foto2.png" class="foto">
+
+<h3>Partidas</h3>
+
+<p>
+Jogue diariamente com membros da IMPERIUMz e fortaleça sua equipe.
+</p>
+
+</div>
+
+<div class="card">
+
+<img src="imagens/foto3.png" class="foto">
+
+<h3>Eventos</h3>
+
+<p>
+A comunidade está sempre ativa com atividades e encontros entre os membros.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="redes">
+
+<h2 class="titulo">🌐 Redes Oficiais</h2>
+<div class="grade">
+<a href="discord.html">
+    <img src="imagens/discord.png"> 
+    </a>
+</a>
+<a href="https://www.tiktok.com/@miguel.kau2?_r=1&_t=ZS-97pFzrWE4gS"><img src="imagens/tiktok.jpg">
+</a>
+
+<a href="https://www.youtube.com/@IMPERIUMzzz"><img src="imagens/youtube.jpg">
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>IMPERIUMz</h2>
+
+<p>
+A melhor comunidade de Mobile Legends.
+</p>
+
+<p style="margin-top:20px;color:#777;">
+© 2026 IMPERIUMz
+</p>
+
+</footer>
+
+<style>
+
+.foto{
+
+width:100%;
+
+height:230px;
+
+object-fit:cover;
+
+border-radius:15px;
+
+margin-bottom:20px;
+
+}
+.social{
+    width:220px;
+    text-decoration:none;
+    color:white;
+    padding:20px;
+    border-radius:20px;
+    transition:.35s;
+    display:block;
+    text-align:center;
+}
+
+.social h3{
+
+margin:20px 0;
+
+font-size:28px;
+
+}
+
+.social p{
+
+color:#ddd;
+
+}
+
+.discord{
+
+background:#5865F2;
+
+}
+#redes img{
+width:220px;
+border-radius:20px;
+transition:.3s;
+}
+
+#redes img:hover{
+transform:scale(1.05);
+}
+.tiktok{
+
+background:#111;
+
+border:2px solid #ff0050;
+
+}
+
+.youtube{
+
+background:#ff0000;
+
+}
+
+.social:hover{
+
+transform:translateY(-12px) scale(1.04);
+
+box-shadow:0 0 30px rgba(138,43,226,.6);
+
+}
+
+footer{
+
+background:#070707;
+
+padding:80px 20px;
+
+text-align:center;
+
+margin-top:60px;
+
+border-top:2px solid #8a2be2;
+
+}
+
+footer h2{
+
+font-size:42px;
+
+color:#b84dff;
+
+margin-bottom:15px;
+
+}
+
+</style>
+<script>
+
+const cards = document.querySelectorAll(".card");
+
+function aparecer(){
+
+cards.forEach(card => {
+
+let altura = card.getBoundingClientRect().top;
+
+let tela = window.innerHeight - 100;
+
+if(altura < tela){
+
+card.classList.add("mostrar");
+
+}
+
+});
+
+}
+
+window.addEventListener("scroll", aparecer);
+
+aparecer();
+
+</script>
+</body>
+
+</html>
+</section>
