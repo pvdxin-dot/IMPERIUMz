@@ -6,31 +6,101 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>IMPERIUMz | Doação</title>
+<title>Doação • IMPERIUMz</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 
 <style>
 
 *{
+
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
+
 }
 
 
 body{
 
 background:
-radial-gradient(circle at top,#6500b8,transparent 40%),
-linear-gradient(180deg,#000,#090014,#000);
+
+radial-gradient(circle at top,#6a00ff 0%,#250038 35%,#12001c 100%);
 
 color:white;
+
+overflow-x:hidden;
 
 }
 
 
+/* Fundo animado */
+
+
+.background{
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+top:0;
+left:0;
+
+z-index:-2;
+
+overflow:hidden;
+
+}
+
+
+.background span{
+
+position:absolute;
+
+width:6px;
+height:6px;
+
+background:#b35cff;
+
+border-radius:50%;
+
+opacity:.5;
+
+box-shadow:0 0 20px #b35cff;
+
+animation:float 18s linear infinite;
+
+}
+
+
+@keyframes float{
+
+0%{
+
+transform:translateY(100vh) scale(0);
+
+}
+
+
+100%{
+
+transform:translateY(-120vh) scale(1.8);
+
+}
+
+}
+
+
+
 /* NAV */
+
 
 nav{
 
@@ -40,7 +110,7 @@ top:0;
 
 width:100%;
 
-padding:20px 8%;
+padding:20px 40px;
 
 display:flex;
 
@@ -48,44 +118,26 @@ justify-content:space-between;
 
 align-items:center;
 
-background:rgba(0,0,0,.55);
+background:rgba(0,0,0,.25);
 
 backdrop-filter:blur(15px);
 
-border-bottom:1px solid #8a2be2;
+border-bottom:1px solid rgba(255,255,255,.08);
 
-z-index:10;
+z-index:999;
 
 }
 
 
 .logo{
 
-display:flex;
+font-size:30px;
 
-align-items:center;
+font-weight:800;
 
-gap:15px;
+color:#b35cff;
 
-}
-
-
-.logo img{
-
-width:55px;
-
-height:55px;
-
-border-radius:50%;
-
-}
-
-
-.logo h2{
-
-color:#b84dff;
-
-text-shadow:0 0 20px #8a2be2;
+text-shadow:0 0 20px #8b3dff;
 
 }
 
@@ -96,7 +148,7 @@ color:white;
 
 text-decoration:none;
 
-margin-left:20px;
+margin-left:25px;
 
 transition:.3s;
 
@@ -105,7 +157,7 @@ transition:.3s;
 
 nav a:hover{
 
-color:#b84dff;
+color:#b35cff;
 
 }
 
@@ -114,9 +166,9 @@ color:#b84dff;
 /* HERO */
 
 
-header{
+.hero{
 
-height:85vh;
+height:90vh;
 
 display:flex;
 
@@ -124,156 +176,206 @@ justify-content:center;
 
 align-items:center;
 
+flex-direction:column;
+
 text-align:center;
 
 padding:20px;
-
-background:
-
-linear-gradient(
-rgba(0,0,0,.45),
-rgba(0,0,0,.9)
-),
-
-url("imagens/banner.jpg");
-
-background-size:cover;
-
-background-position:center;
-
-}
-
-
-.hero img{
-
-width:120px;
-
-filter:drop-shadow(0 0 30px #8a2be2);
 
 }
 
 
 .hero h1{
 
-font-size:50px;
+font-size:70px;
 
-margin-top:20px;
+color:#d7b3ff;
 
 text-shadow:
 
-0 0 20px #8a2be2;
+0 0 15px #8b3dff,
+0 0 40px #8b3dff;
 
 }
 
 
 .hero p{
 
-font-size:20px;
+max-width:700px;
+
+font-size:22px;
+
+margin-top:20px;
 
 color:#ddd;
 
-margin:20px;
+line-height:1.8;
 
 }
 
 
+.hero button{
 
-/* BOTÃO */
+margin-top:40px;
 
+padding:15px 45px;
 
-.botao{
+border:none;
 
-display:inline-block;
+border-radius:40px;
 
-padding:16px 35px;
-
-border-radius:50px;
-
-background:linear-gradient(45deg,#7200ff,#b84dff);
+background:#8b3dff;
 
 color:white;
 
-text-decoration:none;
+font-size:18px;
 
-font-weight:bold;
+cursor:pointer;
 
-box-shadow:0 0 25px #8a2be2;
+box-shadow:0 0 20px #8b3dff;
 
-transition:.4s;
-
-}
-
-
-.botao:hover{
-
-transform:scale(1.08);
-
-box-shadow:0 0 50px #b84dff;
+transition:.3s;
 
 }
 
 
+.hero button:hover{
 
-/* CONTEÚDO */
+transform:translateY(-5px);
+
+box-shadow:0 0 40px #b35cff;
+
+}
+/* SEÇÕES */
 
 
 section{
 
-padding:70px 20px;
-
-}
-
-
-.container{
-
-max-width:850px;
+max-width:1100px;
 
 margin:auto;
 
+padding:90px 25px;
+
 }
+
 
 
 .titulo{
 
 text-align:center;
 
-font-size:38px;
+font-size:42px;
 
-color:#b84dff;
+margin-bottom:50px;
 
-margin-bottom:35px;
+color:#d7b3ff;
 
 }
+
+
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+
+}
+
 
 
 .card{
 
-background:rgba(255,255,255,.08);
+background:rgba(255,255,255,.06);
 
-border:1px solid rgba(184,77,255,.5);
-
-border-radius:25px;
-
-padding:30px;
-
-text-align:center;
+border:1px solid rgba(255,255,255,.08);
 
 backdrop-filter:blur(15px);
 
+border-radius:20px;
+
+padding:30px;
+
+transition:.35s;
+
 }
 
 
-.texto{
 
-font-size:18px;
+.card:hover{
 
-line-height:1.8;
+transform:translateY(-10px);
+
+border-color:#8b3dff;
+
+box-shadow:0 0 30px rgba(139,61,255,.5);
+
+}
+
+
+
+.card h3{
+
+color:#c998ff;
+
+margin-bottom:15px;
+
+font-size:24px;
+
+}
+
+
+
+.card p{
 
 color:#ddd;
 
+line-height:1.8;
+
 }
 
 
+
+/* TIMELINE */
+
+
+.timeline{
+
+position:relative;
+
+padding-left:35px;
+
+border-left:3px solid #8b3dff;
+
+}
+
+
+.item{
+
+margin-bottom:45px;
+
+}
+
+
+.item h3{
+
+color:#c998ff;
+
+margin-bottom:10px;
+
+}
+
+
+.item p{
+
+color:#ddd;
+
+line-height:1.8;
+
+}
 </style>
 
 </head>
@@ -282,14 +384,27 @@ color:#ddd;
 <body>
 
 
+<div class="background">
+
+<span style="left:5%;animation-delay:0s;"></span>
+<span style="left:15%;animation-delay:2s;"></span>
+<span style="left:25%;animation-delay:5s;"></span>
+<span style="left:35%;animation-delay:7s;"></span>
+<span style="left:45%;animation-delay:9s;"></span>
+<span style="left:55%;animation-delay:3s;"></span>
+<span style="left:65%;animation-delay:6s;"></span>
+<span style="left:75%;animation-delay:8s;"></span>
+<span style="left:85%;animation-delay:4s;"></span>
+<span style="left:95%;animation-delay:1s;"></span>
+
+</div>
+
+
+
 <nav>
 
 <div class="logo">
-
-<img src="Logo.png">
-
-<h2>IMPERIUMz</h2>
-
+IMPERIUMz
 </div>
 
 
@@ -299,9 +414,10 @@ color:#ddd;
 Início
 </a>
 
-<a href="doacao.html">
-Doação
+<a href="#apoio">
+Apoiar
 </a>
+
 
 </div>
 
@@ -309,11 +425,8 @@ Doação
 </nav>
 
 
-<header>
 
-<div class="hero">
-
-<img src="Logo.png">
+<section class="hero">
 
 
 <h1>
@@ -322,16 +435,21 @@ Doação
 
 
 <p>
-Ajude a comunidade a continuar crescendo.
+
+Ajude nossa comunidade a continuar crescendo, criando novos projetos, eventos e melhorias para todos os membros.
+
 </p>
 
 
-</div>
+<button onclick="document.getElementById('apoio').scrollIntoView({behavior:'smooth'})">
 
-</header>
-<section>
+Quero apoiar
 
-<div class="container">
+</button>
+
+
+</section>
+<section id="apoio">
 
 
 <h2 class="titulo">
@@ -339,36 +457,59 @@ Ajude a comunidade a continuar crescendo.
 </h2>
 
 
+
+<div class="cards">
+
+
 <div class="card">
 
+<h3>
+🛠 Melhorias
+</h3>
 
-<p class="texto">
+<p>
 
-A sua ajuda contribui para o crescimento da IMPERIUMz e permite melhorar cada vez mais a experiência da comunidade.
-
-<br><br>
-
-🛠 Melhorias no servidor
-
-<br>
-
-🎮 Organização de eventos
-
-<br>
-
-🌐 Desenvolvimento de projetos
-
-<br>
-
-🚀 Evolução da comunidade
+Sua contribuição ajuda no desenvolvimento de novos recursos e melhorias para a comunidade.
 
 </p>
 
+</div>
+
+
+
+<div class="card">
+
+<h3>
+🎮 Eventos
+</h3>
+
+<p>
+
+Ajude a criar eventos, atividades e experiências melhores para os jogadores.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+🚀 Projetos futuros
+</h3>
+
+<p>
+
+Apoie novas ideias e projetos que podem fortalecer ainda mais a IMPERIUMz.
+
+</p>
 
 </div>
 
 
 </div>
+
 
 </section>
 
@@ -378,67 +519,103 @@ A sua ajuda contribui para o crescimento da IMPERIUMz e permite melhorar cada ve
 
 <section>
 
-<div class="container">
-
 
 <h2 class="titulo">
-💰 Como doar?
+🌟 Nossa Evolução
 </h2>
 
 
-<div class="card">
+
+<div class="timeline">
 
 
-<p class="texto">
+<div class="item">
 
-As doações são totalmente voluntárias e ajudam a apoiar o desenvolvimento da comunidade.
+<h3>
+📅 Hoje
+</h3>
 
-<br><br>
+<p>
 
-Escolha a forma de contribuição e ajude a IMPERIUMz a continuar crescendo.
+A IMPERIUMz continua crescendo e buscando melhorar a experiência da comunidade.
 
 </p>
 
+</div>
+
+
+
+<div class="item">
+
+<h3>
+🤝 Comunidade
+</h3>
+
+<p>
+
+Cada membro faz parte da construção de um ambiente mais organizado e divertido.
+
+</p>
+
+</div>
+
+
+
+<div class="item">
+
+<h3>
+🏆 Futuro
+</h3>
+
+<p>
+
+Novos eventos, sistemas e novidades estão planejados para a evolução da comunidade.
+
+</p>
 
 </div>
 
 
 </div>
+
 
 </section>
-
-
-
-
-
 <section>
 
-<div class="container">
-
-
 <h2 class="titulo">
+💰 Apoie agora
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card" style="text-align:center;">
+
+
+<h3>
 ⚡ PIX
-</h2>
+</h3>
 
 
-<div class="card">
+<p>
 
-
-<p class="texto">
-
-Chave PIX:
+Faça sua contribuição através do PIX:
 
 </p>
 
 
 <h2 style="
-color:#b84dff;
-margin:20px;
+color:#b35cff;
+margin:25px 0;
 ">
+
+
+
 </h2>
 
 
-<button class="botao" onclick="copiarPix()">
+<button onclick="copiarPix()" class="pix">
 
 Copiar PIX
 
@@ -448,34 +625,27 @@ Copiar PIX
 </div>
 
 
-</div>
-
-</section>
-<section>
-
-<div class="container">
+<div class="card" style="text-align:center;">
 
 
-<h2 class="titulo">
-💬 Dúvidas
-</h2>
+<h3>
+💬 Precisa de ajuda?
+</h3>
 
 
-<div class="card">
+<p>
 
-
-<p class="texto">
-
-Tem alguma dúvida sobre a doação?
-
-<br><br>
+Tem dúvidas sobre a doação?
 
 Entre em contato com a equipe pelo Discord oficial da IMPERIUMz.
 
 </p>
 
 
-<a class="botao" href="https://discord.gg/KsyCM5qs" target="_blank">
+<br>
+
+
+<a class="discord" href="https://discord.gg/KsyCM5qs" target="_blank">
 
 Entrar no Discord
 
@@ -487,46 +657,138 @@ Entrar no Discord
 
 </div>
 
+
 </section>
 
 
 
 
-<footer style="
 
-padding:50px 20px;
-
-text-align:center;
-
-background:#050505;
-
-border-top:1px solid #8a2be2;
-
-">
-
-
-<h2 style="color:#b84dff;">
-
-IMPERIUMz
-
-</h2>
+<footer>
 
 
 <p>
 
-A melhor comunidade de Mobile Legends.
+© 2026 IMPERIUMz • A melhor comunidade de Mobile Legends
 
 </p>
 
 
-<p style="color:#777;margin-top:20px;">
+<p>
 
-© 2026 IMPERIUMz
+Criando conexões, equipes e histórias dentro do jogo.
 
 </p>
 
 
 </footer>
+
+
+
+
+
+<style>
+
+
+.pix,
+.discord{
+
+
+display:inline-block;
+
+padding:14px 35px;
+
+border:none;
+
+border-radius:40px;
+
+background:#8b3dff;
+
+color:white;
+
+font-size:16px;
+
+font-weight:bold;
+
+text-decoration:none;
+
+cursor:pointer;
+
+box-shadow:0 0 20px #8b3dff;
+
+transition:.3s;
+
+}
+
+
+
+.pix:hover,
+.discord:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 40px #b35cff;
+
+}
+
+
+
+footer{
+
+text-align:center;
+
+padding:40px;
+
+color:#999;
+
+}
+
+
+
+@media(max-width:768px){
+
+
+.hero h1{
+
+font-size:45px;
+
+}
+
+
+.hero p{
+
+font-size:18px;
+
+}
+
+
+nav{
+
+padding:15px;
+
+}
+
+
+.logo{
+
+font-size:24px;
+
+}
+
+
+nav a{
+
+margin-left:12px;
+
+font-size:14px;
+
+}
+
+
+}
+
+</style>
+
 
 
 
@@ -537,7 +799,7 @@ A melhor comunidade de Mobile Legends.
 function copiarPix(){
 
 
-const pix = "5a80ef6d-69fa-4a5e-ab06-633e229a1880";
+const pix="5a80ef6d-69fa-4a5e-ab06-633e229a1880";
 
 
 navigator.clipboard.writeText(pix);
@@ -549,8 +811,52 @@ alert("PIX copiado com sucesso!");
 }
 
 
-</script>
 
+
+const elementos=document.querySelectorAll(".card,.item");
+
+
+const observar=new IntersectionObserver((entradas)=>{
+
+
+entradas.forEach(entrada=>{
+
+
+if(entrada.isIntersecting){
+
+
+entrada.target.style.opacity="1";
+
+entrada.target.style.transform="translateY(0)";
+
+
+}
+
+
+});
+
+
+});
+
+
+
+elementos.forEach(elemento=>{
+
+
+elemento.style.opacity="0";
+
+elemento.style.transform="translateY(40px)";
+
+elemento.style.transition=".8s";
+
+
+observar.observe(elemento);
+
+
+});
+
+
+</script>
 
 
 </body>
