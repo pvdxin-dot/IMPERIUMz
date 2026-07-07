@@ -426,6 +426,83 @@ transform:translateY(15px);
 
 }
 }
+.botao-contato{
+
+position:relative;
+overflow:hidden;
+
+display:inline-block;
+
+padding:18px 40px;
+
+background:#5865F2;
+
+border-radius:40px;
+
+color:white;
+
+text-decoration:none;
+
+font-size:22px;
+
+font-weight:bold;
+
+box-shadow:0 0 25px #5865F2;
+
+transition:.3s;
+
+}
+
+
+.botao-contato:hover,
+.botao-contato:active{
+
+animation:vibrar .15s infinite;
+
+box-shadow:
+0 0 40px #5865F2;
+
+}
+
+
+.botao-contato::before{
+
+content:"";
+
+position:absolute;
+
+top:-50%;
+left:-100%;
+
+width:60%;
+height:200%;
+
+background:rgba(255,255,255,.5);
+
+transform:rotate(25deg);
+
+transition:.6s;
+
+}
+
+
+.botao-contato:hover::before,
+.botao-contato:active::before{
+
+left:150%;
+
+}
+
+
+@keyframes vibrar{
+
+0%{transform:translateX(0);}
+25%{transform:translateX(-3px);}
+50%{transform:translateX(3px);}
+75%{transform:translateX(-3px);}
+100%{transform:translateX(0);}
+
+}
 </style>
 
 </head>
@@ -609,7 +686,24 @@ A comunidade está sempre ativa com atividades e encontros entre os membros.
 </div>
 
 </section>
+<section id="contato">
 
+<h2 class="titulo">Contato</h2>
+
+<div class="card contato">
+
+<p>
+Quer entrar na IMPERIUMz mas está com problemas? fale conosco.
+Clique no botão abaixo:
+</p>
+
+<a class="botao-contato" href="https://discord.gg/KsyCM5qs" target="_blank">
+Entrar no Discord
+</a>
+
+</div>
+
+</section>
 <footer>
 
 <h2>IMPERIUMz</h2>
