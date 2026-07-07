@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IMPERIUMz | Staff</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+scroll-behavior:smooth;
+}
+
+
+body{
+
+background:
+radial-gradient(circle at top,#7b00ff30,transparent 40%),
+linear-gradient(180deg,#000,#0d0018,#000);
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:6px 2%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(15px);
+z-index:999;
+border-bottom:1px solid #8a2be2;
+}
+
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+
+.logo img{
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+}
+
+
+.logo h2{
+
+color:#b84dff;
+
+font-size:18px;
+
+text-shadow:0 0 20px #8a2be2;
+
+}
+
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+margin-left:50px;
+
+font-size:15px;
+
+}
+
+
+
+/* HERO */
+
+header{
+
+height:80vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+padding:20px;
+
+background:
+
+linear-gradient(
+rgba(0,0,0,.45),
+rgba(0,0,0,.9)
+),
+
+url("imagens/banner.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+}
+
+
+.hero img{
+
+width:110px;
+
+filter:drop-shadow(0 0 30px #8a2be2);
+
+animation:flutuar 3s infinite alternate;
+
+}
+
+
+.hero h1{
+
+font-size:40px;
+
+margin-top:20px;
+
+text-shadow:
+
+0 0 20px #8a2be2,
+0 0 60px #8a2be2;
+
+}
+
+
+.hero p{
+
+font-size:20px;
+
+color:#ddd;
+
+margin:20px;
+
+}
+
+
+@keyframes flutuar{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-15px);
+
+}
+
+}
+
+
+.botao{
+
+display:inline-block;
+
+padding:18px 45px;
+
+border-radius:50px;
+
+background:linear-gradient(45deg,#7300ff,#c04dff);
+
+color:white;
+
+text-decoration:none;
+
+font-size:20px;
+
+font-weight:bold;
+
+box-shadow:0 0 30px #8a2be2;
+
+transition:.4s;
+
+}
+
+
+.botao:hover{
+
+transform:scale(1.1);
+
+box-shadow:0 0 60px #b84dff;
+
+}
+<style>
+
+/* SEÇÕES */
+
+section{
+
+padding:100px 20px;
+
+}
+
+
+.container{
+
+max-width:300px;
+margin:auto;
+}
+.titulo{
+text-align:center;
+font-size:60px;
+margin-bottom:40px;
+color:#b84dff;
+text-shadow:0 0 20px #8a2be2;
+}
+
+
+.card{
+background:rgba(255,255,255,.07);
+border:1px solid rgba(184,77,255,.4);
+border-radius:30px;
+padding:40px;
+backdrop-filter:blur(20px);
+box-shadow:0 0 40px rgba(138,43,226,.2);
+transition:.5s;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 60px rgba(184,77,255,.5);
+
+}
+
+
+.texto{
+
+font-size:20px;
+
+line-height:1.8;
+
+color:#ddd;
+
+text-align:center;
+
+}
+
+
+/* ANIMAÇÃO */
+
+.animar{
+
+opacity:0;
+
+transform:translateY(70px);
+
+transition:1s;
+
+}
+
+
+.animar.aparecer{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+padding:60px 20px;
+
+text-align:center;
+
+background:#050505;
+
+border-top:1px solid #8a2be2;
+
+}
+
+
+footer h2{
+
+font-size:40px;
+
+color:#b84dff;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+<div class="logo">
+
+<img src="Logo.png">
+
+<h2>IMPERIUMz</h2>
+
+</div>
+
+
+<div>
+
+<a href="index.html">
+Início
+</a>
+
+<a href="#rec">
+Recrutamento
+</a>
+
+</div>
+
+
+</nav>
+
+
+
+<header>
+
+<div class="hero">
+
+
+<img src="stafficon.jpg">
+
+
+<h1>
+Recrutamento Staff
+</h1>
+
+
+<p>
+Faça parte da equipe que ajuda a construir a IMPERIUMz.
+</p>
+
+
+<a class="botao" href="#rec">
+Ver informações
+</a>
+
+
+</div>
+
+</header>
+
+
+
+
+<section>
+
+<div class="container animar">
+
+
+<h2 class="titulo">
+⚔ Sobre a Staff
+</h2>
+
+
+<div class="card">
+
+
+<p class="texto">
+
+A Staff da IMPERIUMz tem como objetivo manter a comunidade organizada,
+auxiliar membros e ajudar no crescimento do servidor.
+
+<br><br>
+
+Cada integrante da equipe possui uma função importante para criar um ambiente melhor para todos.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+<section>
+
+<div class="container animar">
+
+
+<h2 class="titulo">
+⭐ Por que ser Staff?
+</h2>
+
+
+<div class="card">
+
+
+<p class="texto">
+
+🛡 Ajudar a comunidade.
+<br><br>
+💬 Auxiliar jogadores.
+<br><br>
+⚔ Participar da organização.
+<br><br>
+🚀 Contribuir com ideias.
+<br><br>
+🤝 Fazer parte da evolução da IMPERIUMz.
+</p>
+
+
+</div>
+
+
+</div>
+
+</section>
+<section>
+
+<div class="container animar">
+
+
+<h2 class="titulo">
+🎯 Requisitos
+</h2>
+
+
+<div class="card">
+
+
+<p class="texto">
+
+⭐ Ser responsável.
+
+<br><br>
+
+🤝 Respeitar todos os membros.
+
+<br><br>
+
+💬 Saber se comunicar e trabalhar em equipe.
+
+<br><br>
+
+⏰ Ter vontade de ajudar a comunidade.
+
+<br><br>
+
+🚀 Buscar sempre melhorar a IMPERIUMz.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+<section id="rec">
+
+<div class="container animar">
+
+
+<h2 class="titulo">
+📢 Recrutamento
+</h2>
+
+
+<div class="card">
+
+
+<p class="texto">
+
+🔒 O recrutamento de Staff está fechado atualmente.
+
+<br><br>
+
+No momento não existem vagas abertas.
+
+<br><br>
+
+📅 Data: Em breve
+
+<br>
+
+⏰ Horário: A definir
+
+<br><br>
+
+Quando o recrutamento abrir, novas informações serão adicionadas aqui.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+<section>
+
+<div class="container animar">
+
+
+<h2 class="titulo">
+💬 Contato
+</h2>
+
+
+<div class="card">
+
+
+<p class="texto">
+
+Possui dúvidas sobre o recrutamento?
+
+<br><br>
+
+Entre em contato pelo Discord oficial da IMPERIUMz.
+
+</p>
+
+
+<a class="botao" href="https://discord.gg/KsyCM5qs" target="_blank">
+
+Entrar no Discord
+
+</a>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+<footer>
+
+
+<h2>
+IMPERIUMz
+</h2>
+
+
+<p>
+A melhor comunidade de Mobile Legends.
+</p>
+
+
+<p style="margin-top:20px;color:#777;">
+
+© 2026 IMPERIUMz
+
+</p>
+
+
+</footer>
+
+
+
+
+
+<script>
+
+const elementos = document.querySelectorAll(".animar");
+
+
+function animar(){
+
+elementos.forEach(elemento=>{
+
+
+let topo = elemento.getBoundingClientRect().top;
+
+
+if(topo < window.innerHeight - 100){
+
+elemento.classList.add("aparecer");
+
+}
+
+
+});
+
+
+}
+
+
+window.addEventListener("scroll",animar);
+
+animar();
+
+
+</script>
+
+
+</body>
+
+</html>
