@@ -6,24 +6,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>IMPERIUMz | Staff</title>
+<title>Recrutamento • IMPERIUMz</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 
 <style>
 
 *{
+
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
+
 }
 
 
 body{
 
 background:
-radial-gradient(circle at top,#7b00ff30,transparent 40%),
-linear-gradient(180deg,#000,#0d0018,#000);
+
+radial-gradient(circle at top,#6a00ff,#250038 40%,#09000f);
 
 color:white;
 
@@ -33,52 +41,101 @@ overflow-x:hidden;
 
 
 
+/* Fundo animado */
+
+.background{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+z-index:-1;
+
+overflow:hidden;
+
+}
+
+
+.background span{
+
+position:absolute;
+
+width:6px;
+
+height:6px;
+
+background:#b35cff;
+
+border-radius:50%;
+
+opacity:.7;
+
+box-shadow:0 0 20px #b35cff;
+
+animation:float 18s linear infinite;
+
+}
+
+
+@keyframes float{
+
+0%{
+
+transform:translateY(100vh) scale(0);
+
+}
+
+100%{
+
+transform:translateY(-120vh) scale(2);
+
+}
+
+}
+
+
+
 /* NAV */
 
+
 nav{
+
 position:fixed;
+
 top:0;
+
 width:100%;
-padding:6px 2%;
+
+padding:8px 10px;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
-background:rgba(0,0,0,.45);
+
+background:rgba(0,0,0,.25);
+
 backdrop-filter:blur(15px);
+
+border-bottom:1px solid rgba(255,255,255,.1);
+
 z-index:999;
-border-bottom:1px solid #8a2be2;
+
 }
 
 
 .logo{
 
-display:flex;
+font-size:30px;
 
-align-items:center;
+font-weight:800;
 
-gap:10px;
+color:#b35cff;
 
-}
-
-
-.logo img{
-
-width:55px;
-
-height:55px;
-
-border-radius:50%;
-
-}
-
-
-.logo h2{
-
-color:#b84dff;
-
-font-size:18px;
-
-text-shadow:0 0 20px #8a2be2;
+text-shadow:0 0 20px #8b3dff;
 
 }
 
@@ -89,9 +146,16 @@ color:white;
 
 text-decoration:none;
 
-margin-left:50px;
+margin-left:25px;
 
-font-size:15px;
+transition:.3s;
+
+}
+
+
+nav a:hover{
+
+color:#b35cff;
 
 }
 
@@ -99,68 +163,33 @@ font-size:15px;
 
 /* HERO */
 
-header{
 
-height:80vh;
+.hero{
+
+height:90vh;
 
 display:flex;
 
+justify-content:center;
+
 align-items:center;
 
-justify-content:center;
+flex-direction:column;
 
 text-align:center;
 
 padding:20px;
-
-background:
-
-linear-gradient(
-rgba(0,0,0,.45),
-rgba(0,0,0,.9)
-),
-
-url("imagens/banner.jpg");
-
-background-size:cover;
-
-background-position:center;
 
 }
 
 
 .hero img{
 
-width:110px;
+width:130px;
 
-filter:drop-shadow(0 0 30px #8a2be2);
+filter:drop-shadow(0 0 30px #8b3dff);
 
 animation:flutuar 3s infinite alternate;
-
-}
-
-
-.hero h1{
-
-font-size:40px;
-
-margin-top:20px;
-
-text-shadow:
-
-0 0 20px #8a2be2,
-0 0 60px #8a2be2;
-
-}
-
-
-.hero p{
-
-font-size:20px;
-
-color:#ddd;
-
-margin:20px;
 
 }
 
@@ -182,145 +211,238 @@ transform:translateY(-15px);
 }
 
 
+.hero h1{
+
+font-size:40px;
+
+color:#d7b3ff;
+
+text-shadow:
+
+0 0 20px #8b3dff,
+0 0 50px #8b3dff;
+
+}
+
+
+.hero p{
+
+font-size:22px;
+
+color:#ddd;
+
+margin:20px;
+
+max-width:700px;
+
+}
+
+
 .botao{
 
-display:inline-block;
+padding:15px 40px;
 
-padding:18px 45px;
+border-radius:40px;
 
-border-radius:50px;
-
-background:linear-gradient(45deg,#7300ff,#c04dff);
+background:#8b3dff;
 
 color:white;
 
 text-decoration:none;
 
-font-size:20px;
-
 font-weight:bold;
 
-box-shadow:0 0 30px #8a2be2;
+box-shadow:0 0 25px #8b3dff;
 
-transition:.4s;
+transition:.3s;
 
 }
 
 
 .botao:hover{
 
-transform:scale(1.1);
+transform:translateY(-5px);
 
-box-shadow:0 0 60px #b84dff;
+box-shadow:0 0 50px #b35cff;
 
 }
-<style>
-
 /* SEÇÕES */
+
 
 section{
 
-padding:100px 20px;
+max-width:1100px;
 
-}
-
-
-.container{
-
-max-width:300px;
 margin:auto;
+
+padding:80px 25px;
+
 }
+
+
+
 .titulo{
+
 text-align:center;
-font-size:60px;
-margin-bottom:40px;
-color:#b84dff;
-text-shadow:0 0 20px #8a2be2;
+
+font-size:42px;
+
+margin-bottom:45px;
+
+color:#d7b3ff;
+
+text-shadow:0 0 20px #8b3dff;
+
 }
+
+
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+
+}
+
 
 
 .card{
-background:rgba(255,255,255,.07);
-border:1px solid rgba(184,77,255,.4);
-border-radius:30px;
-padding:40px;
-backdrop-filter:blur(20px);
-box-shadow:0 0 40px rgba(138,43,226,.2);
-transition:.5s;
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.1);
+
+backdrop-filter:blur(15px);
+
+border-radius:25px;
+
+padding:30px;
+
+transition:.4s;
 
 }
+
 
 
 .card:hover{
 
 transform:translateY(-10px);
 
-box-shadow:0 0 60px rgba(184,77,255,.5);
+border-color:#8b3dff;
+
+box-shadow:0 0 35px rgba(139,61,255,.5);
 
 }
 
 
-.texto{
 
-font-size:20px;
+.card h3{
 
-line-height:1.8;
+color:#c998ff;
+
+font-size:24px;
+
+margin-bottom:15px;
+
+}
+
+
+
+.card p{
 
 color:#ddd;
 
+line-height:1.8;
+
+}
+.recrutamento{
+
 text-align:center;
 
-}
+max-width:800px;
 
-
-/* ANIMAÇÃO */
-
-.animar{
-
-opacity:0;
-
-transform:translateY(70px);
-
-transition:1s;
+margin:auto;
 
 }
 
 
-.animar.aparecer{
 
-opacity:1;
+.recrutamento h3{
 
-transform:translateY(0);
+font-size:30px;
+
+color:#b35cff;
+
+margin-bottom:20px;
 
 }
 
 
-/* FOOTER */
+
+.contato{
+
+text-align:center;
+
+max-width:700px;
+
+margin:auto;
+
+}
+
+
 
 footer{
 
-padding:60px 20px;
-
 text-align:center;
+
+padding:50px 20px;
+
+color:#999;
 
 background:#050505;
 
-border-top:1px solid #8a2be2;
+border-top:1px solid rgba(139,61,255,.5);
 
 }
 
 
 footer h2{
 
-font-size:40px;
+color:#b35cff;
 
-color:#b84dff;
+font-size:35px;
+
+}
+.botao{
+
+white-space:nowrap;
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+@media(max-width:600px){
+
+.botao{
+
+width:auto;
+
+padding:14px 28px;
+
+font-size:16px;
+
+white-space:nowrap;
 
 }
 
-
+}
 </style>
-
 
 </head>
 
@@ -328,14 +450,21 @@ color:#b84dff;
 <body>
 
 
+<div class="background">
+
+<span style="left:10%;"></span>
+<span style="left:25%;animation-delay:2s;"></span>
+<span style="left:40%;animation-delay:5s;"></span>
+<span style="left:60%;animation-delay:3s;"></span>
+<span style="left:80%;animation-delay:7s;"></span>
+
+</div>
+
+
 <nav>
 
 <div class="logo">
-
-<img src="Logo.png">
-
-<h2>IMPERIUMz</h2>
-
+IMPERIUMz
 </div>
 
 
@@ -356,9 +485,7 @@ Recrutamento
 
 
 
-<header>
-
-<div class="hero">
+<section class="hero">
 
 
 <img src="stafficon.jpg">
@@ -370,25 +497,17 @@ Recrutamento Staff
 
 
 <p>
-Faça parte da equipe que ajuda a construir a IMPERIUMz.
+Faça parte da equipe responsável por ajudar a construir e organizar a comunidade IMPERIUMz.
 </p>
 
 
 <a class="botao" href="#rec">
-Ver informações
+Ver vagas
 </a>
 
 
-</div>
-
-</header>
-
-
-
-
+</section>
 <section>
-
-<div class="container animar">
 
 
 <h2 class="titulo">
@@ -396,34 +515,66 @@ Ver informações
 </h2>
 
 
+<div class="cards">
+
+
 <div class="card">
 
+<h3>
+🛡 Organização
+</h3>
 
-<p class="texto">
+<p>
 
-A Staff da IMPERIUMz tem como objetivo manter a comunidade organizada,
-auxiliar membros e ajudar no crescimento do servidor.
-
-<br><br>
-
-Cada integrante da equipe possui uma função importante para criar um ambiente melhor para todos.
+A equipe Staff ajuda a manter o servidor organizado, seguro e preparado para todos os membros.
 
 </p>
 
+</div>
+
+
+
+<div class="card">
+
+<h3>
+💬 Suporte
+</h3>
+
+<p>
+
+Os membros da Staff auxiliam jogadores, respondem dúvidas e ajudam a comunidade.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+🚀 Evolução
+</h3>
+
+<p>
+
+A equipe participa da construção de novas ideias e melhorias para a IMPERIUMz.
+
+</p>
 
 </div>
 
 
 </div>
+
 
 </section>
 
 
 
 
-<section>
 
-<div class="container animar">
+<section>
 
 
 <h2 class="titulo">
@@ -431,32 +582,67 @@ Cada integrante da equipe possui uma função importante para criar um ambiente 
 </h2>
 
 
+
+<div class="cards">
+
+
 <div class="card">
 
+<h3>
+🤝 Fazer parte
+</h3>
 
-<p class="texto">
+<p>
 
-🛡 Ajudar a comunidade.
-<br><br>
-💬 Auxiliar jogadores.
-<br><br>
-⚔ Participar da organização.
-<br><br>
-🚀 Contribuir com ideias.
-<br><br>
-🤝 Fazer parte da evolução da IMPERIUMz.
+Faça parte da equipe que ajuda a comunidade a crescer.
+
 </p>
 
+</div>
+
+
+
+<div class="card">
+
+<h3>
+🏆 Experiência
+</h3>
+
+<p>
+
+Desenvolva liderança, organização e trabalho em equipe.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+💜 Contribuir
+</h3>
+
+<p>
+
+Ajude a criar um ambiente melhor para todos os jogadores.
+
+</p>
 
 </div>
 
 
 </div>
+
 
 </section>
-<section>
 
-<div class="container animar">
+
+
+
+
+<section>
 
 
 <h2 class="titulo">
@@ -464,46 +650,61 @@ Cada integrante da equipe possui uma função importante para criar um ambiente 
 </h2>
 
 
+<div class="cards">
+
+
 <div class="card">
 
+<h3>
+⭐ Responsabilidade
+</h3>
 
-<p class="texto">
+<p>
 
-⭐ Ser responsável.
-
-<br><br>
-
-🤝 Respeitar todos os membros.
-
-<br><br>
-
-💬 Saber se comunicar e trabalhar em equipe.
-
-<br><br>
-
-⏰ Ter vontade de ajudar a comunidade.
-
-<br><br>
-
-🚀 Buscar sempre melhorar a IMPERIUMz.
+Ter compromisso e saber lidar com diferentes situações.
 
 </p>
 
+</div>
+
+
+
+<div class="card">
+
+<h3>
+🤝 Respeito
+</h3>
+
+<p>
+
+Tratar todos os membros com educação e respeito.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+💬 Comunicação
+</h3>
+
+<p>
+
+Saber conversar e trabalhar junto com a equipe.
+
+</p>
 
 </div>
 
 
 </div>
+
 
 </section>
-
-
-
-
-
 <section id="rec">
-
-<div class="container animar">
 
 
 <h2 class="titulo">
@@ -511,16 +712,22 @@ Cada integrante da equipe possui uma função importante para criar um ambiente 
 </h2>
 
 
-<div class="card">
+
+<div class="card recrutamento">
 
 
-<p class="texto">
+<h3>
+🔒 Recrutamento fechado
+</h3>
 
-🔒 O recrutamento de Staff está fechado atualmente.
+
+<p>
+
+No momento o recrutamento de Staff da IMPERIUMz não está disponível.
 
 <br><br>
 
-No momento não existem vagas abertas.
+Não existem vagas abertas atualmente.
 
 <br><br>
 
@@ -532,15 +739,13 @@ No momento não existem vagas abertas.
 
 <br><br>
 
-Quando o recrutamento abrir, novas informações serão adicionadas aqui.
+Quando novas vagas forem liberadas, todas as informações serão adicionadas nesta página.
 
 </p>
 
 
 </div>
 
-
-</div>
 
 </section>
 
@@ -550,26 +755,27 @@ Quando o recrutamento abrir, novas informações serão adicionadas aqui.
 
 <section>
 
-<div class="container animar">
-
 
 <h2 class="titulo">
 💬 Contato
 </h2>
 
 
-<div class="card">
+<div class="card contato">
 
 
-<p class="texto">
+<p>
 
-Possui dúvidas sobre o recrutamento?
+Ficou com alguma dúvida sobre a Staff?
 
 <br><br>
 
-Entre em contato pelo Discord oficial da IMPERIUMz.
+Entre em contato com a equipe pelo Discord oficial da IMPERIUMz.
 
 </p>
+
+
+<br>
 
 
 <a class="botao" href="https://discord.gg/KsyCM5qs" target="_blank">
@@ -581,8 +787,6 @@ Entrar no Discord
 
 </div>
 
-
-</div>
 
 </section>
 
@@ -603,7 +807,7 @@ A melhor comunidade de Mobile Legends.
 </p>
 
 
-<p style="margin-top:20px;color:#777;">
+<p style="margin-top:15px;">
 
 © 2026 IMPERIUMz
 
@@ -618,20 +822,26 @@ A melhor comunidade de Mobile Legends.
 
 <script>
 
-const elementos = document.querySelectorAll(".animar");
+
+// animação ao aparecer
 
 
-function animar(){
-
-elementos.forEach(elemento=>{
+const elementos = document.querySelectorAll(".card,.titulo");
 
 
-let topo = elemento.getBoundingClientRect().top;
+const observar = new IntersectionObserver((entradas)=>{
 
 
-if(topo < window.innerHeight - 100){
+entradas.forEach(entrada=>{
 
-elemento.classList.add("aparecer");
+
+if(entrada.isIntersecting){
+
+
+entrada.target.style.opacity="1";
+
+entrada.target.style.transform="translateY(0)";
+
 
 }
 
@@ -639,12 +849,24 @@ elemento.classList.add("aparecer");
 });
 
 
-}
+});
 
 
-window.addEventListener("scroll",animar);
 
-animar();
+elementos.forEach(elemento=>{
+
+
+elemento.style.opacity="0";
+
+elemento.style.transform="translateY(40px)";
+
+elemento.style.transition=".8s";
+
+
+observar.observe(elemento);
+
+
+});
 
 
 </script>
