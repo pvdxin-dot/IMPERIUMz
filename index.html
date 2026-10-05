@@ -2,873 +2,2428 @@
 <html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPERIUMz | Comunidade Mobile Legends</title>
 
-<title>IMPERIUMz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-scroll-behavior:smooth;
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    rgba(5, 2, 12, 0.72),
+                    rgba(5, 2, 12, 0.94)
+                ),
+                url("imagens/banner.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================
+           FUNDO
+        ========================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+            height: 500px;
+
+            background: rgba(120, 40, 255, 0.14);
+
+            filter: blur(120px);
+
+            border-radius: 50%;
+
+            top: 10%;
+            left: -180px;
+
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+            height: 500px;
+
+            background: rgba(80, 30, 200, 0.12);
+
+            filter: blur(130px);
+
+            border-radius: 50%;
+
+            bottom: 0;
+            right: -200px;
+
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            position: fixed;
+
+            top: 18px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: calc(100% - 80px);
+            max-width: 1450px;
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 28px;
+
+            background: rgba(8, 5, 15, 0.86);
+
+            border: 1px solid rgba(255, 255, 255, 0.10);
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            font-size: 20px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .logo img {
+            width: 46px;
+            height: 46px;
+
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.75);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-discord {
+            padding: 12px 20px;
+
+            border-radius: 12px;
+
+            background: #6d35ff;
+
+            color: #fff !important;
+
+            box-shadow:
+                0 8px 25px rgba(109, 53, 255, 0.30);
+        }
+
+        .nav-discord:hover {
+            transform: translateY(-2px);
+
+            background: #7b48ff;
+        }
+
+        .menu-mobile {
+            display: none;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 850px;
+
+            width: 100%;
+            max-width: 1500px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+
+            padding: 150px 70px 100px;
+        }
+
+        .hero-content {
+            width: 65%;
+            max-width: 850px;
+        }
+
+        .hero-label {
+            display: inline-block;
+
+            padding: 9px 15px;
+
+            margin-bottom: 22px;
+
+            border-radius: 30px;
+
+            background: rgba(111, 61, 255, 0.16);
+
+            border: 1px solid rgba(145, 108, 255, 0.35);
+
+            color: #c8b5ff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(75px, 9vw, 135px);
+
+            line-height: 0.92;
+
+            letter-spacing: 4px;
+
+            font-weight: 900;
+
+            margin-bottom: 28px;
+
+            text-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 span {
+            color: #9a70ff;
+        }
+
+        .hero p {
+            max-width: 680px;
+
+            color: rgba(255, 255, 255, 0.70);
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 34px;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 15px 25px;
+
+            border-radius: 13px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+            background: #713cff;
+
+            box-shadow:
+                0 12px 35px rgba(113, 60, 255, 0.30);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+
+            background: #8253ff;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.07);
+
+            border: 1px solid rgba(255, 255, 255, 0.13);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        section {
+            width: 100%;
+        }
+
+        .section-container {
+            width: 100%;
+
+            max-width: 1500px;
+
+            margin: auto;
+
+            padding: 110px 70px;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-header span {
+            color: #9c74ff;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .section-header h2 {
+            margin-top: 10px;
+
+            font-size: clamp(35px, 4vw, 58px);
+
+            line-height: 1.05;
+        }
+
+        .section-header p {
+            max-width: 650px;
+
+            margin-top: 16px;
+
+            color: rgba(255, 255, 255, 0.58);
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           ANIMAÇÃO DOS CARDS
+        ========================= */
+
+        .reveal-card {
+            opacity: 0;
+
+            transform: translateY(45px);
+
+            transition:
+                opacity 0.75s ease,
+                transform 0.75s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .reveal-card.show {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        .reveal-card:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .reveal-card:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .reveal-card:nth-child(3) {
+            transition-delay: 0.25s;
+        }
+
+        .reveal-card:nth-child(4) {
+            transition-delay: 0.35s;
+        }
+
+        /* =========================
+           ESTATÍSTICAS
+        ========================= */
+
+        .stats-section {
+            padding-top: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .stat-card {
+            position: relative;
+
+            padding: 28px 24px;
+
+            border-radius: 20px;
+
+            background: rgba(12, 9, 20, 0.68);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            top: -45px;
+            right: -35px;
+
+            background: rgba(116, 65, 255, 0.20);
+
+            filter: blur(35px);
+
+            border-radius: 50%;
+        }
+
+        .stat-icon {
+            position: relative;
+
+            width: 48px;
+            height: 48px;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            margin-bottom: 18px;
+        }
+
+        .stat-icon img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+        }
+
+        .stat-number {
+            position: relative;
+
+            font-size: 29px;
+
+            font-weight: 900;
+
+            color: #fff;
+
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            position: relative;
+
+            color: rgba(255, 255, 255, 0.50);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(143, 100, 255, 0.35);
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        /* =========================
+           INFORMAÇÕES
+        ========================= */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 24px;
+        }
+
+        .info-card {
+            min-height: 310px;
+
+            padding: 28px;
+
+            border-radius: 22px;
+
+            background: rgba(12, 9, 20, 0.72);
+
+            border: 1px solid rgba(255, 255, 255, 0.09);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            overflow: hidden;
+        }
+
+.info-image {
+    width: 48px;
+    height: 48px;
+    margin: 0 0 20px 0;
+    border-radius: 70%;
+    overflow: hidden;
 }
 
-body{
-
-background:
-radial-gradient(circle at top, #2b0050, transparent 35%),
-linear-gradient(
-180deg,
-#000000,
-#090014,
-#120022
-);
-color:white;
+.info-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+.info-card:hover .info-image img {
+    transform: scale(1.06);
 }
 
+        .info-card:hover {
+            transform: translateY(-6px);
 
-/* Energia roxa flutuando */
-body::before{
+            border-color: rgba(143, 100, 255, 0.35);
 
-content:"";
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.25);
+        }
 
-position:fixed;
+        .info-card h3 {
+            font-size: 23px;
 
-width:500px;
+            margin-bottom: 13px;
+        }
 
-height:500px;
+        .info-card p {
+            color: rgba(255, 255, 255, 0.60);
 
-background:#8a2be2;
+            line-height: 1.7;
 
-filter:blur(180px);
+            font-size: 15px;
+        }
 
-opacity:.25;
+        /* =========================
+           GALERIA
+        ========================= */
 
-top:20%;
+        .gallery-layout {
+            display: grid;
 
-left:-200px;
+            grid-template-columns:
+                minmax(0, 1.7fr)
+                minmax(320px, 0.8fr);
 
-animation:energia 8s infinite alternate;
+            gap: 30px;
 
-z-index:-1;
+            align-items: start;
+        }
 
+        .gallery-area {
+            min-width: 0;
+        }
+
+        .carousel {
+            position: relative;
+
+            width: 100%;
+            height: 610px;
+
+            overflow: hidden;
+
+            border-radius: 26px;
+
+            background: rgba(5, 3, 10, 0.70);
+
+            border: 1px solid rgba(255, 255, 255, 0.10);
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.35);
+
+            touch-action: pan-y;
+        }
+
+        .slide {
+            position: absolute;
+
+            inset: 0;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.45s ease,
+                transform 0.45s ease;
+
+            transform: scale(1.025);
+        }
+
+        .slide.active {
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: scale(1);
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .carousel::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0, 0, 0, 0.40),
+                    transparent 35%
+                );
+
+            pointer-events: none;
+        }
+
+        .carousel-btn {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255, 255, 255, 0.14);
+
+            border-radius: 50%;
+
+            background: rgba(5, 3, 10, 0.70);
+
+            color: #fff;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            z-index: 5;
+
+            transition: 0.25s;
+        }
+
+        .carousel-btn:hover {
+            background: #713cff;
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .dots {
+            position: absolute;
+
+            bottom: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            display: flex;
+
+            gap: 8px;
+
+            z-index: 10;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+
+            padding: 0;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.35);
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .dot.active {
+            width: 25px;
+
+            border-radius: 20px;
+
+            background: #8b5cff;
+        }
+
+        /* =========================
+           PAINEL DIREITO
+        ========================= */
+
+        .side-information {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 22px;
+        }
+
+        .side-card {
+            padding: 28px;
+
+            border-radius: 22px;
+
+            background: rgba(12, 9, 20, 0.78);
+
+            border: 1px solid rgba(255, 255, 255, 0.09);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.20);
+        }
+
+        .side-card-top {
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            margin-bottom: 18px;
+        }
+
+        .side-card-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 13px;
+
+            overflow: hidden;
+        }
+
+        .side-card-icon img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+        }
+
+        .side-card h3 {
+            font-size: 19px;
+        }
+
+        .side-card p {
+            color: rgba(255, 255, 255, 0.62);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .tips {
+            list-style: none;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+            margin-top: 17px;
+        }
+
+        .tips li {
+            position: relative;
+
+            padding-left: 20px;
+
+            color: rgba(255, 255, 255, 0.70);
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .tips li::before {
+            content: "•";
+
+            position: absolute;
+
+            left: 0;
+
+            color: #9b70ff;
+
+            font-size: 20px;
+        }
+
+        .guild-rules {
+            list-style: none;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 11px;
+
+            margin-top: 18px;
+        }
+
+        .guild-rules li {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            color: rgba(255, 255, 255, 0.62);
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+        .guild-rules li span {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            width: 19px;
+            height: 19px;
+
+            border-radius: 50%;
+
+            background: rgba(116, 65, 255, 0.18);
+
+            color: #a982ff;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .guild-box {
+            margin-top: 20px;
+
+            padding: 17px;
+
+            border-radius: 14px;
+
+            background: rgba(0, 0, 0, 0.24);
+
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .guild-label {
+            display: block;
+
+            color: rgba(255, 255, 255, 0.45);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+        .guild-id {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+
+        .guild-id strong {
+            font-size: 18px;
+
+            color: #c7b4ff;
+
+            word-break: break-all;
+        }
+
+        .copy-button {
+            flex-shrink: 0;
+
+            border: 0;
+
+            border-radius: 9px;
+
+            padding: 9px 12px;
+
+            background: #713cff;
+
+            color: #fff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .meta-link {
+            color: #a855f7;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+        }
+
+        .meta-link:hover {
+            color: #c084fc;
+
+            text-shadow:
+                0 0 10px rgba(168, 85, 247, 0.7);
+        }
+
+        /* =========================
+           DESTAQUE
+        ========================= */
+
+        .highlight-box {
+            width: 100%;
+
+            border-radius: 26px;
+
+            overflow: hidden;
+
+            background: rgba(10, 7, 17, 0.76);
+
+            border: 1px solid rgba(255, 255, 255, 0.09);
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.30);
+        }
+
+        .highlight-video {
+            width: 100%;
+
+            display: block;
+
+            max-height: 700px;
+
+            background: #000;
+        }
+
+        /* =========================
+           REDES
+        ========================= */
+
+        .social-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .social-card {
+            min-height: 180px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 28px;
+
+            border-radius: 20px;
+
+            background: rgba(12, 9, 20, 0.72);
+
+            border: 1px solid rgba(255, 255, 255, 0.09);
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(145, 105, 255, 0.35);
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .social-card img {
+            width: 65px;
+            height: 65px;
+
+            border-radius: 15px;
+
+            object-fit: cover;
+        }
+
+        .social-card h3 {
+            margin-bottom: 7px;
+        }
+
+        .social-card p {
+            color: rgba(255, 255, 255, 0.52);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 45px 30px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            text-align: center;
+
+            color: rgba(255, 255, 255, 0.40);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            body {
+                background-size: auto 100%;
+                background-position: center top;
+                background-attachment: fixed;
+            }
+
+            .navbar {
+                top: 10px;
+
+                width: calc(100% - 24px);
+
+                height: 62px;
+
+                padding: 0 10px 0 14px;
+
+                border-radius: 16px;
+            }
+
+            .logo {
+                font-size: 15px;
+
+                gap: 8px;
+            }
+
+            .logo img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .menu-mobile {
+                display: flex;
+
+                align-items: center;
+                justify-content: center;
+
+                width: 42px;
+                height: 42px;
+
+                flex-shrink: 0;
+
+                border: 1px solid rgba(255, 255, 255, 0.12);
+
+                border-radius: 12px;
+
+                background: rgba(255, 255, 255, 0.06);
+
+                color: #fff;
+
+                font-size: 23px;
+
+                cursor: pointer;
+
+                z-index: 1002;
+
+                transition:
+                    background 0.25s ease,
+                    transform 0.25s ease;
+            }
+
+            .menu-mobile:hover {
+                background: rgba(113, 60, 255, 0.25);
+            }
+
+            .nav-links {
+                position: absolute;
+
+                top: 70px;
+                right: 0;
+
+                width: 210px;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 8px;
+
+                padding: 12px;
+
+                background: rgba(8, 5, 15, 0.97);
+
+                border:
+                    1px solid rgba(255, 255, 255, 0.10);
+
+                border-radius: 16px;
+
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+
+                box-shadow:
+                    0 20px 50px rgba(0, 0, 0, 0.45);
+
+                opacity: 0;
+
+                visibility: hidden;
+
+                transform: translateX(50px);
+
+                transition:
+                    opacity 0.3s ease,
+                    transform 0.35s ease,
+                    visibility 0.35s;
+            }
+
+            .nav-links.active {
+                opacity: 1;
+
+                visibility: visible;
+
+                transform: translateX(0);
+            }
+
+            .nav-links a {
+                width: 100%;
+
+                padding: 13px 15px;
+
+                border-radius: 10px;
+
+                background: rgba(255, 255, 255, 0.04);
+
+                color: rgba(255, 255, 255, 0.82);
+
+                font-size: 14px;
+
+                transform: translateX(35px);
+
+                opacity: 0;
+
+                transition:
+                    transform 0.35s ease,
+                    opacity 0.35s ease,
+                    background 0.2s;
+            }
+
+            .nav-links.active a {
+                transform: translateX(0);
+
+                opacity: 1;
+            }
+
+            .nav-links.active a:nth-child(1) {
+                transition-delay: 0.05s;
+            }
+
+            .nav-links.active a:nth-child(2) {
+                transition-delay: 0.10s;
+            }
+
+            .nav-links.active a:nth-child(3) {
+                transition-delay: 0.15s;
+            }
+
+            .nav-links.active a:nth-child(4) {
+                transition-delay: 0.20s;
+            }
+
+            .nav-links.active a:nth-child(5) {
+                transition-delay: 0.25s;
+            }
+
+            .nav-links a:hover {
+                background: rgba(113, 60, 255, 0.18);
+            }
+
+            .nav-discord {
+                padding: 13px 15px;
+
+                font-size: 14px;
+
+                text-align: center;
+            }
+
+            /* HERO */
+
+            .hero {
+                min-height: 700px;
+
+                padding:
+                    130px
+                    22px
+                    70px;
+
+                align-items: center;
+            }
+
+            .hero-content {
+                width: 100%;
+
+                text-align: center;
+            }
+
+            .hero-label {
+                font-size: 10px;
+
+                padding: 8px 12px;
+            }
+
+            .hero h1 {
+                font-size: 57px;
+
+                letter-spacing: 2px;
+
+                line-height: 0.95;
+
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                font-size: 14px;
+
+                line-height: 1.6;
+
+                margin:
+                    0 auto 25px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+
+                padding: 14px 18px;
+            }
+
+            /* SEÇÕES */
+
+            .section-container {
+                padding: 75px 18px;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            .section-header h2 {
+                font-size: 34px;
+            }
+
+            .section-header p {
+                font-size: 14px;
+            }
+
+            /* ESTATÍSTICAS */
+
+            .stats-section {
+                padding-top: 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 20px 17px;
+
+                border-radius: 16px;
+            }
+
+            .stat-icon {
+                width: 42px;
+                height: 42px;
+
+                margin-bottom: 12px;
+            }
+
+            .stat-number {
+                font-size: 23px;
+            }
+
+            .stat-label {
+                font-size: 9px;
+
+                letter-spacing: 0.6px;
+            }
+
+            /* INFORMAÇÕES */
+
+            .info-grid {
+                grid-template-columns: 1fr;
+
+                gap: 14px;
+            }
+
+            .info-card {
+                min-height: auto;
+
+                padding: 20px;
+            }
+
+.info-image {
+    height: 110px;
+    margin-bottom: 18px;
 }
+            }
 
+            .info-card h3 {
+                font-size: 20px;
+            }
 
-@keyframes energia{
+            .info-card p {
+                font-size: 14px;
+            }
 
-from{
+            /* GALERIA */
 
-transform:translateY(-50px);
+            .gallery-layout {
+                grid-template-columns: 1fr;
 
-}
+                gap: 18px;
+            }
 
-to{
+            .carousel {
+                height: 330px;
 
-transform:translateY(150px);
+                border-radius: 19px;
+            }
 
-}
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
 
-}
+                font-size: 19px;
+            }
 
+            .carousel-prev {
+                left: 10px;
+            }
 
-@keyframes energia{
-    from{
-        transform:translateY(-50px);
-    }
+            .carousel-next {
+                right: 10px;
+            }
 
-    to{
-        transform:translateY(150px);
-    }
-}
+            .dots {
+                bottom: 13px;
+            }
 
-nav{
+            /* SIDEBAR */
 
-position:fixed;
+            .side-information {
+                gap: 14px;
+            }
 
-top:0;
-left:0;
+            .side-card {
+                padding: 23px;
 
-width:100%;
+                border-radius: 18px;
+            }
 
-display:flex;
-justify-content:space-between;
-align-items:center;
+            .side-card h3 {
+                font-size: 18px;
+            }
 
-padding:20px 8%;
+            .side-card p,
+            .tips li {
+                font-size: 13px;
+            }
 
-background:rgba(10,0,20,.65);
+            .guild-id strong {
+                font-size: 15px;
+            }
 
-backdrop-filter:blur(15px);
+            /* VÍDEO */
 
-border-bottom:1px solid rgba(184,77,255,.4);
+            .highlight-box {
+                border-radius: 18px;
+            }
 
-box-shadow:
-0 0 25px rgba(138,43,226,.3);
+            .highlight-video {
+                max-height: none;
+            }
 
-z-index:999;
+            /* REDES */
 
-transition:.4s;
+            .social-grid {
+                grid-template-columns: 1fr;
 
-}
-header div{
-animation:entrada 1.5s ease;
-}
+                gap: 13px;
+            }
 
+            .social-card {
+                min-height: 110px;
 
-@keyframes entrada{
+                padding: 20px;
+            }
 
-from{
-opacity:0;
-transform:translateY(80px);
-}
+            .social-card img {
+                width: 52px;
+                height: 52px;
+            }
+        }
 
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-.logo{
-
-display:flex;
-align-items:center;
-gap:15px;
-
-}
-
-.logo img{
-
-width:65px;
-
-border-radius:50%;
-
-}
-
-.logo h1{
-
-font-size:28px;
-
-color:#b84dff;
-
-}
-
-nav ul{
-
-display:flex;
-
-list-style:none;
-
-gap:35px;
-
-}
-
-nav a{
-
-color:white;
-
-text-decoration:none;
-
-font-size:18px;
-
-transition:.3s;
-
-}
-
-nav a:hover{
-
-color:#b84dff;
-
-}
-
-header{
-
-height:100vh;
-
-background:
-
-linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.8)),
-
-url("imagens/banner.jpg");
-
-background-size:cover;
-
-background-position:center;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-padding:20px;
-
-}
-
-header h2{
-
-font-size:50px;
-
-color:white;
-
-text-shadow:
-
-0 0 15px #8a2be2,
-
-0 0 35px #8a2be2,
-
-0 0 60px #8a2be2;
-
-}
-
-header p{
-
-margin-top:20px;
-
-font-size:22px;
-
-color:#ddd;
-
-}
-
-.botao{
-
-display:inline-block;
-
-margin-top:35px;
-
-padding:18px 40px;
-
-background:#8a2be2;
-
-border-radius:40px;
-
-text-decoration:none;
-
-color:white;
-
-font-size:22px;
-
-font-weight:bold;
-
-transition:.4s;
-
-box-shadow:0 0 20px #8a2be2;
-
-}
-
-.botao:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 0 35px #8a2be2;
-
-}
-
-section{
-
-padding:90px 10%;
-
-}
-
-.titulo{
-
-font-size:45px;
-
-color:#b84dff;
-
-margin-bottom:25px;
-
-}
-.card{
-
-background:rgba(20,20,20,.65);
-
-backdrop-filter:blur(15px);
-
-padding:35px;
-
-border-radius:25px;
-
-border:1px solid rgba(184,77,255,.3);
-.botao{
-position:relative;
-overflow:hidden;
-}
-
-
-.botao::before{
-
-content:"";
-
-position:absolute;
-
-width:0;
-height:100%;
-
-background:white;
-
-left:0;
-top:0;
-
-opacity:.3;
-
-transition:.5s;
-
-}
-
-
-.botao:hover::before{
-
-width:100%;
-
-}
-box-shadow:
-0 0 30px rgba(138,43,226,.15),
-inset 0 0 20px rgba(255,255,255,.03);
-
-margin-bottom:25px;
-
-opacity:0;
-
-transform:translateY(80px);
-
-transition:.8s;
-
-}
-
-.card.mostrar{
-    opacity:1;
-    transform:translateY(0);
-}
-.card:hover{
-
-transform:translateY(-10px);
-
-}
-
-.card p{
-
-font-size:18px;
-
-line-height:1.8;
-
-color:#ddd;
-
-}
-.grade{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-@media(max-width:600px){
-
-nav{
-    padding:10px 15px;
-}
-
-.logo img{
-    width:40px;
-}
-
-.logo h1{
-    display:none;
-}
-
-nav ul{
-    gap:12px;
-}
-
-nav a{
-    font-size:13px;
-}
-
-header h2{
-    font-size:40px;
-}
-
-header p{
-    font-size:18px;
-}
-
-section{
-    padding:60px 5%;
-}
-
-.titulo{
-    font-size:32px;
-}
-
-.card{
-    padding:20px;
-}
-.scroll{
-margin-top:50px;
-font-size:40px;
-color:#b84dff;
-animation:bater 1.5s infinite;
-}
-
-
-@keyframes bater{
-
-50%{
-transform:translateY(15px);
-}
-
-}
-}
-.botao-contato{
-
-position:relative;
-overflow:hidden;
-
-display:inline-block;
-
-padding:18px 40px;
-
-background:#5865F2;
-
-border-radius:40px;
-
-color:white;
-
-text-decoration:none;
-
-font-size:22px;
-
-font-weight:bold;
-
-box-shadow:0 0 25px #5865F2;
-
-transition:.3s;
-
-}
-
-
-.botao-contato:hover,
-.botao-contato:active{
-
-animation:vibrar .15s infinite;
-
-box-shadow:
-0 0 40px #5865F2;
-
-}
-
-
-.botao-contato::before{
-
-content:"";
-
-position:absolute;
-
-top:-50%;
-left:-100%;
-
-width:60%;
-height:200%;
-
-background:rgba(255,255,255,.5);
-
-transform:rotate(25deg);
-
-transition:.6s;
-
-}
-
-
-.botao-contato:hover::before,
-.botao-contato:active::before{
-
-left:150%;
-
-}
-
-
-@keyframes vibrar{
-
-0%{transform:translateX(0);}
-25%{transform:translateX(-3px);}
-50%{transform:translateX(3px);}
-75%{transform:translateX(-3px);}
-100%{transform:translateX(0);}
-
-}
-</style>
-
+        /* =========================
+           ACESSIBILIDADE
+        ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
-<div class="logo">
+    <nav class="navbar">
 
-<img src="Logo.png">
+        <a href="#inicio" class="logo">
+            <img src="Logo.png" alt="IMPERIUMz">
+            <span>IMPERIUMz</span>
+        </a>
 
-<h1>IMPERIUMz</h1>
+        <button
+            class="menu-mobile"
+            onclick="toggleMenu()"
+            aria-label="Abrir menu">
+            ☰
+        </button>
 
-</div>
-<ul>
-<li>
-<a href="doacao.html">Doação</a></li>
-<li><a href="rec.html">Rec</a></li>
-<li><a href="sobre.html">Sobre</a></li>
-<li><a href="#galeria">Galeria</a></li>
-<li><a href="#redes">Redes</a></li>
-</ul>
+        <div class="nav-links">
 
-</nav>
+            <a href="#inicio">
+                Início
+            </a>
 
-<header>
+            <a href="#comunidade">
+                Comunidade
+            </a>
 
-<div>
+            <a
+                href="https://www.mobilelegends.com/rank"
+                target="_blank"
+                rel="noopener noreferrer">
+                Ranks
+            </a>
 
+            <a href="#destaque">
+                Destaque
+            </a>
 
+            <a
+                class="nav-discord"
+                href="https://discord.gg/kRKgxH7Wt"
+                target="_blank"
+                rel="noopener noreferrer">
+                Discord
+            </a>
 
-<h2>IMPERIUMz</h2>
-<div class="scroll">
-↓
-</div>
-<p>
+        </div>
 
-A melhor comunidade de Mobile Legends.
+    </nav>
 
-</p>
 
-<a href="#sobre" class="botao">
+    <!-- =========================
+         HERO
+    ========================== -->
 
-Conhecer
+    <section id="inicio">
 
-</a>
+        <div class="hero">
 
-</div>
+            <div class="hero-content">
 
-</header>
+                <div class="hero-label">
+                    Comunidade Mobile Legends
+                </div>
 
-<section id="sobre">
+                <h1>
+                    IMPERIUM<span>z</span>
+                </h1>
 
-<h2 class="titulo">
+                <p>
+                    Uma comunidade criada para jogadores de Mobile Legends
+                    que querem evoluir, encontrar jogadores e
+                    fazer parte de uma verdadeira guilda.
+                </p>
 
-⚔ Sobre a Guilda
+                <div class="hero-buttons">
 
-</h2>
+                    <a
+                        href="#comunidade"
+                        class="btn btn-primary">
+                        Conhecer a comunidade
+                    </a>
 
-<div class="card">
+                    <a
+                        href="https://discord.gg/kRKgxH7Wt"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary">
+                        Entrar no Discord
+                    </a>
 
-<p>
+                </div>
 
-A IMPERIUMz é uma comunidade criada para reunir jogadores de Mobile Legends que procuram amizade, organização e evolução dentro do jogo.
+            </div>
 
-Aqui você encontra um ambiente respeitoso, jogadores ativos e uma comunidade preparada para crescer cada vez mais.
+        </div>
 
-</p>
+    </section>
 
-</div>
 
-<div class="grade">
+    <!-- =========================
+         ESTATÍSTICAS
+    ========================== -->
 
-<div class="card">
+    <section class="stats-section">
 
-<h3>👥 Comunidade</h3>
+        <div class="section-container">
 
-<p>
+            <div class="stats-grid">
 
-Faça novas amizades e jogue com pessoas ativas todos os dias.
+                <div class="stat-card reveal-card">
 
-</p>
+                    <div class="stat-icon">
+                        <img
+                            src="comunidade.jpg"
+                            alt="Comunidade">
+                    </div>
 
-</div>
+                    <div class="stat-number">
+                        30+
+                    </div>
 
-<div class="card">
+                    <div class="stat-label">
+                        Membros
+                    </div>
 
-<h3>🎯 Organização</h3>
+                </div>
 
-<p>
 
-Sistema organizado para facilitar a formação de equipes e partidas.
+                <div class="stat-card reveal-card">
 
-</p>
+                    <div class="stat-icon">
+                        <img
+                            src="amizades.jpg"
+                            alt="Jogadores">
+                    </div>
 
-</div>
+                    <div class="stat-number">
+                        Diariamente
+                    </div>
 
-<div class="card">
+                    <div class="stat-label">
+                        Jogadores ativos
+                    </div>
 
-<h3>🚀 Evolução</h3>
+                </div>
 
-<p>
 
-Aprenda novas estratégias e evolua junto com outros jogadores.
+                <div class="stat-card reveal-card">
 
-</p>
+                    <div class="stat-icon">
+                        <img
+                            src="evoluir.jpg"
+                            alt="Evolução">
+                    </div>
 
-</div>
+                    <div class="stat-number">
+                        ativo
+                    </div>
 
-</div>
-</section>
-<section id="galeria">
+                    <div class="stat-label">
+                        status
+                    </div>
 
-<h2 class="titulo">
+                </div>
 
-📷 Nossa Comunidade
 
-</h2>
+                <div class="stat-card reveal-card">
 
-<div class="grade">
+                    <div class="stat-icon">
+                        <img
+                            src="guilda.jpg"
+                            alt="Guilda">
+                    </div>
 
-<div class="card">
+                    <div class="stat-number">
+                        Nível 8
+                    </div>
 
-<video class="foto" autoplay muted loop>
-    <source src="video1.mp4" type="video/mp4">
-</video>
+                    <div class="stat-label">
+                        Level do clã
+                    </div>
 
-<h3>Momentos da Guilda</h3>
+                </div>
 
-<p>
-Compartilhe prints, vitórias e momentos especiais da comunidade.
-</p>
+            </div>
 
-</div>
+        </div>
 
-<div class="card">
+    </section>
 
-<img src="foto2.png" class="foto">
 
-<h3>Partidas</h3>
+    <!-- =========================
+         COMUNIDADE
+    ========================== -->
 
-<p>
-Jogue diariamente com membros da IMPERIUMz e fortaleça sua equipe.
-</p>
+    <section id="comunidade">
 
-</div>
+        <div class="section-container">
 
-<div class="card">
+            <div class="section-header">
 
-<img src="foto3.png" class="foto">
+                <span>IMPERIUMz</span>
 
-<h3>Eventos</h3>
+                <h2>
+                    Faça parte da comunidade
+                </h2>
 
-<p>
-A comunidade está sempre ativa com atividades e encontros entre os membros.
-</p>
+                <p>
+                    Aqui você encontra jogadores, participa de partidas,
+                    aprende e evolui junto com a comunidade.
+                </p>
 
-</div>
+            </div>
 
-</div>
+            <div class="info-grid">
 
-</section>
-<section id="recs">
+                <div class="info-card reveal-card">
 
-<h2 class="titulo">
-🛡 Recrutamento
-</h2>
+                    <div class="info-image">
+                        <img
+                            src="amizades.jpg"
+                            alt="Amizades na comunidade">
+                    </div>
 
-<div class="card">
+                    <h3>
+                        Amizades
+                    </h3>
 
-<h3>Recrutamento de Staff</h3>
+                    <p>
+                        Encontre jogadores para partidas competitivas,
+                        monte sua equipe e participe dos desafios da
+                        comunidade.
+                    </p>
 
-<p>
-No momento não há recrutamento aberto.
-</p>
+                </div>
 
-<p>
-📅 Data: Em breve
-</p>
 
-<p>
-⏰ Horário: A definir
-</p>
+                <div class="info-card reveal-card">
 
-</div>
+                    <div class="info-image">
+                        <img
+                            src="comunidade.jpg"
+                            alt="Comunidade IMPERIUMz">
+                    </div>
 
-</section>
-<section id="redes">
+                    <h3>
+                        Comunidade
+                    </h3>
 
-<h2 class="titulo">🌐 Redes Oficiais</h2>
-<div class="grade">
-<a href="discord.html">
-    <img src="discord.png"> 
-    </a>
-</a>
-<a href="https://www.tiktok.com/@miguel.kau2?_r=1&_t=ZS-97pFzrWE4gS"><img src="tiktok.jpg">
-</a>
+                    <p>
+                        Conheça novos jogadores, converse, encontre
+                        parceiros para jogar e participe do nosso
+                        servidor do Discord.
+                    </p>
 
-<a href="https://www.youtube.com/@IMPERIUMzzz"><img src="youtube.jpg">
-</a>
+                </div>
 
-</div>
 
-</section>
-<section id="contato">
+                <div class="info-card reveal-card">
 
-<h2 class="titulo">Contato</h2>
+                    <div class="info-image">
+                        <img
+                            src="evoluir.jpg"
+                            alt="Evolução no Mobile Legends">
+                    </div>
 
-<div class="card contato">
+                    <h3>
+                        Evolução
+                    </h3>
 
-<p>
-Quer entrar na IMPERIUMz mas está com problemas? fale conosco.
-Clique no botão abaixo:
-</p>
+                    <p>
+                        Compartilhe conhecimento, descubra novas
+                        estratégias e evolua cada vez mais dentro
+                        do Mobile Legends.
+                    </p>
 
-<a class="botao-contato" href="https://discord.gg/kRKgxH7Wt" target="_blank">
-Entrar no Discord
-</a>
+                </div>
 
-</div>
+            </div>
 
-</section>
-<footer>
+        </div>
 
-<h2>IMPERIUMz</h2>
+    </section>
 
-<p>
-A melhor comunidade de Mobile Legends.
-</p>
 
-<p style="margin-top:20px;color:#777;">
-© 2026 IMPERIUMz
-</p>
+    <!-- =========================
+         GALERIA
+    ========================== -->
 
-</footer>
+    <section id="galeria">
 
-<style>
+        <div class="section-container">
 
-.foto{
+            <div class="section-header">
 
-width:100%;
+                <span>Momentos</span>
 
-height:230px;
+                <h2>
+                    Galeria
+                </h2>
 
-object-fit:cover;
+                <p>
+                    Alguns momentos e imagens da nossa comunidade.
+                </p>
 
-border-radius:15px;
+            </div>
 
-margin-bottom:20px;
+            <div class="gallery-layout">
 
-}
-.social{
-    width:220px;
-    text-decoration:none;
-    color:white;
-    padding:20px;
-    border-radius:20px;
-    transition:.35s;
-    display:block;
-    text-align:center;
-}
+                <div class="gallery-area reveal-card">
 
-.social h3{
+                    <div
+                        class="carousel"
+                        id="carousel">
 
-margin:20px 0;
+                        <div class="slide active">
 
-font-size:28px;
+                            <img
+                                src="foto2.jpg"
+                                alt="IMPERIUMz">
 
-}
+                        </div>
 
-.social p{
+                        <div class="slide">
 
-color:#ddd;
+                            <img
+                                src="foto3.jpg"
+                                alt="IMPERIUMz">
 
-}
+                        </div>
 
-.discord{
+                        <button
+                            class="carousel-btn carousel-prev"
+                            onclick="mudarSlide(-1)"
+                            aria-label="Imagem anterior">
+                            ‹
+                        </button>
 
-background:#5865F2;
+                        <button
+                            class="carousel-btn carousel-next"
+                            onclick="mudarSlide(1)"
+                            aria-label="Próxima imagem">
+                            ›
+                        </button>
 
-}
-#redes img{
-width:220px;
-border-radius:20px;
-transition:.3s;
-}
+                        <div class="dots">
 
-#redes img:hover{
-transform:scale(1.05);
-}
-.tiktok{
+                            <button
+                                class="dot active"
+                                onclick="irParaSlide(0)"
+                                aria-label="Ir para imagem 1">
+                            </button>
 
-background:#111;
+                            <button
+                                class="dot"
+                                onclick="irParaSlide(1)"
+                                aria-label="Ir para imagem 2">
+                            </button>
 
-border:2px solid #ff0050;
+                        </div>
 
-}
+                    </div>
 
-.youtube{
+                </div>
 
-background:#ff0000;
 
-}
+                <aside class="side-information">
 
-.social:hover{
+                    <div class="side-card reveal-card">
 
-transform:translateY(-12px) scale(1.04);
+                        <div class="side-card-top">
 
-box-shadow:0 0 30px rgba(138,43,226,.6);
+                            <div class="side-card-icon">
+                                <img
+                                    src="dicas.jpg"
+                                    alt="Dicas">
+                            </div>
 
-}
+                            <h3>
+                                Dicas para iniciantes
+                            </h3>
 
-footer{
+                        </div>
 
-background:#070707;
+                        <p>
+                            Está começando no Mobile Legends?
+                            Confira algumas coisas que podem ajudar
+                            na sua evolução.
+                        </p>
 
-padding:80px 20px;
+                        <ul class="tips">
 
-text-align:center;
+                            <li>
+                                Use o
+                                <a
+                                    class="meta-link"
+                                    href="https://www.mobilelegends.com/rank"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    site de ranks da Moonton
+                                </a>
+                                para acompanhar informações e estatísticas.
+                            </li>
 
-margin-top:60px;
+                            <li>
+                                Conheça bem a função do seu herói.
+                            </li>
 
-border-top:2px solid #8a2be2;
+                            <li>
+                                Aprenda os itens e builds mais utilizados.
+                            </li>
 
-}
+                            <li>
+                                Acompanhe as atualizações e mudanças
+                                do jogo.
+                            </li>
 
-footer h2{
+                        </ul>
 
-font-size:42px;
+                    </div>
 
-color:#b84dff;
 
-margin-bottom:15px;
+                    <div class="side-card reveal-card">
 
-}
+                        <div class="side-card-top">
 
-</style>
-<script>
+                            <div class="side-card-icon">
+                                <img
+                                    src="guilda.jpg"
+                                    alt="Guilda">
+                            </div>
 
-const cards = document.querySelectorAll(".card");
+                            <h3>
+                                Nosso clã
+                            </h3>
 
-function aparecer(){
+                        </div>
 
-cards.forEach(card => {
+                        <p>
+                            Venha fazer parte do nosso clã e vamos juntos
+                            construir uma comunidade cada vez mais unida.
+                        </p>
 
-let altura = card.getBoundingClientRect().top;
+                        <ul class="guild-rules">
 
-let tela = window.innerHeight - 100;
+                            <li>
+                                <span>✓</span>
+                                Pessoas dispostas a jogar e evoluir juntas.
+                            </li>
 
-if(altura < tela){
+                            <li>
+                                <span>✓</span>
+                                Clã atualmente no nível 8.
+                            </li>
 
-card.classList.add("mostrar");
+                            <li>
+                                <span>✓</span>
+                                Caso não consiga entrar, provavelmente
+                                o clã está lotado.
+                            </li>
 
-}
+                        </ul>
 
-});
+                        <div class="guild-box">
 
-}
+                            <span class="guild-label">
+                                ID da Guilda
+                            </span>
 
-window.addEventListener("scroll", aparecer);
+                            <div class="guild-id">
 
-aparecer();
+                                <strong id="guildId">
+                                    14563494
+                                </strong>
 
-</script>
+                                <button
+                                    class="copy-button"
+                                    onclick="copiarGuild()">
+                                    Copiar
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DESTAQUE
+    ========================== -->
+
+    <section id="destaque">
+
+        <div class="section-container">
+
+            <div class="section-header">
+
+                <span>Comunidade</span>
+
+                <h2>
+                    Destaque da comunidade
+                </h2>
+
+                <p>
+                    Confira um dos conteúdos em destaque da IMPERIUMz.
+                    Caso queira um destaque também, fale conosco.
+                </p>
+
+            </div>
+
+            <div class="highlight-box reveal-card">
+
+                <video
+                    class="highlight-video"
+                    controls
+                    preload="metadata">
+
+                    <source
+                        src="video1.mp4"
+                        type="video/mp4">
+
+                    Seu navegador não suporta vídeo.
+
+                </video>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         REDES
+    ========================== -->
+
+    <section id="redes">
+
+        <div class="section-container">
+
+            <div class="section-header">
+
+                <span>Conecte-se</span>
+
+                <h2>
+                    Nossas redes
+                </h2>
+
+                <p>
+                    Acompanhe a IMPERIUMz e não perca as novidades
+                    da comunidade.
+                </p>
+
+            </div>
+
+            <div class="social-grid">
+
+                <a
+                    href="https://discord.gg/kRKgxH7Wt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card reveal-card">
+
+                    <img
+                        src="discord.jpg"
+                        alt="Discord">
+
+                    <div>
+
+                        <h3>
+                            Discord
+                        </h3>
+
+                        <p>
+                            Entre para conversar e jogar.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="https://www.tiktok.com/@miguel.kau2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card reveal-card">
+
+                    <img
+                        src="tiktok.jpg"
+                        alt="TikTok">
+
+                    <div>
+
+                        <h3>
+                            TikTok
+                        </h3>
+
+                        <p>
+                            Veja nossos conteúdos.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="https://www.youtube.com/@IMPERIUMzzz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card reveal-card">
+
+                    <img
+                        src="youtube.jpg"
+                        alt="YouTube">
+
+                    <div>
+
+                        <h3>
+                            YouTube
+                        </h3>
+
+                        <p>
+                            Confira nossos vídeos.
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 IMPERIUMz. Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* =========================
+           CARROSSEL
+        ========================= */
+
+        let slideAtual = 0;
+
+        const slides =
+            document.querySelectorAll(".slide");
+
+        const dots =
+            document.querySelectorAll(".dot");
+
+
+        function atualizarSlide() {
+
+            slides.forEach((slide, index) => {
+
+                slide.classList.toggle(
+                    "active",
+                    index === slideAtual
+                );
+
+            });
+
+            dots.forEach((dot, index) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index === slideAtual
+                );
+
+            });
+
+        }
+
+
+        function mudarSlide(direcao) {
+
+            slideAtual += direcao;
+
+            if (slideAtual >= slides.length) {
+                slideAtual = 0;
+            }
+
+            if (slideAtual < 0) {
+                slideAtual = slides.length - 1;
+            }
+
+            atualizarSlide();
+
+        }
+
+
+        function irParaSlide(numero) {
+
+            slideAtual = numero;
+
+            atualizarSlide();
+
+        }
+
+
+        /* =========================
+           SWIPE MOBILE
+        ========================== */
+
+        const carousel =
+            document.getElementById("carousel");
+
+        let toqueInicial = 0;
+        let toqueFinal = 0;
+
+
+        carousel.addEventListener(
+            "touchstart",
+            function(event) {
+
+                toqueInicial =
+                    event.changedTouches[0].screenX;
+
+            },
+            { passive: true }
+        );
+
+
+        carousel.addEventListener(
+            "touchend",
+            function(event) {
+
+                toqueFinal =
+                    event.changedTouches[0].screenX;
+
+                const distancia =
+                    toqueInicial - toqueFinal;
+
+                if (Math.abs(distancia) > 50) {
+
+                    if (distancia > 0) {
+                        mudarSlide(1);
+                    } else {
+                        mudarSlide(-1);
+                    }
+
+                }
+
+            },
+            { passive: true }
+        );
+
+
+        /* =========================
+           COPIAR ID DA GUILDA
+        ========================== */
+
+        function copiarGuild() {
+
+            const id =
+                document
+                    .getElementById("guildId")
+                    .innerText;
+
+            navigator.clipboard.writeText(id);
+
+            const botao =
+                document.querySelector(".copy-button");
+
+            const textoOriginal =
+                botao.innerText;
+
+            botao.innerText = "Copiado!";
+
+            setTimeout(() => {
+
+                botao.innerText = textoOriginal;
+
+            }, 1500);
+
+        }
+
+
+        /* =========================
+           MENU MOBILE
+        ========================== */
+
+        function toggleMenu() {
+
+            const menu =
+                document.querySelector(".nav-links");
+
+            const botao =
+                document.querySelector(".menu-mobile");
+
+            menu.classList.toggle("active");
+
+            if (menu.classList.contains("active")) {
+
+                botao.innerHTML = "✕";
+
+                botao.setAttribute(
+                    "aria-label",
+                    "Fechar menu"
+                );
+
+            } else {
+
+                botao.innerHTML = "☰";
+
+                botao.setAttribute(
+                    "aria-label",
+                    "Abrir menu"
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           ANIMAÇÃO DOS CARDS
+        ========================== */
+
+        const elementosAnimados =
+            document.querySelectorAll(".reveal-card");
+
+
+        const observer =
+            new IntersectionObserver(
+                function(entries) {
+
+                    entries.forEach(function(entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        elementosAnimados.forEach(function(elemento) {
+
+            observer.observe(elemento);
+
+        });
+
+    </script>
+
 </body>
 
 </html>
-</section>
