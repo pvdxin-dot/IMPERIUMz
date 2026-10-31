@@ -1,2429 +1,1941 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>IMPERIUMz | Comunidade Mobile Legends</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #fff;
-
-            background:
-                linear-gradient(
-                    rgba(5, 2, 12, 0.72),
-                    rgba(5, 2, 12, 0.94)
-                ),
-                url("banner.jpg");
-
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-        /* =========================
-           FUNDO
-        ========================= */
-
-        body::before {
-            content: "";
-
-            position: fixed;
-
-            width: 500px;
-            height: 500px;
-
-            background: rgba(120, 40, 255, 0.14);
-
-            filter: blur(120px);
-
-            border-radius: 50%;
-
-            top: 10%;
-            left: -180px;
-
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        body::after {
-            content: "";
-
-            position: fixed;
-
-            width: 500px;
-            height: 500px;
-
-            background: rgba(80, 30, 200, 0.12);
-
-            filter: blur(130px);
-
-            border-radius: 50%;
-
-            bottom: 0;
-            right: -200px;
-
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        .navbar {
-            position: fixed;
-
-            top: 18px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            width: calc(100% - 80px);
-            max-width: 1450px;
-            height: 76px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 28px;
-
-            background: rgba(8, 5, 15, 0.86);
-
-            border: 1px solid rgba(255, 255, 255, 0.10);
-
-            border-radius: 20px;
-
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-
-            z-index: 1000;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-
-            gap: 13px;
-
-            font-size: 20px;
-            font-weight: 800;
-
-            letter-spacing: 1px;
-        }
-
-        .logo img {
-            width: 46px;
-            height: 46px;
-
-            object-fit: contain;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-
-            gap: 32px;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.75);
-
-            font-size: 14px;
-            font-weight: 600;
-
-            transition: 0.25s;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .nav-discord {
-            padding: 12px 20px;
-
-            border-radius: 12px;
-
-            background: #6d35ff;
-
-            color: #fff !important;
-
-            box-shadow:
-                0 8px 25px rgba(109, 53, 255, 0.30);
-        }
-
-        .nav-discord:hover {
-            transform: translateY(-2px);
-
-            background: #7b48ff;
-        }
-
-        .menu-mobile {
-            display: none;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 850px;
-
-            width: 100%;
-            max-width: 1500px;
-
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-
-            padding: 150px 70px 100px;
-        }
-
-        .hero-content {
-            width: 65%;
-            max-width: 850px;
-        }
-
-        .hero-label {
-            display: inline-block;
-
-            padding: 9px 15px;
-
-            margin-bottom: 22px;
-
-            border-radius: 30px;
-
-            background: rgba(111, 61, 255, 0.16);
-
-            border: 1px solid rgba(145, 108, 255, 0.35);
-
-            color: #c8b5ff;
-
-            font-size: 13px;
-            font-weight: 700;
-
-            letter-spacing: 1px;
-
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: clamp(75px, 9vw, 135px);
-
-            line-height: 0.92;
-
-            letter-spacing: 4px;
-
-            font-weight: 900;
-
-            margin-bottom: 28px;
-
-            text-shadow:
-                0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero h1 span {
-            color: #9a70ff;
-        }
-
-        .hero p {
-            max-width: 680px;
-
-            color: rgba(255, 255, 255, 0.70);
-
-            font-size: 18px;
-
-            line-height: 1.7;
-
-            margin-bottom: 34px;
-        }
-
-        .hero-buttons {
-            display: flex;
-
-            gap: 15px;
-
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 15px 25px;
-
-            border-radius: 13px;
-
-            font-size: 14px;
-            font-weight: 700;
-
-            transition: 0.25s;
-        }
-
-        .btn-primary {
-            background: #713cff;
-
-            box-shadow:
-                0 12px 35px rgba(113, 60, 255, 0.30);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-
-            background: #8253ff;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.07);
-
-            border: 1px solid rgba(255, 255, 255, 0.13);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
-
-            transform: translateY(-3px);
-        }
-
-        /* =========================
-           SEÇÕES
-        ========================= */
-
-        section {
-            width: 100%;
-        }
-
-        .section-container {
-            width: 100%;
-
-            max-width: 1500px;
-
-            margin: auto;
-
-            padding: 110px 70px;
-        }
-
-        .section-header {
-            margin-bottom: 50px;
-        }
-
-        .section-header span {
-            color: #9c74ff;
-
-            font-size: 13px;
-            font-weight: 800;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-        }
-
-        .section-header h2 {
-            margin-top: 10px;
-
-            font-size: clamp(35px, 4vw, 58px);
-
-            line-height: 1.05;
-        }
-
-        .section-header p {
-            max-width: 650px;
-
-            margin-top: 16px;
-
-            color: rgba(255, 255, 255, 0.58);
-
-            font-size: 16px;
-
-            line-height: 1.7;
-        }
-
-        /* =========================
-           ANIMAÇÃO DOS CARDS
-        ========================= */
-
-        .reveal-card {
-            opacity: 0;
-
-            transform: translateY(45px);
-
-            transition:
-                opacity 0.75s ease,
-                transform 0.75s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .reveal-card.show {
-            opacity: 1;
-
-            transform: translateY(0);
-        }
-
-        .reveal-card:nth-child(1) {
-            transition-delay: 0.05s;
-        }
-
-        .reveal-card:nth-child(2) {
-            transition-delay: 0.15s;
-        }
-
-        .reveal-card:nth-child(3) {
-            transition-delay: 0.25s;
-        }
-
-        .reveal-card:nth-child(4) {
-            transition-delay: 0.35s;
-        }
-
-        /* =========================
-           ESTATÍSTICAS
-        ========================= */
-
-        .stats-section {
-            padding-top: 20px;
-        }
-
-        .stats-grid {
-            display: grid;
-
-            grid-template-columns: repeat(4, 1fr);
-
-            gap: 18px;
-        }
-
-        .stat-card {
-            position: relative;
-
-            padding: 28px 24px;
-
-            border-radius: 20px;
-
-            background: rgba(12, 9, 20, 0.68);
-
-            border: 1px solid rgba(255, 255, 255, 0.08);
-
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: "";
-
-            position: absolute;
-
-            width: 100px;
-            height: 100px;
-
-            top: -45px;
-            right: -35px;
-
-            background: rgba(116, 65, 255, 0.20);
-
-            filter: blur(35px);
-
-            border-radius: 50%;
-        }
-
-        .stat-icon {
-            position: relative;
-
-            width: 48px;
-            height: 48px;
-
-            border-radius: 14px;
-
-            overflow: hidden;
-
-            margin-bottom: 18px;
-        }
-
-        .stat-icon img {
-            width: 100%;
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
-        }
-
-        .stat-number {
-            position: relative;
-
-            font-size: 29px;
-
-            font-weight: 900;
-
-            color: #fff;
-
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            position: relative;
-
-            color: rgba(255, 255, 255, 0.50);
-
-            font-size: 12px;
-
-            font-weight: 600;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-
-            border-color: rgba(143, 100, 255, 0.35);
-
-            box-shadow:
-                0 18px 45px rgba(0, 0, 0, 0.25);
-        }
-
-        /* =========================
-           INFORMAÇÕES
-        ========================= */
-
-        .info-grid {
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 24px;
-        }
-
-        .info-card {
-            min-height: 310px;
-
-            padding: 28px;
-
-            border-radius: 22px;
-
-            background: rgba(12, 9, 20, 0.72);
-
-            border: 1px solid rgba(255, 255, 255, 0.09);
-
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-
-            overflow: hidden;
-        }
-
-.info-image {
-    width: 48px;
-    height: 48px;
-    margin: 0 0 20px 0;
-    border-radius: 70%;
-    overflow: hidden;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#8f1812">
+<meta name="description" content="IMPERIUMz: comunidade brasileira de Mobile Legends: Bang Bang. Dicas por elo, clã nível 10 e Discord para jogar junto.">
+
+<title>IMPERIUMz | Comunidade MLBB</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+(function () {
+  var theme = null;
+
+  try {
+    theme = localStorage.getItem("imperiumz-tema");
+  } catch (e) {}
+
+  if (theme !== "dark" && theme !== "light") {
+    theme = window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  document.documentElement.setAttribute("data-theme", theme);
+})();
+</script>
+
+<style>
+:root {
+  color-scheme: light;
+
+  --red: #8f1812;
+  --red-dark: #6a0f0b;
+  --gold: #e8b13a;
+
+  --deep: #17100e;
+  --bg: #e7e5de;
+  --bg2: #f1efe8;
+  --fg: #17100e;
+  --muted: #5e5851;
+  --line: #c7c0b5;
+
+  --on-deep: #f1ebdf;
+  --on-deep-muted: #c2b8aa;
+
+  --head: "Big Shoulders Display", Impact, sans-serif;
+  --body: "Hanken Grotesk", Arial, sans-serif;
+
+  --page-width: 1120px;
+  --nav-height: 70px;
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
 }
 
-.info-image img {
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --deep: #0d0908;
+  --bg: #191311;
+  --bg2: #241a17;
+  --fg: #f1ebdf;
+  --muted: #c0b4a7;
+  --line: #493832;
+
+  --on-deep: #f1ebdf;
+  --on-deep-muted: #bdb1a4;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 12px);
+  overflow-x: clip;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.7;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+body, button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+button, a {
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--gold);
+  color: #17100e;
+}
+
+.wrap {
+  width: min(var(--page-width), calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.wrap > * {
+  min-width: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--head);
+  text-transform: uppercase;
+  line-height: .95;
+  letter-spacing: -.025em;
+}
+
+h2 {
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  font-weight: 900;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+section {
+  padding: clamp(68px, 9vw, 112px) 0;
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: var(--red);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 3px;
+  flex-shrink: 0;
+  background: var(--gold);
+}
+
+:root[data-theme="dark"] .eyebrow {
+  color: #ff8c7f;
+}
+
+/* Botões */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 50px;
+  padding: 12px 22px;
+
+  border: 2px solid var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+
+  font-weight: 800;
+  font-size: .93rem;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition:
+    transform .2s var(--ease),
+    background-color .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #17100e;
+}
+
+.btn-gold:hover {
+  background: #f6d889;
+  border-color: #f6d889;
+  color: #17100e;
+}
+
+.btn-line {
+  background: rgba(23, 16, 14, .12);
+  border-color: rgba(255, 255, 255, .72);
+  color: #fff;
+}
+
+.btn-line:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--red-dark);
+}
+
+/* Barra superior */
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: var(--deep);
+  color: var(--on-deep);
+
+  border-bottom: 1px solid rgba(232, 177, 58, .2);
+  box-shadow: 0 5px 24px rgba(0, 0, 0, .09);
+}
+
+.top .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: var(--nav-height);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  font-family: var(--head);
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .015em;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.brand span {
+  transition: color .2s ease;
+}
+
+.brand:hover span {
+  color: var(--gold);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 2.2vw, 28px);
+  margin-left: auto;
+}
+
+.menu a:not(.btn) {
+  position: relative;
+  padding: 8px 0;
+  color: #d2c9bc;
+  font-size: .88rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menu a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+
+.menu a:not(.btn):hover {
+  color: #fff;
+}
+
+.menu a:not(.btn):hover::after {
+  transform: scaleX(1);
+}
+
+.menu .btn {
+  min-height: 42px;
+  padding: 8px 15px;
+  font-size: .87rem;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+
+  border: 1px solid #51413a;
+  background: transparent;
+  color: var(--on-deep);
+
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.icon-btn:hover {
+  border-color: var(--gold);
+  background: rgba(232, 177, 58, .08);
+  color: var(--gold);
+}
+
+.menu-btn {
+  display: none;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding: 0;
+  background: var(--red);
+  color: #f6efe6;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(90deg, rgba(67, 7, 5, .35), transparent 85%),
+    linear-gradient(0deg, rgba(46, 5, 3, .28), transparent 45%);
+}
+
+#net {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#net canvas {
+  display: block;
+  pointer-events: none !important;
+}
+
+.hero .wrap {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(28px, 5vw, 68px);
+
+  padding-top: clamp(85px, 12vw, 150px);
+  padding-bottom: clamp(75px, 10vw, 120px);
+}
+
+.hero-copy {
+  max-width: 790px;
+}
+
+.hero .eyebrow {
+  color: #f4d58e;
+}
+
+.hero h1 {
+  max-width: 100%;
+  margin-bottom: 28px;
+
+  font-size: clamp(4rem, 13.5vw, 10.8rem);
+  font-weight: 900;
+  line-height: .79;
+  letter-spacing: -.045em;
+  overflow-wrap: anywhere;
+
+  text-shadow: 0 8px 28px rgba(0, 0, 0, .12);
+}
+
+.hero p {
+  max-width: 550px;
+  margin-bottom: 30px;
+  color: #f8e5dc;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.8;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stamp {
+  position: relative;
+  min-width: 172px;
+  padding: 23px 26px 20px;
+
+  border: 3px solid #17100e;
+  background: var(--gold);
+  color: #17100e;
+  text-align: center;
+
+  box-shadow: 8px 8px 0 rgba(23, 16, 14, .4);
+  transform: rotate(3deg);
+  transition: transform .3s var(--ease);
+}
+
+.stamp:hover {
+  transform: rotate(0) translateY(-4px);
+}
+
+.stamp b {
+  display: block;
+  font-family: var(--head);
+  font-size: clamp(5rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: .82;
+}
+
+.stamp span {
+  display: block;
+  margin-top: 12px;
+  font-size: .82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* Quem somos */
+
+.about .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(36px, 7vw, 88px);
+  align-items: center;
+}
+
+.about h2 {
+  margin-bottom: 24px;
+}
+
+.about p {
+  max-width: 560px;
+  color: var(--muted);
+}
+
+.about p + p {
+  margin-top: 1.1em;
+}
+
+.about strong {
+  color: var(--fg);
+  font-weight: 800;
+}
+
+.photos {
+  position: relative;
+  padding: 0 0 38px 38px;
+}
+
+.photos::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -16px;
+  right: -12px;
+  width: 48%;
+  height: 48%;
+  background: var(--gold);
+}
+
+.photos img {
+  width: 100%;
+  object-fit: cover;
+  background: var(--bg2);
+}
+
+.photos img:first-child {
+  aspect-ratio: 4 / 3;
+  border: 3px solid var(--fg);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, .06);
+}
+
+.photos img:last-child {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 42%;
+  aspect-ratio: 1;
+
+  border: 4px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--fg);
+}
+
+/* Dicas por elo */
+
+.ladder {
+  position: relative;
+  background: var(--bg2);
+  border-block: 2px solid var(--fg);
+}
+
+.ladder h2 {
+  margin-bottom: 14px;
+}
+
+.ladder .lead {
+  max-width: 590px;
+  margin-bottom: 42px;
+  color: var(--muted);
+}
+
+.ladder-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  align-items: start;
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  list-style: none;
+}
+
+.steps li {
+  margin-left: var(--o, 0px);
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 58px;
+  padding: 12px 16px;
+
+  border: 2px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+
+  font-family: var(--head);
+  font-size: 1.65rem;
+  font-weight: 800;
+  text-align: left;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    color .2s ease,
+    transform .2s var(--ease);
+}
+
+.step::after {
+  content: "↗";
+  font-family: var(--body);
+  font-size: 1rem;
+  opacity: .5;
+}
+
+.step:hover {
+  border-color: var(--red);
+  transform: translateX(3px);
+}
+
+:root[data-theme="dark"] .step:hover {
+  border-color: #ff8c7f;
+}
+
+.step[aria-pressed="true"] {
+  border-color: var(--red);
+  background: var(--red);
+  color: #fff;
+}
+
+.step[aria-pressed="true"]::after {
+  opacity: 1;
+}
+
+.panel {
+  min-height: 340px;
+  padding: clamp(26px, 4vw, 42px);
+
+  border-left: 8px solid var(--gold);
+  background: var(--deep);
+  color: var(--on-deep);
+
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, .07);
+}
+
+.panel h3 {
+  margin-bottom: 22px;
+  color: var(--gold);
+  font-size: clamp(2.8rem, 6vw, 4.1rem);
+  font-weight: 900;
+}
+
+.panel ul {
+  padding-left: 1.25em;
+}
+
+.panel li {
+  padding-left: 4px;
+}
+
+.panel li + li {
+  margin-top: 14px;
+}
+
+.panel li::marker {
+  color: var(--gold);
+}
+
+.panel p {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid #493832;
+  color: var(--on-deep-muted);
+  font-size: .94rem;
+}
+
+.panel a {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+/* Entrar no clã */
+
+.clan {
+  position: relative;
+  overflow: hidden;
+  background: var(--gold);
+  color: #17100e;
+}
+
+.clan::after {
+  content: "X";
+  position: absolute;
+  right: -20px;
+  bottom: -130px;
+
+  color: rgba(23, 16, 14, .045);
+  font-family: var(--head);
+  font-size: clamp(20rem, 44vw, 40rem);
+  font-weight: 900;
+  line-height: .8;
+  pointer-events: none;
+}
+
+.clan .wrap {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(30px, 6vw, 78px);
+}
+
+.clan .eyebrow {
+  color: #4c2600;
+}
+
+.clan h2 {
+  margin-bottom: 22px;
+}
+
+.clan p {
+  max-width: 520px;
+}
+
+.clan ul {
+  margin-top: 18px;
+  padding-left: 1.3em;
+}
+
+.clan li + li {
+  margin-top: 7px;
+}
+
+.idcard {
+  padding: clamp(26px, 4vw, 38px);
+  border: 2px solid #33231b;
+  background: #17100e;
+  color: #efe9dd;
+  box-shadow: 12px 12px 0 rgba(23, 16, 14, .18);
+}
+
+.idcard small {
+  display: block;
+  margin-bottom: 10px;
+  color: #c7b8a8;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.idcard strong {
+  display: block;
+  margin-bottom: 24px;
+
+  color: var(--gold);
+  font-family: var(--head);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: .015em;
+  overflow-wrap: anywhere;
+}
+
+.idcard .btn {
+  width: 100%;
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #17100e;
+}
+
+.idcard .btn:hover {
+  background: #f5e5b8;
+  border-color: #f5e5b8;
+}
+
+/* Vídeo */
+
+.video {
+  background: var(--deep);
+  color: var(--on-deep);
+}
+
+.video .eyebrow {
+  color: var(--gold);
+}
+
+.video h2 {
+  margin-bottom: 16px;
+}
+
+.video .lead {
+  max-width: 590px;
+  margin-bottom: 32px;
+  color: var(--on-deep-muted);
+}
+
+.video-frame {
+  position: relative;
+  overflow: hidden;
+  padding: 8px;
+  border: 1px solid #493832;
+  background: #241a17;
+}
+
+.video video {
+  width: 100%;
+  max-height: 660px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  object-fit: contain;
+}
+
+/* Redes sociais */
+
+.links h2 {
+  max-width: 800px;
+}
+
+.links ul {
+  margin-top: 34px;
+  border-top: 2px solid var(--fg);
+  list-style: none;
+}
+
+.links li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--line);
+
+  text-decoration: none;
+  transition: padding .2s var(--ease), background .2s ease;
+}
+
+.links li a:hover {
+  padding-inline: 14px;
+  background: var(--bg2);
+}
+
+.links b {
+  font-family: var(--head);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color .2s ease;
+}
+
+.links li a:hover b {
+  color: var(--red);
+}
+
+:root[data-theme="dark"] .links li a:hover b {
+  color: #ff8c7f;
+}
+
+.links li span {
+  color: var(--muted);
+  font-size: .92rem;
+  text-align: right;
+}
+
+/* Rodapé */
+
+footer {
+  padding: 30px 0;
+  border-top: 1px solid #392c27;
+  background: var(--deep);
+  color: var(--on-deep-muted);
+  font-size: .88rem;
+}
+
+footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer strong {
+  color: var(--gold);
+  font-family: var(--head);
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+/* Entrada suave das seções */
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.js-ready .reveal.is-visible {
+  animation: rise-in .65s var(--ease) both;
+}
+
+/* Tablets */
+
+@media (max-width: 960px) {
+  :root {
+    --nav-height: 64px;
+  }
+
+  .top .wrap {
+    gap: 10px;
+  }
+
+  .brand {
+    font-size: 1.55rem;
+  }
+
+  .brand img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .menu {
+    gap: 14px;
+  }
+
+  .menu a:not(.btn) {
+    font-size: .82rem;
+  }
+
+  .menu .btn {
+    padding-inline: 12px;
+  }
+}
+
+/* Celulares e telas menores */
+
+@media (max-width: 760px) {
+  .wrap {
+    width: min(var(--page-width), calc(100% - 36px));
+  }
+
+  section {
+    padding: 72px 0;
+  }
+
+  .top .wrap {
+    position: relative;
+    min-height: var(--nav-height);
+  }
+
+  .menu-btn {
+    display: inline-grid;
+  }
+
+  .top .wrap > .icon-btn.theme {
+    margin-left: auto;
+  }
+
+  .menu {
+    display: none;
+
+    position: absolute;
+    top: calc(100% + 1px);
+    left: -18px;
+    right: -18px;
+
+    max-height: calc(100dvh - var(--nav-height));
+    overflow-y: auto;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    margin: 0;
+    padding: 10px 20px 20px;
+
+    border-bottom: 2px solid var(--gold);
+    background: var(--deep);
+    box-shadow: 0 18px 28px rgba(0, 0, 0, .2);
+  }
+
+  .menu.open {
+    display: flex;
+    animation: rise-in .2s ease both;
+  }
+
+  .menu a:not(.btn) {
+    padding: 14px 2px;
+    border-bottom: 1px solid #3a2f2b;
+    font-size: 1rem;
+  }
+
+  .menu a:not(.btn)::after {
+    display: none;
+  }
+
+  .menu .btn {
+    margin-top: 14px;
+    min-height: 48px;
+    text-align: center;
+  }
+
+  .hero .wrap {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding-top: 88px;
+    padding-bottom: 72px;
+  }
+
+  .hero h1 {
+    font-size: clamp(4rem, 16vw, 7.5rem);
+  }
+
+  .hero p {
+    max-width: 510px;
+  }
+
+  .stamp {
+    justify-self: start;
+    min-width: 145px;
+    padding: 18px 22px;
+  }
+
+  .stamp b {
+    font-size: 5rem;
+  }
+
+  .about .wrap,
+  .ladder-grid,
+  .clan .wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about .wrap {
+    gap: 48px;
+  }
+
+  .photos {
     width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
+    max-width: 540px;
+  }
+
+  .ladder-grid {
+    gap: 28px;
+  }
+
+  .steps li {
+    margin-left: calc(var(--o, 0px) * .45);
+  }
+
+  .panel {
+    min-height: 0;
+  }
+
+  .clan .wrap {
+    gap: 36px;
+  }
+
+  .idcard {
+    max-width: 580px;
+  }
+
+  .actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .links li a {
+    padding-block: 20px;
+  }
+
+  .links b {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+  }
+
+  .links li span {
+    max-width: 42%;
+    font-size: .82rem;
+  }
 }
-.info-card:hover .info-image img {
-    transform: scale(1.06);
+
+/* Celulares estreitos */
+
+@media (max-width: 420px) {
+  .wrap {
+    width: calc(100% - 30px);
+  }
+
+  .brand {
+    gap: 7px;
+    font-size: 1.38rem;
+  }
+
+  .brand img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .top .wrap {
+    gap: 7px;
+  }
+
+  .hero .wrap {
+    padding-top: 72px;
+    padding-bottom: 64px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 15.7vw, 4.5rem);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: clamp(2.7rem, 12vw, 3.4rem);
+  }
+
+  .photos {
+    padding-left: 22px;
+    padding-bottom: 26px;
+  }
+
+  .steps li {
+    margin-left: 0;
+  }
+
+  .step {
+    min-height: 54px;
+    font-size: 1.45rem;
+  }
+
+  .panel {
+    padding: 23px 20px;
+    border-left-width: 6px;
+  }
+
+  .panel h3 {
+    font-size: 2.8rem;
+  }
+
+  .idcard {
+    padding: 24px 20px;
+  }
+
+  .idcard strong {
+    font-size: clamp(3rem, 14vw, 4rem);
+  }
+
+  .links li span {
+    display: none;
+  }
+
+  footer .wrap {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
-        .info-card:hover {
-            transform: translateY(-6px);
-
-            border-color: rgba(143, 100, 255, 0.35);
-
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.25);
-        }
-
-        .info-card h3 {
-            font-size: 23px;
-
-            margin-bottom: 13px;
-        }
-
-        .info-card p {
-            color: rgba(255, 255, 255, 0.60);
-
-            line-height: 1.7;
-
-            font-size: 15px;
-        }
-
-        /* =========================
-           GALERIA
-        ========================= */
-
-        .gallery-layout {
-            display: grid;
-
-            grid-template-columns:
-                minmax(0, 1.7fr)
-                minmax(320px, 0.8fr);
-
-            gap: 30px;
-
-            align-items: start;
-        }
-
-        .gallery-area {
-            min-width: 0;
-        }
-
-        .carousel {
-            position: relative;
-
-            width: 100%;
-            height: 610px;
-
-            overflow: hidden;
-
-            border-radius: 26px;
-
-            background: rgba(5, 3, 10, 0.70);
-
-            border: 1px solid rgba(255, 255, 255, 0.10);
-
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.35);
-
-            touch-action: pan-y;
-        }
-
-        .slide {
-            position: absolute;
-
-            inset: 0;
-
-            opacity: 0;
-            visibility: hidden;
-
-            transition:
-                opacity 0.45s ease,
-                transform 0.45s ease;
-
-            transform: scale(1.025);
-        }
-
-        .slide.active {
-            opacity: 1;
-
-            visibility: visible;
-
-            transform: scale(1);
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-        }
-
-        .carousel::after {
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    to top,
-                    rgba(0, 0, 0, 0.40),
-                    transparent 35%
-                );
-
-            pointer-events: none;
-        }
-
-        .carousel-btn {
-            position: absolute;
-
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            width: 52px;
-            height: 52px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid rgba(255, 255, 255, 0.14);
-
-            border-radius: 50%;
-
-            background: rgba(5, 3, 10, 0.70);
-
-            color: #fff;
-
-            font-size: 25px;
-
-            cursor: pointer;
-
-            z-index: 5;
-
-            transition: 0.25s;
-        }
-
-        .carousel-btn:hover {
-            background: #713cff;
-        }
-
-        .carousel-prev {
-            left: 20px;
-        }
-
-        .carousel-next {
-            right: 20px;
-        }
-
-        .dots {
-            position: absolute;
-
-            bottom: 20px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            display: flex;
-
-            gap: 8px;
-
-            z-index: 10;
-        }
-
-        .dot {
-            width: 9px;
-            height: 9px;
-
-            padding: 0;
-
-            border: 0;
-
-            border-radius: 50%;
-
-            background: rgba(255, 255, 255, 0.35);
-
-            cursor: pointer;
-
-            transition: 0.25s;
-        }
-
-        .dot.active {
-            width: 25px;
-
-            border-radius: 20px;
-
-            background: #8b5cff;
-        }
-
-        /* =========================
-           PAINEL DIREITO
-        ========================= */
-
-        .side-information {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 22px;
-        }
-
-        .side-card {
-            padding: 28px;
-
-            border-radius: 22px;
-
-            background: rgba(12, 9, 20, 0.78);
-
-            border: 1px solid rgba(255, 255, 255, 0.09);
-
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.20);
-        }
-
-        .side-card-top {
-            display: flex;
-
-            align-items: center;
-
-            gap: 13px;
-
-            margin-bottom: 18px;
-        }
-
-        .side-card-icon {
-            width: 48px;
-            height: 48px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            flex-shrink: 0;
-
-            border-radius: 13px;
-
-            overflow: hidden;
-        }
-
-        .side-card-icon img {
-            width: 100%;
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
-        }
-
-        .side-card h3 {
-            font-size: 19px;
-        }
-
-        .side-card p {
-            color: rgba(255, 255, 255, 0.62);
-
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-
-        .tips {
-            list-style: none;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 12px;
-
-            margin-top: 17px;
-        }
-
-        .tips li {
-            position: relative;
-
-            padding-left: 20px;
-
-            color: rgba(255, 255, 255, 0.70);
-
-            font-size: 14px;
-
-            line-height: 1.5;
-        }
-
-        .tips li::before {
-            content: "•";
-
-            position: absolute;
-
-            left: 0;
-
-            color: #9b70ff;
-
-            font-size: 20px;
-        }
-
-        .guild-rules {
-            list-style: none;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 11px;
-
-            margin-top: 18px;
-        }
-
-        .guild-rules li {
-            display: flex;
-
-            align-items: flex-start;
-
-            gap: 10px;
-
-            color: rgba(255, 255, 255, 0.62);
-
-            font-size: 13px;
-
-            line-height: 1.5;
-        }
-
-        .guild-rules li span {
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            flex-shrink: 0;
-
-            width: 19px;
-            height: 19px;
-
-            border-radius: 50%;
-
-            background: rgba(116, 65, 255, 0.18);
-
-            color: #a982ff;
-
-            font-size: 11px;
-
-            font-weight: bold;
-        }
-
-        .guild-box {
-            margin-top: 20px;
-
-            padding: 17px;
-
-            border-radius: 14px;
-
-            background: rgba(0, 0, 0, 0.24);
-
-            border: 1px solid rgba(255, 255, 255, 0.07);
-        }
-
-        .guild-label {
-            display: block;
-
-            color: rgba(255, 255, 255, 0.45);
-
-            font-size: 11px;
-
-            font-weight: 700;
-
-            letter-spacing: 1px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 8px;
-        }
-
-        .guild-id {
-            display: flex;
-
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 10px;
-        }
-
-        .guild-id strong {
-            font-size: 18px;
-
-            color: #c7b4ff;
-
-            word-break: break-all;
-        }
-
-        .copy-button {
-            flex-shrink: 0;
-
-            border: 0;
-
-            border-radius: 9px;
-
-            padding: 9px 12px;
-
-            background: #713cff;
-
-            color: #fff;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-        .meta-link {
-            color: #a855f7;
-
-            font-weight: 700;
-
-            text-decoration: none;
-
-            transition: 0.2s;
-        }
-
-        .meta-link:hover {
-            color: #c084fc;
-
-            text-shadow:
-                0 0 10px rgba(168, 85, 247, 0.7);
-        }
-
-        /* =========================
-           DESTAQUE
-        ========================= */
-
-        .highlight-box {
-            width: 100%;
-
-            border-radius: 26px;
-
-            overflow: hidden;
-
-            background: rgba(10, 7, 17, 0.76);
-
-            border: 1px solid rgba(255, 255, 255, 0.09);
-
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.30);
-        }
-
-        .highlight-video {
-            width: 100%;
-
-            display: block;
-
-            max-height: 700px;
-
-            background: #000;
-        }
-
-        /* =========================
-           REDES
-        ========================= */
-
-        .social-grid {
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 22px;
-        }
-
-        .social-card {
-            min-height: 180px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 20px;
-
-            padding: 28px;
-
-            border-radius: 20px;
-
-            background: rgba(12, 9, 20, 0.72);
-
-            border: 1px solid rgba(255, 255, 255, 0.09);
-
-            transition:
-                transform 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .social-card:hover {
-            transform: translateY(-5px);
-
-            border-color: rgba(145, 105, 255, 0.35);
-
-            box-shadow:
-                0 18px 45px rgba(0, 0, 0, 0.25);
-        }
-
-        .social-card img {
-            width: 65px;
-            height: 65px;
-
-            border-radius: 15px;
-
-            object-fit: cover;
-        }
-
-        .social-card h3 {
-            margin-bottom: 7px;
-        }
-
-        .social-card p {
-            color: rgba(255, 255, 255, 0.52);
-
-            font-size: 13px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 45px 30px;
-
-            border-top:
-                1px solid rgba(255, 255, 255, 0.07);
-
-            text-align: center;
-
-            color: rgba(255, 255, 255, 0.40);
-
-            font-size: 13px;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            body {
-                background-size: auto 100%;
-                background-position: center top;
-                background-attachment: fixed;
-            }
-
-            .navbar {
-                top: 10px;
-
-                width: calc(100% - 24px);
-
-                height: 62px;
-
-                padding: 0 10px 0 14px;
-
-                border-radius: 16px;
-            }
-
-            .logo {
-                font-size: 15px;
-
-                gap: 8px;
-            }
-
-            .logo img {
-                width: 35px;
-                height: 35px;
-            }
-
-            .menu-mobile {
-                display: flex;
-
-                align-items: center;
-                justify-content: center;
-
-                width: 42px;
-                height: 42px;
-
-                flex-shrink: 0;
-
-                border: 1px solid rgba(255, 255, 255, 0.12);
-
-                border-radius: 12px;
-
-                background: rgba(255, 255, 255, 0.06);
-
-                color: #fff;
-
-                font-size: 23px;
-
-                cursor: pointer;
-
-                z-index: 1002;
-
-                transition:
-                    background 0.25s ease,
-                    transform 0.25s ease;
-            }
-
-            .menu-mobile:hover {
-                background: rgba(113, 60, 255, 0.25);
-            }
-
-            .nav-links {
-                position: absolute;
-
-                top: 70px;
-                right: 0;
-
-                width: 210px;
-
-                display: flex;
-
-                flex-direction: column;
-
-                align-items: stretch;
-
-                gap: 8px;
-
-                padding: 12px;
-
-                background: rgba(8, 5, 15, 0.97);
-
-                border:
-                    1px solid rgba(255, 255, 255, 0.10);
-
-                border-radius: 16px;
-
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-
-                box-shadow:
-                    0 20px 50px rgba(0, 0, 0, 0.45);
-
-                opacity: 0;
-
-                visibility: hidden;
-
-                transform: translateX(50px);
-
-                transition:
-                    opacity 0.3s ease,
-                    transform 0.35s ease,
-                    visibility 0.35s;
-            }
-
-            .nav-links.active {
-                opacity: 1;
-
-                visibility: visible;
-
-                transform: translateX(0);
-            }
-
-            .nav-links a {
-                width: 100%;
-
-                padding: 13px 15px;
-
-                border-radius: 10px;
-
-                background: rgba(255, 255, 255, 0.04);
-
-                color: rgba(255, 255, 255, 0.82);
-
-                font-size: 14px;
-
-                transform: translateX(35px);
-
-                opacity: 0;
-
-                transition:
-                    transform 0.35s ease,
-                    opacity 0.35s ease,
-                    background 0.2s;
-            }
-
-            .nav-links.active a {
-                transform: translateX(0);
-
-                opacity: 1;
-            }
-
-            .nav-links.active a:nth-child(1) {
-                transition-delay: 0.05s;
-            }
-
-            .nav-links.active a:nth-child(2) {
-                transition-delay: 0.10s;
-            }
-
-            .nav-links.active a:nth-child(3) {
-                transition-delay: 0.15s;
-            }
-
-            .nav-links.active a:nth-child(4) {
-                transition-delay: 0.20s;
-            }
-
-            .nav-links.active a:nth-child(5) {
-                transition-delay: 0.25s;
-            }
-
-            .nav-links a:hover {
-                background: rgba(113, 60, 255, 0.18);
-            }
-
-            .nav-discord {
-                padding: 13px 15px;
-
-                font-size: 14px;
-
-                text-align: center;
-            }
-
-            /* HERO */
-
-            .hero {
-                min-height: 700px;
-
-                padding:
-                    130px
-                    22px
-                    70px;
-
-                align-items: center;
-            }
-
-            .hero-content {
-                width: 100%;
-
-                text-align: center;
-            }
-
-            .hero-label {
-                font-size: 10px;
-
-                padding: 8px 12px;
-            }
-
-            .hero h1 {
-                font-size: 57px;
-
-                letter-spacing: 2px;
-
-                line-height: 0.95;
-
-                margin-bottom: 20px;
-            }
-
-            .hero p {
-                font-size: 14px;
-
-                line-height: 1.6;
-
-                margin:
-                    0 auto 25px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-
-                gap: 10px;
-            }
-
-            .btn {
-                width: 100%;
-
-                padding: 14px 18px;
-            }
-
-            /* SEÇÕES */
-
-            .section-container {
-                padding: 75px 18px;
-            }
-
-            .section-header {
-                margin-bottom: 30px;
-            }
-
-            .section-header h2 {
-                font-size: 34px;
-            }
-
-            .section-header p {
-                font-size: 14px;
-            }
-
-            /* ESTATÍSTICAS */
-
-            .stats-section {
-                padding-top: 0;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-
-                gap: 10px;
-            }
-
-            .stat-card {
-                padding: 20px 17px;
-
-                border-radius: 16px;
-            }
-
-            .stat-icon {
-                width: 42px;
-                height: 42px;
-
-                margin-bottom: 12px;
-            }
-
-            .stat-number {
-                font-size: 23px;
-            }
-
-            .stat-label {
-                font-size: 9px;
-
-                letter-spacing: 0.6px;
-            }
-
-            /* INFORMAÇÕES */
-
-            .info-grid {
-                grid-template-columns: 1fr;
-
-                gap: 14px;
-            }
-
-            .info-card {
-                min-height: auto;
-
-                padding: 20px;
-            }
-
-.info-image {
-    height: 110px;
-    margin-bottom: 18px;
+/* Respeita a preferência por menos movimento */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .js-ready .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
-            }
-
-            .info-card h3 {
-                font-size: 20px;
-            }
-
-            .info-card p {
-                font-size: 14px;
-            }
-
-            /* GALERIA */
-
-            .gallery-layout {
-                grid-template-columns: 1fr;
-
-                gap: 18px;
-            }
-
-            .carousel {
-                height: 330px;
-
-                border-radius: 19px;
-            }
-
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-
-                font-size: 19px;
-            }
-
-            .carousel-prev {
-                left: 10px;
-            }
-
-            .carousel-next {
-                right: 10px;
-            }
-
-            .dots {
-                bottom: 13px;
-            }
-
-            /* SIDEBAR */
-
-            .side-information {
-                gap: 14px;
-            }
-
-            .side-card {
-                padding: 23px;
-
-                border-radius: 18px;
-            }
-
-            .side-card h3 {
-                font-size: 18px;
-            }
-
-            .side-card p,
-            .tips li {
-                font-size: 13px;
-            }
-
-            .guild-id strong {
-                font-size: 15px;
-            }
-
-            /* VÍDEO */
-
-            .highlight-box {
-                border-radius: 18px;
-            }
-
-            .highlight-video {
-                max-height: none;
-            }
-
-            /* REDES */
-
-            .social-grid {
-                grid-template-columns: 1fr;
-
-                gap: 13px;
-            }
-
-            .social-card {
-                min-height: 110px;
-
-                padding: 20px;
-            }
-
-            .social-card img {
-                width: 52px;
-                height: 52px;
-            }
-        }
-
-        /* =========================
-           ACESSIBILIDADE
-        ========================= */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-
-        }
-    </style>
+</style>
 </head>
 
 <body>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
+<header class="top">
+  <div class="wrap">
 
-    <nav class="navbar">
+    <a class="brand" href="#inicio" aria-label="IMPERIUMz - início">
+      <img src="Logo.png" alt="">
+      <span>IMPERIUMz</span>
+    </a>
 
-        <a href="#inicio" class="logo">
-            <img src="Logo.png" alt="IMPERIUMz">
-            <span>IMPERIUMz</span>
-        </a>
+    <nav class="menu" id="menu" aria-label="Navegação principal">
+      <a href="#sobre">Quem somos</a>
+      <a href="#elos">Dicas por elo</a>
+      <a href="#cla">Entrar no clã</a>
+      <a href="#destaque">Vídeo</a>
 
-        <button
-            class="menu-mobile"
-            onclick="toggleMenu()"
-            aria-label="Abrir menu">
-            ☰
-        </button>
-
-        <div class="nav-links">
-
-            <a href="#inicio">
-                Início
-            </a>
-
-            <a href="#comunidade">
-                Comunidade
-            </a>
-
-            <a
-                href="https://www.mobilelegends.com/rank"
-                target="_blank"
-                rel="noopener noreferrer">
-                Ranks
-            </a>
-
-            <a href="#destaque">
-                Destaque
-            </a>
-
-            <a
-                class="nav-discord"
-                href="https://discord.gg/kRKgxH7Wt"
-                target="_blank"
-                rel="noopener noreferrer">
-                Discord
-            </a>
-
-        </div>
-
+      <a class="btn btn-gold"
+         href="https://discord.gg/XndabtXRX"
+         target="_blank"
+         rel="noopener noreferrer">
+        Discord ↗
+      </a>
     </nav>
 
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <section id="inicio">
-
-        <div class="hero">
-
-            <div class="hero-content">
-
-                <div class="hero-label">
-                    Comunidade Mobile Legends
-                </div>
-
-                <h1>
-                    IMPERIUM<span>z</span>
-                </h1>
-
-                <p>
-                    Uma comunidade criada para jogadores de Mobile Legends
-                    que querem evoluir, encontrar jogadores e
-                    fazer parte de uma verdadeira guilda.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a
-                        href="#comunidade"
-                        class="btn btn-primary">
-                        Conhecer a comunidade
-                    </a>
-
-                    <a
-                        href="https://discord.gg/kRKgxH7Wt"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-secondary">
-                        Entrar no Discord
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         ESTATÍSTICAS
-    ========================== -->
-
-    <section class="stats-section">
-
-        <div class="section-container">
-
-            <div class="stats-grid">
-
-                <div class="stat-card reveal-card">
-
-                    <div class="stat-icon">
-                        <img
-                            src="comunidade.jpg"
-                            alt="Comunidade">
-                    </div>
-
-                    <div class="stat-number">
-                        30+
-                    </div>
-
-                    <div class="stat-label">
-                        Membros
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card reveal-card">
-
-                    <div class="stat-icon">
-                        <img
-                            src="amizades.jpg"
-                            alt="Jogadores">
-                    </div>
-
-                    <div class="stat-number">
-                        Diariamente
-                    </div>
-
-                    <div class="stat-label">
-                        Jogadores ativos
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card reveal-card">
-
-                    <div class="stat-icon">
-                        <img
-                            src="evoluir.jpg"
-                            alt="Evolução">
-                    </div>
-
-                    <div class="stat-number">
-                        ativo
-                    </div>
-
-                    <div class="stat-label">
-                        status
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card reveal-card">
-
-                    <div class="stat-icon">
-                        <img
-                            src="guilda.jpg"
-                            alt="Guilda">
-                    </div>
-
-                    <div class="stat-number">
-                        Nível 8
-                    </div>
-
-                    <div class="stat-label">
-                        Level do clã
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         COMUNIDADE
-    ========================== -->
-
-    <section id="comunidade">
-
-        <div class="section-container">
-
-            <div class="section-header">
-
-                <span>IMPERIUMz</span>
-
-                <h2>
-                    Faça parte da comunidade
-                </h2>
-
-                <p>
-                    Aqui você encontra jogadores, participa de partidas,
-                    aprende e evolui junto com a comunidade.
-                </p>
-
-            </div>
-
-            <div class="info-grid">
-
-                <div class="info-card reveal-card">
-
-                    <div class="info-image">
-                        <img
-                            src="amizades.jpg"
-                            alt="Amizades na comunidade">
-                    </div>
-
-                    <h3>
-                        Amizades
-                    </h3>
-
-                    <p>
-                        Encontre jogadores para partidas competitivas,
-                        monte sua equipe e participe dos desafios da
-                        comunidade.
-                    </p>
-
-                </div>
-
-
-                <div class="info-card reveal-card">
-
-                    <div class="info-image">
-                        <img
-                            src="comunidade.jpg"
-                            alt="Comunidade IMPERIUMz">
-                    </div>
-
-                    <h3>
-                        Comunidade
-                    </h3>
-
-                    <p>
-                        Conheça novos jogadores, converse, encontre
-                        parceiros para jogar e participe do nosso
-                        servidor do Discord.
-                    </p>
-
-                </div>
-
-
-                <div class="info-card reveal-card">
-
-                    <div class="info-image">
-                        <img
-                            src="evoluir.jpg"
-                            alt="Evolução no Mobile Legends">
-                    </div>
-
-                    <h3>
-                        Evolução
-                    </h3>
-
-                    <p>
-                        Compartilhe conhecimento, descubra novas
-                        estratégias e evolua cada vez mais dentro
-                        do Mobile Legends.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         GALERIA
-    ========================== -->
-
-    <section id="galeria">
-
-        <div class="section-container">
-
-            <div class="section-header">
-
-                <span>Momentos</span>
-
-                <h2>
-                    Galeria
-                </h2>
-
-                <p>
-                    Alguns momentos e imagens da nossa comunidade.
-                </p>
-
-            </div>
-
-            <div class="gallery-layout">
-
-                <div class="gallery-area reveal-card">
-
-                    <div
-                        class="carousel"
-                        id="carousel">
-
-                        <div class="slide active">
-
-                            <img
-                                src="foto2.jpg"
-                                alt="IMPERIUMz">
-
-                        </div>
-
-                        <div class="slide">
-
-                            <img
-                                src="foto3.jpg"
-                                alt="IMPERIUMz">
-
-                        </div>
-
-                        <button
-                            class="carousel-btn carousel-prev"
-                            onclick="mudarSlide(-1)"
-                            aria-label="Imagem anterior">
-                            ‹
-                        </button>
-
-                        <button
-                            class="carousel-btn carousel-next"
-                            onclick="mudarSlide(1)"
-                            aria-label="Próxima imagem">
-                            ›
-                        </button>
-
-                        <div class="dots">
-
-                            <button
-                                class="dot active"
-                                onclick="irParaSlide(0)"
-                                aria-label="Ir para imagem 1">
-                            </button>
-
-                            <button
-                                class="dot"
-                                onclick="irParaSlide(1)"
-                                aria-label="Ir para imagem 2">
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <aside class="side-information">
-
-                    <div class="side-card reveal-card">
-
-                        <div class="side-card-top">
-
-                            <div class="side-card-icon">
-                                <img
-                                    src="dicas.jpg"
-                                    alt="Dicas">
-                            </div>
-
-                            <h3>
-                                Dicas para iniciantes
-                            </h3>
-
-                        </div>
-
-                        <p>
-                            Está começando no Mobile Legends?
-                            Confira algumas coisas que podem ajudar
-                            na sua evolução.
-                        </p>
-
-                        <ul class="tips">
-
-                            <li>
-                                Use o
-                                <a
-                                    class="meta-link"
-                                    href="https://www.mobilelegends.com/rank"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
-                                    site de ranks da Moonton
-                                </a>
-                                para acompanhar informações e estatísticas.
-                            </li>
-
-                            <li>
-                                Conheça bem a função do seu herói.
-                            </li>
-
-                            <li>
-                                Aprenda os itens e builds mais utilizados.
-                            </li>
-
-                            <li>
-                                Acompanhe as atualizações e mudanças
-                                do jogo.
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-
-                    <div class="side-card reveal-card">
-
-                        <div class="side-card-top">
-
-                            <div class="side-card-icon">
-                                <img
-                                    src="guilda.jpg"
-                                    alt="Guilda">
-                            </div>
-
-                            <h3>
-                                Nosso clã
-                            </h3>
-
-                        </div>
-
-                        <p>
-                            Venha fazer parte do nosso clã e vamos juntos
-                            construir uma comunidade cada vez mais unida.
-                        </p>
-
-                        <ul class="guild-rules">
-
-                            <li>
-                                <span>✓</span>
-                                Pessoas dispostas a jogar e evoluir juntas.
-                            </li>
-
-                            <li>
-                                <span>✓</span>
-                                Clã atualmente no nível 8.
-                            </li>
-
-                            <li>
-                                <span>✓</span>
-                                Caso não consiga entrar, provavelmente
-                                o clã está lotado.
-                            </li>
-
-                        </ul>
-
-                        <div class="guild-box">
-
-                            <span class="guild-label">
-                                ID da Guilda
-                            </span>
-
-                            <div class="guild-id">
-
-                                <strong id="guildId">
-                                    14563494
-                                </strong>
-
-                                <button
-                                    class="copy-button"
-                                    onclick="copiarGuild()">
-                                    Copiar
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </aside>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         DESTAQUE
-    ========================== -->
-
-    <section id="destaque">
-
-        <div class="section-container">
-
-            <div class="section-header">
-
-                <span>Comunidade</span>
-
-                <h2>
-                    Destaque da comunidade
-                </h2>
-
-                <p>
-                    Confira um dos conteúdos em destaque da IMPERIUMz.
-                    Caso queira um destaque também, fale conosco.
-                </p>
-
-            </div>
-
-            <div class="highlight-box reveal-card">
-
-                <video
-                    class="highlight-video"
-                    controls
-                    preload="metadata">
-
-                    <source
-                        src="video1.mp4"
-                        type="video/mp4">
-
-                    Seu navegador não suporta vídeo.
-
-                </video>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         REDES
-    ========================== -->
-
-    <section id="redes">
-
-        <div class="section-container">
-
-            <div class="section-header">
-
-                <span>Conecte-se</span>
-
-                <h2>
-                    Nossas redes
-                </h2>
-
-                <p>
-                    Acompanhe a IMPERIUMz e não perca as novidades
-                    da comunidade.
-                </p>
-
-            </div>
-
-            <div class="social-grid">
-
-                <a
-                    href="https://discord.gg/kRKgxH7Wt"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social-card reveal-card">
-
-                    <img
-                        src="discord.jpg"
-                        alt="Discord">
-
-                    <div>
-
-                        <h3>
-                            Discord
-                        </h3>
-
-                        <p>
-                            Entre para conversar e jogar.
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-                <a
-                    href="https://www.tiktok.com/@miguel.kau2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social-card reveal-card">
-
-                    <img
-                        src="tiktok.jpg"
-                        alt="TikTok">
-
-                    <div>
-
-                        <h3>
-                            TikTok
-                        </h3>
-
-                        <p>
-                            Veja nossos conteúdos.
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-                <a
-                    href="https://www.youtube.com/@IMPERIUMzzz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social-card reveal-card">
-
-                    <img
-                        src="youtube.jpg"
-                        alt="YouTube">
-
-                    <div>
-
-                        <h3>
-                            YouTube
-                        </h3>
-
-                        <p>
-                            Confira nossos vídeos.
-                        </p>
-
-                    </div>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
+    <button
+      class="icon-btn theme"
+      id="theme"
+      type="button"
+      aria-label="Mudar para tema escuro"
+      title="Alternar tema"
+      aria-pressed="false">
+      ☾
+    </button>
+
+    <button
+      class="icon-btn menu-btn"
+      id="toggle"
+      type="button"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="menu">
+      ☰
+    </button>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero" id="inicio">
+    <div id="net" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">Comunidade brasileira de MLBB</div>
+
+        <h1>IMPERIUMz</h1>
 
         <p>
-            © 2026 IMPERIUMz. Todos os direitos reservados.
+          Mais do que jogar, é evoluir junto.
+          Encontre sua dupla, compartilhe estratégias e suba de elo
+          com a nossa comunidade de Mobile Legends: Bang Bang.
         </p>
 
-    </footer>
+        <div class="actions">
+          <a class="btn btn-gold"
+             href="https://discord.gg/XndabtXRX"
+             target="_blank"
+             rel="noopener noreferrer">
+            Entrar no Discord ↗
+          </a>
 
+          <a class="btn btn-line" href="#cla">
+            Conhecer o clã ↓
+          </a>
+        </div>
+      </div>
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+      <div class="stamp" role="img" aria-label="Clã nível 10">
+        <b>X</b>
+        <span>Nível do clã</span>
+      </div>
+    </div>
+  </section>
 
-    <script>
+  <!-- SOBRE -->
 
-        /* =========================
-           CARROSSEL
-        ========================= */
+  <section class="about" id="sobre">
+    <div class="wrap">
 
-        let slideAtual = 0;
+      <div class="reveal">
+        <div class="eyebrow">Nossa comunidade</div>
 
-        const slides =
-            document.querySelectorAll(".slide");
+        <h2>Mais de 30 no mesmo time</h2>
 
-        const dots =
-            document.querySelectorAll(".dot");
+        <p>
+          <strong>A IMPERIUMz é uma comunidade de MLBB com mais de 30 jogadores</strong>
+          e gente ativa todos os dias. Tem partida rolando, dupla procurando
+          rota e conversa sobre builds no Discord.
+        </p>
 
+        <p>
+          Também temos um clã dentro do jogo, atualmente no nível 10.
+          Fora das partidas, compartilhamos conteúdos no TikTok e no YouTube.
+          Seja qual for sua rota ou seu elo, venha conhecer a comunidade.
+        </p>
+      </div>
 
-        function atualizarSlide() {
+      <div class="photos reveal">
+        <img
+          src="foto2.jpg"
+          alt="Jogadores da comunidade IMPERIUMz"
+          loading="lazy"
+          decoding="async">
 
-            slides.forEach((slide, index) => {
+        <img
+          src="foto3.jpg"
+          alt="Outro momento da comunidade IMPERIUMz"
+          loading="lazy"
+          decoding="async">
+      </div>
 
-                slide.classList.toggle(
-                    "active",
-                    index === slideAtual
-                );
+    </div>
+  </section>
 
-            });
+  <!-- DICAS POR ELO -->
 
-            dots.forEach((dot, index) => {
+  <section class="ladder" id="elos">
+    <div class="wrap">
 
-                dot.classList.toggle(
-                    "active",
-                    index === slideAtual
-                );
+      <div class="eyebrow">Evolua a cada partida</div>
 
-            });
+      <h2>Em que elo você está?</h2>
 
+      <p class="lead">
+        Selecione seu elo e confira algumas dicas para melhorar sua tomada
+        de decisão. São orientações gerais de jogo, não regras do clã.
+      </p>
+
+      <div class="ladder-grid reveal">
+        <ol class="steps" id="steps" aria-label="Selecione seu elo"></ol>
+
+        <div
+          class="panel"
+          id="panel"
+          aria-live="polite"
+          aria-atomic="true">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLÃ -->
+
+  <section class="clan" id="cla">
+    <div class="wrap">
+
+      <div class="reveal">
+        <div class="eyebrow">Jogue com a gente</div>
+
+        <h2>Seu próximo time começa aqui</h2>
+
+        <p>
+          Quer encontrar companheiros de equipe e evoluir junto?
+          Procure nossa guilda no jogo usando o ID ao lado.
+        </p>
+
+        <ul>
+          <li>Clã nível 10.</li>
+          <li>Vagas sujeitas à disponibilidade.</li>
+          <li>Entre no Discord para conversar com a comunidade.</li>
+        </ul>
+      </div>
+
+      <div class="idcard reveal">
+        <small>ID da guilda</small>
+
+        <strong id="guildId">14563494</strong>
+
+        <button class="btn" id="copy" type="button">
+          <span id="copyLabel">Copiar ID</span>
+          <span aria-hidden="true">⧉</span>
+        </button>
+
+        <p id="copyStatus" role="status" aria-live="polite"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VÍDEO -->
+
+  <section class="video" id="destaque">
+    <div class="wrap">
+
+      <div class="eyebrow">Melhores momentos</div>
+
+      <h2>Destaque da comunidade</h2>
+
+      <p class="lead">
+        Fez uma jogada incrível e quer aparecer aqui?
+        Manda seu vídeo para a gente pelo Discord.
+      </p>
+
+      <div class="video-frame reveal">
+        <video
+          controls
+          preload="metadata"
+          playsinline
+          poster="foto2.jpg">
+          <source src="video1.mp4" type="video/mp4">
+          Seu navegador não suporta a reprodução deste vídeo.
+        </video>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REDES SOCIAIS -->
+
+  <section class="links" id="redes">
+    <div class="wrap">
+
+      <div class="eyebrow">Continue conectado</div>
+
+      <h2>Onde nos encontrar</h2>
+
+      <ul class="reveal">
+        <li>
+          <a
+            href="https://discord.gg/XndabtXRX"
+            target="_blank"
+            rel="noopener noreferrer">
+            <b>Discord ↗</b>
+            <span>Partidas, conversas e comunidade</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.tiktok.com/@miguel.kau2"
+            target="_blank"
+            rel="noopener noreferrer">
+            <b>TikTok ↗</b>
+            <span>Cortes e conteúdos</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.youtube.com/@IMPERIUMzzz"
+            target="_blank"
+            rel="noopener noreferrer">
+            <b>YouTube ↗</b>
+            <span>Vídeos da comunidade</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>IMPERIUMz</strong>
+    <span>© <span id="year">2026</span> IMPERIUMz · Comunidade MLBB</span>
+  </div>
+</footer>
+
+<!-- Bibliotecas do fundo animado -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var root = document.documentElement;
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* =========================================
+     TEMA CLARO / ESCURO
+  ========================================= */
+
+  var themeBtn = document.getElementById("theme");
+  var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  function paintThemeBtn() {
+    var dark = root.getAttribute("data-theme") === "dark";
+
+    themeBtn.textContent = dark ? "☀" : "☾";
+
+    themeBtn.setAttribute(
+      "aria-label",
+      dark ? "Mudar para tema claro" : "Mudar para tema escuro"
+    );
+
+    themeBtn.setAttribute("aria-pressed", String(dark));
+    themeBtn.title = dark ? "Ativar tema claro" : "Ativar tema escuro";
+
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute(
+        "content",
+        dark ? "#0d0908" : "#8f1812"
+      );
+    }
+  }
+
+  themeBtn.addEventListener("click", function () {
+    var current = root.getAttribute("data-theme");
+    var next = current === "dark" ? "light" : "dark";
+
+    root.setAttribute("data-theme", next);
+
+    try {
+      localStorage.setItem("imperiumz-tema", next);
+    } catch (e) {
+      // O tema continua funcionando nesta página.
+    }
+
+    paintThemeBtn();
+  });
+
+  paintThemeBtn();
+
+  /* =========================================
+     FUNDO VANTA.NET
+  ========================================= */
+
+  var vantaEffect = null;
+  var netElement = document.getElementById("net");
+
+  function initVanta() {
+    if (vantaEffect || !netElement) return;
+    if (reduceMotion && reduceMotion.matches) return;
+    if (!window.VANTA || !window.THREE) return;
+
+    try {
+      var small = window.matchMedia("(max-width: 700px)").matches;
+
+      vantaEffect = window.VANTA.NET({
+        el: netElement,
+
+        mouseControls: !small,
+        touchControls: false,
+        gyroControls: false,
+
+        minHeight: 200,
+        minWidth: 200,
+
+        scale: 1,
+        scaleMobile: 1,
+
+        color: 0xe8b13a,
+        backgroundColor: 0x8f1812,
+
+        points: small ? 6 : 10,
+        maxDistance: small ? 16 : 22,
+        spacing: small ? 25 : 18,
+        showDots: true
+      });
+    } catch (error) {
+      // O hero continua legível mesmo se a biblioteca falhar.
+      netElement.style.display = "none";
+    }
+  }
+
+  function destroyVanta() {
+    if (!vantaEffect) return;
+
+    try {
+      vantaEffect.destroy();
+    } catch (e) {}
+
+    vantaEffect = null;
+  }
+
+  initVanta();
+
+  if (reduceMotion && reduceMotion.addEventListener) {
+    reduceMotion.addEventListener("change", function (event) {
+      if (event.matches) {
+        destroyVanta();
+      } else {
+        initVanta();
+      }
+    });
+  }
+
+  /* =========================================
+     DICAS POR ELO
+  ========================================= */
+
+  var ranks = [
+    {
+      name: "Guerreiro",
+      tips: [
+        "Escolha um herói por função e pratique até conhecer suas habilidades.",
+        "Não persiga abates sozinho. Farm e torres são importantes para vencer.",
+        "Entenda a função de cada item da sua build recomendada."
+      ]
+    },
+    {
+      name: "Elite",
+      tips: [
+        "Observe o minimapa frequentemente para perceber inimigos que saíram da rota.",
+        "Nem toda luta precisa acontecer. Se seu time está em desvantagem, recue.",
+        "Use o chat para fazer pedidos objetivos e evitar discussões."
+      ]
+    },
+    {
+      name: "Mestre",
+      tips: [
+        "Prepare-se para a Tartaruga e o Lorde reunindo seu time com antecedência.",
+        "Adapte sua build à composição adversária, especialmente contra cura e dano elevado.",
+        "Aprenda o que sua função deve fazer nos primeiros minutos."
+      ]
+    },
+    {
+      name: "Grão-Mestre",
+      tips: [
+        "Depois de derrubar uma torre, procure oportunidades de ajudar outra rota.",
+        "Tenha opções de heróis para não depender de uma única escolha.",
+        "Coordene rotações e objetivos com seus companheiros."
+      ]
+    },
+    {
+      name: "Épico",
+      tips: [
+        "Pense na composição completa: controle, dano, resistência e mobilidade.",
+        "Use os banimentos para reduzir ameaças importantes para sua equipe.",
+        "Não desista depois de perder uma luta. Procure oportunidades de recuperar objetivos."
+      ]
+    },
+    {
+      name: "Lenda",
+      tips: [
+        "Controle o tempo dos objetivos e tente chegar preparado antes do adversário.",
+        "Conheça outras funções para compreender melhor as necessidades da equipe.",
+        "Revise derrotas e identifique decisões que poderiam ter sido melhores."
+      ]
+    },
+    {
+      name: "Mítico",
+      tips: [
+        "Antecipe movimentos adversários considerando as rotas e os objetivos disponíveis.",
+        "Comunique suas intenções com clareza e evite jogadas sem acompanhamento.",
+        "Acompanhe mudanças de balanceamento e adapte suas escolhas ao meta atual."
+      ]
+    }
+  ];
+
+  var steps = document.getElementById("steps");
+  var panel = document.getElementById("panel");
+
+  function showRank(index, moveFocus) {
+    var rank = ranks[index];
+    if (!rank) return;
+
+    var buttons = steps.querySelectorAll(".step");
+
+    buttons.forEach(function (button, buttonIndex) {
+      var active = buttonIndex === index;
+
+      button.setAttribute("aria-pressed", String(active));
+
+      if (active) {
+        button.setAttribute("aria-current", "true");
+      } else {
+        button.removeAttribute("aria-current");
+      }
+    });
+
+    var heading = document.createElement("h3");
+    heading.textContent = rank.name;
+
+    var list = document.createElement("ul");
+
+    rank.tips.forEach(function (tip) {
+      var item = document.createElement("li");
+      item.textContent = tip;
+      list.appendChild(item);
+    });
+
+    var paragraph = document.createElement("p");
+    paragraph.appendChild(
+      document.createTextNode("Quer jogar com alguém desse elo? Chame a gente no ")
+    );
+
+    var link = document.createElement("a");
+    link.href = "https://discord.gg/8h5wD8JZG";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Discord";
+
+    paragraph.appendChild(link);
+    paragraph.appendChild(document.createTextNode("."));
+
+    panel.replaceChildren(heading, list, paragraph);
+
+    if (moveFocus && buttons[index]) {
+      buttons[index].focus();
+    }
+  }
+
+  ranks.forEach(function (rank, index) {
+    var li = document.createElement("li");
+    li.style.setProperty("--o", (index * 13) + "px");
+
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "step";
+    button.textContent = rank.name;
+    button.setAttribute("aria-pressed", "false");
+
+    button.addEventListener("click", function () {
+      showRank(index, false);
+    });
+
+    button.addEventListener("keydown", function (event) {
+      var nextIndex = index;
+
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+        nextIndex = (index + 1) % ranks.length;
+      } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+        nextIndex = (index - 1 + ranks.length) % ranks.length;
+      } else if (event.key === "Home") {
+        nextIndex = 0;
+      } else if (event.key === "End") {
+        nextIndex = ranks.length - 1;
+      } else {
+        return;
+      }
+
+      event.preventDefault();
+      showRank(nextIndex, true);
+    });
+
+    li.appendChild(button);
+    steps.appendChild(li);
+  });
+
+  showRank(0, false);
+
+  /* =========================================
+     MENU MOBILE
+  ========================================= */
+
+  var toggle = document.getElementById("toggle");
+  var menu = document.getElementById("menu");
+
+  function setMenu(open) {
+    menu.classList.toggle("open", open);
+
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Fechar menu" : "Abrir menu"
+    );
+
+    toggle.textContent = open ? "✕" : "☰";
+  }
+
+  toggle.addEventListener("click", function () {
+    setMenu(!menu.classList.contains("open"));
+  });
+
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setMenu(false);
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && menu.classList.contains("open")) {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+
+  document.addEventListener("click", function (event) {
+    if (
+      menu.classList.contains("open") &&
+      !menu.contains(event.target) &&
+      !toggle.contains(event.target)
+    ) {
+      setMenu(false);
+    }
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 760 && menu.classList.contains("open")) {
+      setMenu(false);
+    }
+  });
+
+  /* =========================================
+     COPIAR ID DA GUILDA
+  ========================================= */
+
+  var copyBtn = document.getElementById("copy");
+  var copyLabel = document.getElementById("copyLabel");
+  var copyStatus = document.getElementById("copyStatus");
+  var guildId = document.getElementById("guildId").textContent.trim();
+  var copyTimer = null;
+
+  function showCopyMessage(message) {
+    copyLabel.textContent = message;
+    copyStatus.textContent = message === "ID copiado"
+      ? "O ID foi copiado para a área de transferência."
+      : "Não foi possível copiar automaticamente. Selecione o ID acima.";
+
+    if (copyTimer) window.clearTimeout(copyTimer);
+
+    copyTimer = window.setTimeout(function () {
+      copyLabel.textContent = "Copiar ID";
+      copyStatus.textContent = "";
+    }, 2600);
+  }
+
+  function fallbackCopy(text) {
+    var field = document.createElement("textarea");
+
+    field.value = text;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.left = "-9999px";
+    field.style.top = "0";
+
+    document.body.appendChild(field);
+    field.focus();
+    field.select();
+
+    var success = false;
+
+    try {
+      success = document.execCommand("copy");
+    } catch (e) {
+      success = false;
+    }
+
+    field.remove();
+
+    return success;
+  }
+
+  copyBtn.addEventListener("click", async function () {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(guildId);
+        showCopyMessage("ID copiado");
+        return;
+      }
+
+      if (fallbackCopy(guildId)) {
+        showCopyMessage("ID copiado");
+        return;
+      }
+
+      copyLabel.textContent = "ID: " + guildId;
+      copyStatus.textContent =
+        "A cópia automática não funcionou. Selecione o ID acima.";
+    } catch (error) {
+      if (fallbackCopy(guildId)) {
+        showCopyMessage("ID copiado");
+      } else {
+        copyLabel.textContent = "ID: " + guildId;
+        copyStatus.textContent =
+          "A cópia automática não funcionou. Selecione o ID acima.";
+      }
+    }
+  });
+
+  /* =========================================
+     ANIMAÇÕES AO ROLAR A PÁGINA
+  ========================================= */
+
+  var revealElements = document.querySelectorAll(".reveal");
+
+  if (
+    !reduceMotion.matches &&
+    "IntersectionObserver" in window
+  ) {
+    document.documentElement.classList.add("js-ready");
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         }
-
-
-        function mudarSlide(direcao) {
-
-            slideAtual += direcao;
-
-            if (slideAtual >= slides.length) {
-                slideAtual = 0;
-            }
-
-            if (slideAtual < 0) {
-                slideAtual = slides.length - 1;
-            }
-
-            atualizarSlide();
-
-        }
-
-
-        function irParaSlide(numero) {
-
-            slideAtual = numero;
-
-            atualizarSlide();
-
-        }
-
-
-        /* =========================
-           SWIPE MOBILE
-        ========================== */
-
-        const carousel =
-            document.getElementById("carousel");
-
-        let toqueInicial = 0;
-        let toqueFinal = 0;
-
-
-        carousel.addEventListener(
-            "touchstart",
-            function(event) {
-
-                toqueInicial =
-                    event.changedTouches[0].screenX;
-
-            },
-            { passive: true }
-        );
-
-
-        carousel.addEventListener(
-            "touchend",
-            function(event) {
-
-                toqueFinal =
-                    event.changedTouches[0].screenX;
-
-                const distancia =
-                    toqueInicial - toqueFinal;
-
-                if (Math.abs(distancia) > 50) {
-
-                    if (distancia > 0) {
-                        mudarSlide(1);
-                    } else {
-                        mudarSlide(-1);
-                    }
-
-                }
-
-            },
-            { passive: true }
-        );
-
-
-        /* =========================
-           COPIAR ID DA GUILDA
-        ========================== */
-
-        function copiarGuild() {
-
-            const id =
-                document
-                    .getElementById("guildId")
-                    .innerText;
-
-            navigator.clipboard.writeText(id);
-
-            const botao =
-                document.querySelector(".copy-button");
-
-            const textoOriginal =
-                botao.innerText;
-
-            botao.innerText = "Copiado!";
-
-            setTimeout(() => {
-
-                botao.innerText = textoOriginal;
-
-            }, 1500);
-
-        }
-
-
-        /* =========================
-           MENU MOBILE
-        ========================== */
-
-        function toggleMenu() {
-
-            const menu =
-                document.querySelector(".nav-links");
-
-            const botao =
-                document.querySelector(".menu-mobile");
-
-            menu.classList.toggle("active");
-
-            if (menu.classList.contains("active")) {
-
-                botao.innerHTML = "✕";
-
-                botao.setAttribute(
-                    "aria-label",
-                    "Fechar menu"
-                );
-
-            } else {
-
-                botao.innerHTML = "☰";
-
-                botao.setAttribute(
-                    "aria-label",
-                    "Abrir menu"
-                );
-
-            }
-
-        }
-
-
-        /* =========================
-           ANIMAÇÃO DOS CARDS
-        ========================== */
-
-        const elementosAnimados =
-            document.querySelectorAll(".reveal-card");
-
-
-        const observer =
-            new IntersectionObserver(
-                function(entries) {
-
-                    entries.forEach(function(entry) {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add("show");
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-
-        elementosAnimados.forEach(function(elemento) {
-
-            observer.observe(elemento);
-
-        });
-
-    </script>
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -35px 0px"
+    });
+
+    revealElements.forEach(function (element) {
+      observer.observe(element);
+    });
+  } else {
+    revealElements.forEach(function (element) {
+      element.classList.add("is-visible");
+    });
+  }
+
+  /* Ano automático no rodapé */
+
+  document.getElementById("year").textContent =
+    String(new Date().getFullYear());
+
+})();
+</script>
 
 </body>
-
 </html>
