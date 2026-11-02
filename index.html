@@ -831,7 +831,24 @@ section[id] {
   background: #000;
   object-fit: contain;
 }
+.video-frame iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #000;
+}
 
+.video-frame.is-vertical {
+  width: 100%;
+  max-width: 430px;
+  margin-inline: auto;
+}
+
+.video-frame.is-vertical iframe {
+  aspect-ratio: 9 / 16;
+  max-height: 760px;
+}
 /* Redes sociais */
 
 .links h2 {
@@ -1412,31 +1429,42 @@ footer strong {
 
   <!-- VÍDEO -->
 
-  <section class="video" id="destaque">
-    <div class="wrap">
+<!-- VÍDEO -->
 
-      <div class="eyebrow">Melhores momentos</div>
+<section class="video" id="destaque">
+  <div class="wrap">
 
-      <h2>Destaque da comunidade</h2>
+    <div class="eyebrow">Melhores momentos</div>
 
-      <p class="lead">
-        Fez uma jogada incrível e quer aparecer aqui?
-        Manda seu vídeo para a gente pelo Discord.
+    <h2>Destaque da comunidade</h2>
+
+    <p class="lead">
+      Confira a publicação mais recente da comunidade IMPERIUMz.
+      Atualizada automaticamente pelo ACEN Central.
+    </p>
+
+    <div
+      class="video-frame reveal"
+      id="communityHighlight"
+      aria-live="polite">
+
+      <p id="highlightStatus" style="padding:35px;text-align:center;">
+        Carregando publicação...
       </p>
 
-      <div class="video-frame reveal">
-        <video
-          controls
-          preload="metadata"
-          playsinline
-          poster="foto2.jpg">
-          <source src="video1.mp4" type="video/mp4">
-          Seu navegador não suporta a reprodução deste vídeo.
-        </video>
-      </div>
-
     </div>
-  </section>
+
+    <div style="margin-top:22px;">
+      <h3 id="highlightTitle" style="font-size:2rem;"></h3>
+
+      <p
+        id="highlightDescription"
+        style="margin-top:10px;color:var(--on-deep-muted);">
+      </p>
+    </div>
+
+  </div>
+</section>
 
   <!-- REDES SOCIAIS -->
 
@@ -1494,10 +1522,170 @@ footer strong {
 <!-- Bibliotecas do fundo animado -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function () {
   "use strict";
+    /* =========================================
+     DESTAQUE AUTOMÁTICO DO ACEN CENTRAL
+  ========================================= */
+
+  const ACEN_SUPABASE_URL =
+    "https://dgcwrxrgeobwduynoyod.supabase.co";
+
+  const ACEN_SUPABASE_KEY =
+    "sb_publishable_TkpO7ERPQySrZ1fZX2hkNg_qjR9afoZ";
+
+  const acenDB = window.supabase.createClient(
+    ACEN_SUPABASE_URL,
+    ACEN_SUPABASE_KEY
+  );
+
+  const highlightContainer =
+    document.getElementById("communityHighlight");
+
+  const highlightStatus =
+    document.getElementById("highlightStatus");
+
+  const highlightTitle =
+    document.getElementById("highlightTitle");
+
+  const highlightDescription =
+    document.getElementById("highlightDescription");
+
+
+  function getVideoEmbed(post) {
+
+    const url = (post.video_url || "").trim();
+    const platform = (post.platform || "").toLowerCase();
+
+    if (!url) return null;
+
+    // YOUTUBE
+
+    if (platform.includes("youtube") || /youtu\.be|youtube\.com/i.test(url)) {
+
+      let videoId = null;
+
+      try {
+        const parsed = new URL(url);
+
+        if (parsed.hostname.includes("youtu.be")) {
+          videoId = parsed.pathname.split("/").filter(Boolean)[0];
+        } else if (parsed.searchParams.get("v")) {
+          videoId = parsed.searchParams.get("v");
+        } else {
+          const match = parsed.pathname.match(
+            /\/(?:embed|shorts|live)\/([^/?]+)/
+          );
+
+          if (match) videoId = match[1];
+        }
+      } catch (error) {}
+
+      if (!videoId && /^[a-zA-Z0-9_-]{11}$/.test(url)) {
+        videoId = url;
+      }
+
+      if (!videoId || !/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
+        return null;
+      }
+
+      return {
+        type: "youtube",
+        url: "https://www.youtube-nocookie.com/embed/" + videoId
+      };
+    }
+
+    // TIKTOK
+
+    if (platform.includes("tiktok") || /tiktok\.com/i.test(url)) {
+
+      const match = url.match(/\/video\/(\d+)/);
+
+      if (!match) return null;
+
+      return {
+        type: "tiktok",
+        url: "https://www.tiktok.com/embed/v2/" + match[1]
+      };
+    }
+
+    return null;
+  }
+
+
+  async function loadCommunityHighlight() {
+
+    try {
+
+      const { data, error } = await acenDB
+        .from("posts")
+        .select("id,community_slug,title,description,platform,video_url,active,created_at")
+        .eq("community_slug", "imperiumz")
+        .eq("active", true)
+        .order("created_at", { ascending: false })
+        .limit(1);
+
+      if (error) throw error;
+
+      if (!data || data.length === 0) {
+
+        highlightStatus.textContent =
+          "Ainda não há publicações disponíveis. Em breve teremos novidades!";
+
+        return;
+      }
+
+      const post = data[0];
+      const embed = getVideoEmbed(post);
+
+      if (!embed) {
+
+        highlightStatus.textContent =
+          "A publicação mais recente não possui um vídeo compatível.";
+
+        return;
+      }
+
+      highlightTitle.textContent =
+        post.title || "Destaque da comunidade";
+
+      highlightDescription.textContent =
+        post.description || "";
+
+      highlightContainer.replaceChildren();
+
+      const iframe = document.createElement("iframe");
+
+      iframe.src = embed.url;
+      iframe.title = post.title || "Vídeo da comunidade IMPERIUMz";
+      iframe.loading = "lazy";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+
+      highlightContainer.classList.toggle(
+        "is-vertical",
+        embed.type === "tiktok"
+      );
+
+      highlightContainer.appendChild(iframe);
+
+    } catch (error) {
+
+      console.error(
+        "Erro ao carregar destaque do ACEN Central:",
+        error
+      );
+
+      highlightStatus.textContent =
+        "Não foi possível carregar o destaque no momento.";
+    }
+  }
+
+  loadCommunityHighlight();
 
   var root = document.documentElement;
   var reduceMotion = window.matchMedia &&
