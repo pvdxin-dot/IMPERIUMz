@@ -1,0 +1,3059 @@
+HTML
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>IMPERIUMz | Influencers</title>
+<meta name="description" content="Conheça os creators da IMPERIUMz.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Lucide: https://github.com/lucide-icons/lucide -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Hero Patterns: https://github.com/lowmess/hero-patterns -->
+<script type="module">
+import * as patterns from "https://esm.sh/hero-patterns@2.1.0";
+window.heroPatterns = patterns;
+window.dispatchEvent(new Event("hero-patterns-ready"));
+</script>
+
+<style>
+:root{
+    --accent:#e11d2e;
+    --accent-light:#ff3949;
+    --accent-rgb:225,29,46;
+
+    --bg:#080808;
+    --surface:#111111;
+    --surface-2:#181818;
+    --surface-3:#202020;
+    --border:#292929;
+    --text:#ffffff;
+    --muted:#929292;
+
+    --pattern-image:none;
+}
+
+html[data-theme="light"]{
+    --bg:#f4f4f6;
+    --surface:#ffffff;
+    --surface-2:#eeeeF1;
+    --surface-3:#e4e4e9;
+    --border:#ddddE3;
+    --text:#171717;
+    --muted:#71717a;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background-color:var(--bg);
+    background-image:var(--pattern-image);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    padding-bottom:95px;
+    transition:background-color .25s,color .25s;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+button,a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+[hidden]{
+    display:none!important;
+}
+
+.wrap{
+    width:min(1120px,calc(100% - 40px));
+    margin:auto;
+}
+
+/* HEADER */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:color-mix(in srgb,var(--bg) 92%,transparent);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+}
+
+.header-content{
+    height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Orbitron',sans-serif;
+    font-size:19px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo img{
+    width:36px;
+    height:36px;
+    object-fit:contain;
+}
+
+.logo span{
+    color:var(--accent);
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.header-discord{
+    background:var(--accent);
+    color:white;
+    padding:10px 15px;
+    border-radius:5px;
+    font-size:11px;
+    font-weight:800;
+}
+
+.icon-button{
+    width:39px;
+    height:39px;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--border);
+    border-radius:7px;
+    background:var(--surface);
+    color:var(--text);
+    transition:.2s;
+}
+
+.icon-button:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.icon-button i{
+    width:18px;
+    height:18px;
+}
+
+/* TELAS */
+
+.app-page{
+    animation:pageIn .28s ease;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    min-height:370px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+
+    background:
+    radial-gradient(
+        ellipse at 80% 50%,
+        rgba(var(--accent-rgb),.20),
+        transparent 55%
+    ),
+    linear-gradient(
+        110deg,
+        var(--surface) 30%,
+        color-mix(in srgb,var(--accent) 10%,var(--bg)) 100%
+    );
+}
+
+.hero:before{
+    content:"IMPERIUMZ";
+    position:absolute;
+    right:-20px;
+    bottom:-35px;
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(80px,16vw,190px);
+    font-weight:900;
+    color:color-mix(in srgb,var(--text) 3%,transparent);
+    white-space:nowrap;
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:1;
+    padding:70px 0;
+}
+
+.hero-label{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:var(--accent);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:17px;
+}
+
+.hero-label:before{
+    content:"";
+    width:24px;
+    height:2px;
+    background:var(--accent);
+}
+
+.hero h1{
+    max-width:700px;
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(35px,7vw,65px);
+    line-height:1.12;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.hero h1 span{
+    color:var(--accent);
+}
+
+.hero-description{
+    max-width:470px;
+    margin-top:18px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.7;
+}
+
+.hero-bottom{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    margin-top:28px;
+}
+
+.hero-button{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:13px 20px;
+    background:var(--accent);
+    color:white;
+    border-radius:4px;
+    font-size:12px;
+    font-weight:800;
+}
+
+.hero-button:hover{
+    filter:brightness(1.15);
+}
+
+.hero-button i{
+    width:16px;
+}
+
+.hero-number{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.hero-number strong{
+    color:var(--text);
+    font-size:20px;
+    margin-right:5px;
+}
+
+/* ESTATÍSTICAS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-bottom:1px solid var(--border);
+}
+
+.stat{
+    padding:23px 20px;
+    border-right:1px solid var(--border);
+}
+
+.stat:last-child{
+    border:0;
+}
+
+.stat strong{
+    display:block;
+    font-family:'Orbitron',sans-serif;
+    font-size:25px;
+}
+
+.stat span{
+    display:block;
+    margin-top:5px;
+    color:var(--muted);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+/* SEÇÕES */
+
+.section{
+    padding:55px 0;
+}
+
+.section-heading{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:27px;
+}
+
+.section-kicker{
+    color:var(--accent);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:9px;
+}
+
+.section-heading h2{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(21px,4vw,30px);
+    font-weight:800;
+}
+
+.section-heading p{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* DESTAQUES */
+
+.featured-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.featured-card{
+    position:relative;
+    min-height:180px;
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:7px;
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(var(--accent-rgb),.20),
+            transparent 45%
+        ),
+        var(--surface);
+    transition:.25s;
+}
+
+.featured-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-4px);
+}
+
+.featured-top{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin-bottom:20px;
+}
+
+.featured-avatar{
+    width:53px;
+    height:53px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--accent);
+    background:var(--surface-2);
+}
+
+.featured-card h3{
+    font-size:15px;
+    font-weight:800;
+    overflow-wrap:anywhere;
+}
+
+.featured-card small{
+    display:block;
+    color:var(--muted);
+    margin-top:4px;
+    font-size:11px;
+}
+
+.featured-tag{
+    width:fit-content;
+    padding:5px 8px;
+    color:var(--accent);
+    background:rgba(var(--accent-rgb),.12);
+    border:1px solid rgba(var(--accent-rgb),.25);
+    border-radius:3px;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+/* CREATORS */
+
+.creators-section{
+    background:color-mix(in srgb,var(--surface) 75%,transparent);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+.creator-tools{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.search-box{
+    position:relative;
+    flex:1;
+    min-width:220px;
+    max-width:340px;
+}
+
+.search-box i{
+    position:absolute;
+    left:13px;
+    top:50%;
+    transform:translateY(-50%);
+    width:16px;
+    color:var(--muted);
+}
+
+.search-box input{
+    width:100%;
+    padding:12px 13px 12px 40px;
+    color:var(--text);
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:5px;
+    outline:none;
+    font-size:12px;
+}
+
+.search-box input:focus{
+    border-color:var(--accent);
+}
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.filter-btn{
+    padding:9px 13px;
+    border:1px solid var(--border);
+    border-radius:4px;
+    background:var(--surface);
+    color:var(--muted);
+    font-size:11px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:white;
+}
+
+.creator-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.creator-card{
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:7px;
+    background:var(--surface);
+    transition:.25s;
+}
+
+.creator-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--accent);
+}
+
+.creator-cover{
+    height:95px;
+    position:relative;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(var(--accent-rgb),.24),
+            transparent
+        ),
+        var(--surface-2);
+}
+
+.creator-cover:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg,var(--surface),transparent 75%);
+}
+
+.creator-content{
+    position:relative;
+    padding:0 17px 18px;
+    margin-top:-37px;
+}
+
+.creator-avatar{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid var(--surface);
+    background:var(--surface-2);
+    position:relative;
+    z-index:1;
+}
+
+.creator-initial{
+    display:grid;
+    place-items:center;
+    color:white;
+    background:linear-gradient(135deg,var(--accent),#5e1219);
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+}
+
+.creator-name{
+    margin-top:12px;
+    font-size:15px;
+    font-weight:800;
+    overflow-wrap:anywhere;
+}
+
+.creator-platform{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-top:6px;
+    color:var(--accent);
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+}
+
+.creator-platform i{
+    width:13px;
+    height:13px;
+}
+
+.creator-description{
+    min-height:42px;
+    margin-top:12px;
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.6;
+    overflow-wrap:anywhere;
+}
+
+.creator-socials{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:15px;
+    padding-top:13px;
+    border-top:1px solid var(--border);
+}
+
+.social-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:8px 10px;
+    border-radius:4px;
+    background:var(--surface-3);
+    color:var(--text);
+    font-size:10px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.social-link:hover,
+.social-link.primary{
+    background:var(--accent);
+    color:white;
+}
+
+.social-link i{
+    width:13px;
+    height:13px;
+}
+
+/* VÍDEOS */
+
+.video-feed{
+    width:min(430px,100%);
+    height:min(760px,75vh);
+    min-height:520px;
+    margin:0 auto;
+    overflow-y:auto;
+    overflow-x:hidden;
+    scroll-snap-type:y mandatory;
+    scrollbar-width:none;
+    border:1px solid var(--border);
+    border-radius:9px;
+    background:#000;
+}
+
+.video-feed::-webkit-scrollbar{
+    display:none;
+}
+
+.feed-item{
+    position:relative;
+    width:100%;
+    height:100%;
+    min-height:100%;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    background:#000;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.feed-item iframe{
+    width:100%;
+    height:100%;
+    border:0;
+    background:#000;
+}
+
+.feed-tiktok{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+}
+
+.feed-tiktok blockquote{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    min-width:0!important;
+}
+
+.feed-tiktok iframe{
+    max-width:100%!important;
+}
+
+.feed-cover{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:12px;
+    background:
+        radial-gradient(circle,rgba(var(--accent-rgb),.2),transparent 65%),
+        #111;
+    color:white;
+}
+
+.feed-cover i{
+    width:48px;
+    height:48px;
+    color:var(--accent-light);
+}
+
+.feed-cover span{
+    font-size:12px;
+    color:#bbb;
+}
+
+.feed-overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:65px 18px 20px;
+    pointer-events:none;
+    background:linear-gradient(transparent,rgba(0,0,0,.9));
+}
+
+.feed-platform{
+    color:var(--accent-light);
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.feed-title{
+    margin-top:8px;
+    font-size:16px;
+    font-weight:800;
+    line-height:1.4;
+    color:white;
+}
+
+.feed-description{
+    margin-top:7px;
+    color:#ddd;
+    font-size:11px;
+    line-height:1.6;
+}
+
+.feed-open{
+    pointer-events:auto;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    margin-top:13px;
+    padding:9px 13px;
+    border-radius:4px;
+    background:var(--accent);
+    color:white;
+    font-size:10px;
+    font-weight:800;
+}
+
+.feed-open i{
+    width:13px;
+    height:13px;
+}
+
+.feed-controls{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:15px auto 0;
+}
+
+.feed-control{
+    display:grid;
+    place-items:center;
+    width:38px;
+    height:38px;
+    border:1px solid var(--border);
+    border-radius:50%;
+    color:var(--text);
+    background:var(--surface);
+}
+
+.feed-control:hover{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:white;
+}
+
+.feed-control i{
+    width:17px;
+    height:17px;
+}
+
+.feed-position{
+    font-size:10px;
+    color:var(--muted);
+    min-width:65px;
+    text-align:center;
+}
+
+/* FILTRO DE VÍDEOS */
+
+.video-creator-filter{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:22px;
+}
+
+.video-creator-filter span{
+    color:var(--muted);
+    font-size:11px;
+    font-weight:700;
+}
+
+.creator-filter-select{
+    max-width:260px;
+    padding:10px 13px;
+    border:1px solid var(--border);
+    border-radius:5px;
+    background:var(--surface);
+    color:var(--text);
+    outline:none;
+    font-size:11px;
+}
+
+/* ESTADOS */
+
+.empty-state,
+.loading-state{
+    grid-column:1/-1;
+    padding:45px 20px;
+    text-align:center;
+    color:var(--muted);
+    border:1px dashed var(--border);
+    border-radius:5px;
+}
+
+.empty-state i{
+    width:30px;
+    height:30px;
+    color:var(--accent);
+    margin-bottom:12px;
+}
+
+.empty-state h3{
+    color:var(--text);
+    font-size:14px;
+}
+
+.empty-state p{
+    margin-top:6px;
+    font-size:11px;
+}
+
+.spinner{
+    width:25px;
+    height:25px;
+    margin:0 auto 12px;
+    border:3px solid var(--border);
+    border-top-color:var(--accent);
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* RODAPÉ */
+
+.footer{
+    padding:35px 0;
+    border-top:1px solid var(--border);
+    background:var(--surface);
+}
+
+.footer-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.footer-brand{
+    font-family:'Orbitron',sans-serif;
+    font-size:15px;
+    font-weight:900;
+}
+
+.footer-brand span{
+    color:var(--accent);
+}
+
+.footer p{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:10px;
+}
+
+.footer-right{
+    color:var(--muted);
+    font-size:10px;
+}
+
+/* NAVEGAÇÃO INFERIOR */
+
+.bottom-navigation{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:100;
+    min-height:76px;
+    padding:8px 12px calc(8px + env(safe-area-inset-bottom));
+    background:color-mix(in srgb,var(--surface) 96%,transparent);
+    border-top:1px solid var(--border);
+    backdrop-filter:blur(18px);
+}
+
+.bottom-navigation-inner{
+    width:min(500px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    min-height:58px;
+    border:0;
+    border-radius:9px;
+    background:transparent;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.nav-item i{
+    width:20px;
+    height:20px;
+}
+
+.nav-item.active{
+    color:var(--accent);
+    background:rgba(var(--accent-rgb),.09);
+}
+
+.nav-item.active i{
+    stroke-width:2.5;
+}
+
+/* PAINEL DE CONFIGURAÇÕES */
+
+.settings-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:flex;
+    justify-content:flex-end;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(5px);
+    opacity:0;
+    visibility:hidden;
+    transition:.25s;
+}
+
+.settings-backdrop.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.settings-panel{
+    width:min(460px,100%);
+    height:100%;
+    overflow-y:auto;
+    padding:24px;
+    background:var(--surface);
+    border-left:1px solid var(--border);
+    transform:translateX(30px);
+    transition:.25s;
+}
+
+.settings-backdrop.open .settings-panel{
+    transform:translateX(0);
+}
+
+.settings-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:27px;
+}
+
+.settings-header h2{
+    font-family:'Orbitron',sans-serif;
+    font-size:19px;
+}
+
+.settings-header p{
+    margin-top:5px;
+    color:var(--muted);
+    font-size:11px;
+}
+
+.settings-group{
+    margin-bottom:28px;
+}
+
+.settings-group-title{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:13px;
+    font-size:12px;
+    font-weight:800;
+}
+
+.settings-group-title i{
+    width:16px;
+    height:16px;
+    color:var(--accent);
+}
+
+.settings-description{
+    margin-top:-6px;
+    margin-bottom:13px;
+    color:var(--muted);
+    font-size:10px;
+    line-height:1.5;
+}
+
+.theme-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.theme-option{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:13px;
+    border:1px solid var(--border);
+    border-radius:7px;
+    background:var(--surface-2);
+    color:var(--text);
+    font-size:11px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.theme-option.active{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px var(--accent);
+}
+
+.theme-option i{
+    width:17px;
+    height:17px;
+}
+
+.color-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:11px;
+}
+
+.color-option{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:7px;
+    padding:9px 4px;
+    border:1px solid var(--border);
+    border-radius:7px;
+    background:var(--surface-2);
+    color:var(--muted);
+    font-size:9px;
+    font-weight:700;
+}
+
+.color-option.active{
+    border-color:var(--accent);
+    color:var(--text);
+}
+
+.color-circle{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,.15);
+}
+
+.background-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.background-option{
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:7px;
+    background:var(--surface-2);
+    color:var(--text);
+    text-align:left;
+    transition:.2s;
+}
+
+.background-option.active{
+    border:2px solid var(--accent);
+}
+
+.background-preview{
+    display:block;
+    height:75px;
+    background-color:#171717;
+    background-size:cover;
+    background-position:center;
+}
+
+.background-name{
+    display:block;
+    padding:9px;
+    font-size:10px;
+    font-weight:700;
+}
+
+.settings-footer{
+    padding-top:18px;
+    border-top:1px solid var(--border);
+}
+
+.reset-settings{
+    width:100%;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    background:var(--surface-2);
+    color:var(--text);
+    font-size:11px;
+    font-weight:800;
+}
+
+.reset-settings:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.settings-credit{
+    margin-top:13px;
+    color:var(--muted);
+    font-size:9px;
+    line-height:1.7;
+}
+
+.settings-credit a{
+    color:var(--accent);
+    text-decoration:underline;
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width:800px){
+    .featured-grid,
+    .creator-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:560px){
+    body{
+        padding-bottom:88px;
+    }
+
+    .wrap{
+        width:min(100% - 28px,1120px);
+    }
+
+    .header-content{
+        height:62px;
+    }
+
+    .logo{
+        font-size:16px;
+    }
+
+    .logo img{
+        width:31px;
+        height:31px;
+    }
+
+    .header-discord{
+        padding:9px 10px;
+        font-size:9px;
+    }
+
+    .hero{
+        min-height:330px;
+    }
+
+    .hero-content{
+        padding:55px 0;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .hero-description{
+        font-size:12px;
+    }
+
+    .stats .stat{
+        padding:18px 9px;
+    }
+
+    .stat strong{
+        font-size:19px;
+    }
+
+    .stat span{
+        font-size:9px;
+        letter-spacing:.5px;
+    }
+
+    .section{
+        padding:42px 0;
+    }
+
+    .featured-grid,
+    .creator-grid{
+        grid-template-columns:1fr;
+    }
+
+    .featured-card{
+        min-height:145px;
+    }
+
+    .section-heading{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .creator-tools{
+        align-items:stretch;
+    }
+
+    .search-box{
+        max-width:none;
+    }
+
+    .filters{
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        padding-bottom:5px;
+    }
+
+    .filter-btn{
+        flex:none;
+    }
+
+    .creator-card{
+        display:grid;
+        grid-template-columns:105px 1fr;
+        min-height:165px;
+    }
+
+    .creator-cover{
+        grid-column:1;
+        grid-row:1;
+        height:100%;
+        min-height:165px;
+    }
+
+    .creator-content{
+        grid-column:2;
+        grid-row:1;
+        margin-top:0;
+        padding:15px;
+    }
+
+    .creator-avatar{
+        width:55px;
+        height:55px;
+    }
+
+    .creator-name{
+        margin-top:8px;
+        font-size:13px;
+    }
+
+    .creator-description{
+        min-height:auto;
+        font-size:10px;
+        margin-top:7px;
+    }
+
+    .creator-socials{
+        margin-top:9px;
+        padding-top:9px;
+    }
+
+    .social-link{
+        padding:7px 8px;
+        font-size:9px;
+    }
+
+    .video-feed{
+        height:72vh;
+        min-height:480px;
+        border-radius:0;
+        border-left:0;
+        border-right:0;
+    }
+
+    .footer-content{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .settings-panel{
+        padding:20px 17px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *:before,
+    *:after{
+        scroll-behavior:auto!important;
+        animation-duration:.01ms!important;
+        transition-duration:.01ms!important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="wrap header-content">
+
+        <a href="#" class="logo" data-page-link="highlights">
+            <img src="imperiumz-logo.png" alt="IMPERIUMz">
+            IMPERIUM<span>z</span>
+        </a>
+
+        <div class="header-actions">
+            <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="header-discord">
+                COMUNIDADE
+            </a>
+
+            <button class="icon-button" id="openSettings" aria-label="Configurações">
+                <i data-lucide="settings"></i>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+<!-- =========================================
+     TELA 1 — DESTAQUES
+========================================= -->
+
+<div class="app-page" id="page-highlights">
+
+    <section class="hero">
+        <div class="wrap hero-content">
+
+            <div class="hero-label">IMPERIUMz Network</div>
+
+            <h1>
+                NOSSO TIME.<br>
+                <span>NOSSOS CREATORS.</span>
+            </h1>
+
+            <p class="hero-description">
+                Conheça os criadores vinculados à IMPERIUMz,
+                acompanhe seus canais e encontre seus conteúdos.
+            </p>
+
+            <div class="hero-bottom">
+
+                <button class="hero-button" data-page-link="creators">
+                    VER INFLUENCERS
+                    <i data-lucide="arrow-right"></i>
+                </button>
+
+                <div class="hero-number">
+                    <strong id="heroTotal">--</strong>
+                    CREATORS
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="wrap">
+        <div class="stats">
+
+            <div class="stat">
+                <strong id="totalCreators">--</strong>
+                <span>Creators ativos</span>
+            </div>
+
+            <div class="stat">
+                <strong id="totalFeatured">--</strong>
+                <span>Em destaque</span>
+            </div>
+
+            <div class="stat">
+                <strong>01</strong>
+                <span>Organização</span>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrap">
+
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">Selecionados</div>
+                    <h2>EM DESTAQUE</h2>
+                    <p>Creators destacados pela equipe IMPERIUMz.</p>
+                </div>
+
+                <button class="filter-btn" data-page-link="creators">
+                    Ver todos
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="featured-grid" id="featuredGrid">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    Carregando destaques...
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="wrap footer-content">
+
+            <div>
+                <div class="footer-brand">IMPERIUM<span>z</span></div>
+                <p>Creators Network</p>
+            </div>
+
+            <div class="footer-right">
+                © <span class="currentYear"></span> IMPERIUMz. Todos os direitos reservados.
+            </div>
+
+        </div>
+    </footer>
+
+</div>
+
+<!-- =========================================
+     TELA 2 — INFLUENCERS
+========================================= -->
+
+<div class="app-page" id="page-creators" hidden>
+
+    <section class="creators-section">
+        <div class="wrap section">
+
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">Roster oficial</div>
+                    <h2>INFLUENCERS</h2>
+                    <p>Encontre os canais e perfis dos nossos integrantes.</p>
+                </div>
+            </div>
+
+            <div class="creator-tools">
+
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input
+                        type="search"
+                        id="creatorSearch"
+                        placeholder="Buscar por nome..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="filters">
+
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="tiktok">TikTok</button>
+                    <button class="filter-btn" data-filter="youtube">YouTube</button>
+                    <button class="filter-btn" data-filter="instagram">Instagram</button>
+                    <button class="filter-btn" data-filter="twitch">Twitch</button>
+
+                </div>
+
+            </div>
+
+            <div class="creator-grid" id="creatorsGrid">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    Carregando influencers...
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="wrap footer-content">
+
+            <div>
+                <div class="footer-brand">IMPERIUM<span>z</span></div>
+                <p>Creators Network</p>
+            </div>
+
+            <div class="footer-right">
+                © <span class="currentYear"></span> IMPERIUMz. Todos os direitos reservados.
+            </div>
+
+        </div>
+    </footer>
+
+</div>
+
+<!-- =========================================
+     TELA 3 — VÍDEOS
+========================================= -->
+
+<div class="app-page" id="page-videos" hidden>
+
+    <section class="section">
+        <div class="wrap">
+
+            <div class="section-heading">
+                <div>
+                    <div class="section-kicker">Conteúdo</div>
+                    <h2 id="feedHeading">VÍDEOS</h2>
+                    <p id="feedSubheading">
+                        Deslize para cima e descubra os conteúdos dos creators.
+                    </p>
+                </div>
+            </div>
+
+            <div class="video-creator-filter">
+
+                <span>ACOMPANHAR:</span>
+
+                <select class="creator-filter-select" id="videoCreatorFilter">
+                    <option value="all">Todos os influencers</option>
+                </select>
+
+            </div>
+
+            <div class="video-feed" id="videoFeed">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    Carregando publicações...
+                </div>
+            </div>
+
+            <div class="feed-controls">
+
+                <button class="feed-control" id="previousVideo" aria-label="Vídeo anterior">
+                    <i data-lucide="chevron-up"></i>
+                </button>
+
+                <span class="feed-position" id="feedPosition">0 / 0</span>
+
+                <button class="feed-control" id="nextVideo" aria-label="Próximo vídeo">
+                    <i data-lucide="chevron-down"></i>
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="wrap footer-content">
+
+            <div>
+                <div class="footer-brand">IMPERIUM<span>z</span></div>
+                <p>Creators Network</p>
+            </div>
+
+            <div class="footer-right">
+                © <span class="currentYear"></span> IMPERIUMz. Todos os direitos reservados.
+            </div>
+
+        </div>
+    </footer>
+
+</div>
+
+</main>
+
+<!-- =========================================
+     NAVEGAÇÃO INFERIOR
+========================================= -->
+
+<nav class="bottom-navigation">
+    <div class="bottom-navigation-inner">
+
+        <button class="nav-item active" data-page="highlights">
+            <i data-lucide="trophy"></i>
+            <span>Destaques</span>
+        </button>
+
+        <button class="nav-item" data-page="creators">
+            <i data-lucide="users"></i>
+            <span>Influencers</span>
+        </button>
+
+        <button class="nav-item" data-page="videos">
+            <i data-lucide="play-square"></i>
+            <span>Vídeos</span>
+        </button>
+
+    </div>
+</nav>
+
+<!-- =========================================
+     CONFIGURAÇÕES
+========================================= -->
+
+<div class="settings-backdrop" id="settingsBackdrop">
+
+    <aside class="settings-panel">
+
+        <div class="settings-header">
+
+            <div>
+                <h2>PERSONALIZAÇÃO</h2>
+                <p>Configure a aparência do IMPERIUMz.</p>
+            </div>
+
+            <button class="icon-button" id="closeSettings" aria-label="Fechar configurações">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+        <!-- TEMA -->
+
+        <section class="settings-group">
+
+            <div class="settings-group-title">
+                <i data-lucide="monitor"></i>
+                TEMA DO SITE
+            </div>
+
+            <p class="settings-description">
+                Escolha entre a aparência clara ou escura.
+            </p>
+
+            <div class="theme-options">
+
+                <button class="theme-option" data-theme-choice="dark">
+                    <i data-lucide="moon"></i>
+                    Escuro
+                </button>
+
+                <button class="theme-option" data-theme-choice="light">
+                    <i data-lucide="sun"></i>
+                    Claro
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- CORES -->
+
+        <section class="settings-group">
+
+            <div class="settings-group-title">
+                <i data-lucide="palette"></i>
+                CORES PRINCIPAIS
+            </div>
+
+            <p class="settings-description">
+                Altere a cor dos botões, ícones, destaques e detalhes.
+            </p>
+
+            <div class="color-grid" id="colorGrid">
+
+                <button class="color-option" data-color="red">
+                    <span class="color-circle" style="background:#e11d2e"></span>
+                    Vermelho
+                </button>
+
+                <button class="color-option" data-color="blue">
+                    <span class="color-circle" style="background:#2563eb"></span>
+                    Azul
+                </button>
+
+                <button class="color-option" data-color="purple">
+                    <span class="color-circle" style="background:#8b5cf6"></span>
+                    Roxo
+                </button>
+
+                <button class="color-option" data-color="green">
+                    <span class="color-circle" style="background:#16a34a"></span>
+                    Verde
+                </button>
+
+                <button class="color-option" data-color="orange">
+                    <span class="color-circle" style="background:#ea580c"></span>
+                    Laranja
+                </button>
+
+                <button class="color-option" data-color="pink">
+                    <span class="color-circle" style="background:#ec4899"></span>
+                    Rosa
+                </button>
+
+                <button class="color-option" data-color="cyan">
+                    <span class="color-circle" style="background:#0891b2"></span>
+                    Ciano
+                </button>
+
+                <button class="color-option" data-color="gold">
+                    <span class="color-circle" style="background:#ca8a04"></span>
+                    Dourado
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- FUNDOS -->
+
+        <section class="settings-group">
+
+            <div class="settings-group-title">
+                <i data-lucide="image"></i>
+                FUNDOS DO SITE
+            </div>
+
+            <p class="settings-description">
+                Escolha um dos dez padrões visuais. As miniaturas mostram uma prévia.
+            </p>
+
+            <div class="background-grid" id="backgroundGrid">
+
+                <button class="background-option" data-background="topography">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Topografia</span>
+                </button>
+
+                <button class="background-option" data-background="circuitBoard">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Circuitos</span>
+                </button>
+
+                <button class="background-option" data-background="hexagons">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Hexágonos</span>
+                </button>
+
+                <button class="background-option" data-background="diagonalStripes">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Linhas diagonais</span>
+                </button>
+
+                <button class="background-option" data-background="zigZag">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Zigue-zague</span>
+                </button>
+
+                <button class="background-option" data-background="graphPaper">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Grade</span>
+                </button>
+
+                <button class="background-option" data-background="fourPointStars">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Estrelas</span>
+                </button>
+
+                <button class="background-option" data-background="overlappingCircles">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Círculos</span>
+                </button>
+
+                <button class="background-option" data-background="polkaDots">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Pontos</span>
+                </button>
+
+                <button class="background-option" data-background="jigsaw">
+                    <span class="background-preview"></span>
+                    <span class="background-name">Quebra-cabeça</span>
+                </button>
+
+            </div>
+
+        </section>
+
+        <div class="settings-footer">
+
+            <button class="reset-settings" id="resetSettings">
+                <i data-lucide="rotate-ccw"></i>
+                RESTAURAR PADRÃO
+            </button>
+
+            <p class="settings-credit">
+                Ícones: <a href="https://github.com/lucide-icons/lucide" target="_blank" rel="noopener noreferrer">Lucide Icons</a>.<br>
+                Fundos: <a href="https://github.com/lowmess/hero-patterns" target="_blank" rel="noopener noreferrer">Hero Patterns</a> — licença MIT.<br>
+                As bibliotecas são carregadas externamente. É necessária conexão com a internet.
+            </p>
+
+        </div>
+
+    </aside>
+
+</div>
+
+<script>
+/* =========================================
+   SUPABASE
+========================================= */
+
+const SUPABASE_URL = "https://dgcwrxrgeobwduynoyod.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_TkpO7ERPQySrZ1fZX2hkNg_qjR9afoZ";
+
+const COMMUNITY_SLUG = "imperiumz";
+
+const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+/* =========================================
+   ESTADO
+========================================= */
+
+let allCreators = [];
+let allVideos = [];
+
+let currentFilter = "all";
+let selectedCreator = "all";
+let visibleVideos = [];
+
+const platformNames = {
+    tiktok:"TikTok",
+    youtube:"YouTube",
+    instagram:"Instagram",
+    twitch:"Twitch",
+    other:"Criador"
+};
+
+const platformIcons = {
+    tiktok:"music-2",
+    youtube:"youtube",
+    instagram:"instagram",
+    twitch:"twitch",
+    other:"user"
+};
+
+const palettes = {
+    red:{
+        main:"#e11d2e",
+        light:"#ff3949",
+        rgb:"225,29,46"
+    },
+    blue:{
+        main:"#2563eb",
+        light:"#60a5fa",
+        rgb:"37,99,235"
+    },
+    purple:{
+        main:"#8b5cf6",
+        light:"#a78bfa",
+        rgb:"139,92,246"
+    },
+    green:{
+        main:"#16a34a",
+        light:"#4ade80",
+        rgb:"22,163,74"
+    },
+    orange:{
+        main:"#ea580c",
+        light:"#fb923c",
+        rgb:"234,88,12"
+    },
+    pink:{
+        main:"#ec4899",
+        light:"#f472b6",
+        rgb:"236,72,153"
+    },
+    cyan:{
+        main:"#0891b2",
+        light:"#22d3ee",
+        rgb:"8,145,178"
+    },
+    gold:{
+        main:"#ca8a04",
+        light:"#facc15",
+        rgb:"202,138,4"
+    }
+};
+
+const backgroundNames = [
+    "topography",
+    "circuitBoard",
+    "hexagons",
+    "diagonalStripes",
+    "zigZag",
+    "graphPaper",
+    "fourPointStars",
+    "overlappingCircles",
+    "polkaDots",
+    "jigsaw"
+];
+
+const backgroundFallbacks = {
+    topography:"radial-gradient(ellipse at 30% 40%,#444 1px,transparent 2px),radial-gradient(ellipse at 70% 60%,#333 1px,transparent 2px)",
+    circuitBoard:"linear-gradient(90deg,transparent 48%,#444 49%,#444 51%,transparent 52%),linear-gradient(0deg,transparent 48%,#444 49%,#444 51%,transparent 52%)",
+    hexagons:"radial-gradient(circle at 50% 50%,#444 2px,transparent 3px)",
+    diagonalStripes:"repeating-linear-gradient(135deg,transparent 0 12px,#444 13px 14px)",
+    zigZag:"repeating-linear-gradient(45deg,transparent 0 15px,#444 16px 17px)",
+    graphPaper:"linear-gradient(#444 1px,transparent 1px),linear-gradient(90deg,#444 1px,transparent 1px)",
+    fourPointStars:"radial-gradient(circle,#555 1px,transparent 2px)",
+    overlappingCircles:"radial-gradient(circle at 30% 30%,transparent 20px,#444 21px,transparent 22px)",
+    polkaDots:"radial-gradient(#555 1.5px,transparent 2px)",
+    jigsaw:"repeating-linear-gradient(45deg,transparent 0 20px,#444 21px 22px)"
+};
+
+const featuredGrid = document.getElementById("featuredGrid");
+const creatorsGrid = document.getElementById("creatorsGrid");
+const creatorSearch = document.getElementById("creatorSearch");
+const videosGrid = document.getElementById("videoFeed");
+
+let savedSettings = {
+    theme:"dark",
+    color:"red",
+    background:"topography"
+};
+
+/* =========================================
+   UTILITÁRIOS
+========================================= */
+
+function escapeHTML(value){
+    return String(value ?? "").replace(/[&<>"']/g,c=>({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+    })[c]);
+}
+
+function safeUrl(value){
+    if(!value)return "";
+
+    try{
+        const url = new URL(value);
+
+        return ["https:","http:"].includes(url.protocol)
+            ?url.href
+            :"";
+    }catch{
+        return "";
+    }
+}
+
+function refreshIcons(){
+    if(window.lucide){
+        lucide.createIcons();
+    }
+}
+
+function getSavedSettings(){
+    try{
+        const stored = localStorage.getItem("imperiumz-appearance");
+
+        if(stored){
+            savedSettings = {
+                ...savedSettings,
+                ...JSON.parse(stored)
+            };
+        }
+    }catch(error){
+        console.warn("Não foi possível carregar as preferências.",error);
+    }
+}
+
+function saveSettings(){
+    try{
+        localStorage.setItem(
+            "imperiumz-appearance",
+            JSON.stringify(savedSettings)
+        );
+    }catch(error){
+        console.warn("Não foi possível salvar as preferências.",error);
+    }
+}
+
+/* =========================================
+   PERSONALIZAÇÃO
+========================================= */
+
+function applyTheme(theme,save=true){
+    if(!["dark","light"].includes(theme)){
+        theme="dark";
+    }
+
+    savedSettings.theme=theme;
+
+    document.documentElement.dataset.theme=theme;
+
+    document.querySelector('meta[name="theme-color"]')
+        .setAttribute("content",theme==="dark"?"#080808":"#f4f4f6");
+
+    document.querySelectorAll("[data-theme-choice]").forEach(button=>{
+        button.classList.toggle(
+            "active",
+            button.dataset.themeChoice===theme
+        );
+    });
+
+    if(save)saveSettings();
+}
+
+function applyColor(color,save=true){
+    const palette=palettes[color]||palettes.red;
+
+    savedSettings.color=color;
+
+    document.documentElement.style.setProperty(
+        "--accent",
+        palette.main
+    );
+
+    document.documentElement.style.setProperty(
+        "--accent-light",
+        palette.light
+    );
+
+    document.documentElement.style.setProperty(
+        "--accent-rgb",
+        palette.rgb
+    );
+
+    document.querySelectorAll("[data-color]").forEach(button=>{
+        button.classList.toggle(
+            "active",
+            button.dataset.color===color
+        );
+    });
+
+    updateBackgroundPreviews();
+
+    if(save)saveSettings();
+}
+
+function getPatternBackground(name,opacity=.20){
+    const patterns=window.heroPatterns;
+
+    if(!patterns||typeof patterns[name]!=="function"){
+        return "";
+    }
+
+    try{
+        return patterns[name](
+            savedSettings.color==="red"
+                ?"#ffffff"
+                :palettes[savedSettings.color].light,
+            opacity
+        );
+    }catch(error){
+        console.warn("Erro ao carregar padrão:",name,error);
+        return "";
+    }
+}
+
+function applyBackground(name,save=true){
+    if(!backgroundNames.includes(name)){
+        name="topography";
+    }
+
+    savedSettings.background=name;
+
+    const generated=getPatternBackground(name,.16);
+
+    if(generated){
+        document.body.style.backgroundImage=generated;
+        document.body.style.backgroundSize="auto";
+    }else{
+        document.body.style.backgroundImage=backgroundFallbacks[name];
+        document.body.style.backgroundSize="40px 40px";
+    }
+
+    document.querySelectorAll("[data-background]").forEach(button=>{
+        button.classList.toggle(
+            "active",
+            button.dataset.background===name
+        );
+    });
+
+    updateBackgroundPreviews();
+
+    if(save)saveSettings();
+}
+
+function updateBackgroundPreviews(){
+    document.querySelectorAll("[data-background]").forEach(button=>{
+        const name=button.dataset.background;
+        const preview=button.querySelector(".background-preview");
+
+        if(!preview)return;
+
+        const generated=getPatternBackground(name,.65);
+
+        if(generated){
+            preview.style.backgroundImage=generated;
+            preview.style.backgroundSize="auto";
+        }else{
+            preview.style.backgroundImage=backgroundFallbacks[name];
+            preview.style.backgroundSize="40px 40px";
+        }
+    });
+}
+
+window.addEventListener("hero-patterns-ready",()=>{
+    applyBackground(savedSettings.background,false);
+    updateBackgroundPreviews();
+});
+
+function resetSettings(){
+    savedSettings={
+        theme:"dark",
+        color:"red",
+        background:"topography"
+    };
+
+    applyTheme("dark",false);
+    applyColor("red",false);
+    applyBackground("topography",false);
+
+    saveSettings();
+}
+
+/* =========================================
+   PAINEL DE CONFIGURAÇÕES
+========================================= */
+
+const settingsBackdrop=document.getElementById("settingsBackdrop");
+
+function openSettings(){
+    settingsBackdrop.classList.add("open");
+    document.body.style.overflow="hidden";
+}
+
+function closeSettings(){
+    settingsBackdrop.classList.remove("open");
+    document.body.style.overflow="";
+}
+
+document.getElementById("openSettings")
+    .addEventListener("click",openSettings);
+
+document.getElementById("closeSettings")
+    .addEventListener("click",closeSettings);
+
+settingsBackdrop.addEventListener("click",event=>{
+    if(event.target===settingsBackdrop){
+        closeSettings();
+    }
+});
+
+document.addEventListener("keydown",event=>{
+    if(event.key==="Escape"){
+        closeSettings();
+    }
+});
+
+document.querySelectorAll("[data-theme-choice]").forEach(button=>{
+    button.addEventListener("click",()=>{
+        applyTheme(button.dataset.themeChoice);
+    });
+});
+
+document.querySelectorAll("[data-color]").forEach(button=>{
+    button.addEventListener("click",()=>{
+        applyColor(button.dataset.color);
+    });
+});
+
+document.querySelectorAll("[data-background]").forEach(button=>{
+    button.addEventListener("click",()=>{
+        applyBackground(button.dataset.background);
+    });
+});
+
+document.getElementById("resetSettings")
+    .addEventListener("click",resetSettings);
+
+/* =========================================
+   NAVEGAÇÃO ENTRE TELAS
+========================================= */
+
+const validPages=[
+    "highlights",
+    "creators",
+    "videos"
+];
+
+function setPage(page){
+    if(!validPages.includes(page)){
+        page="highlights";
+    }
+
+    document.querySelectorAll(".app-page").forEach(element=>{
+        element.hidden=element.id!=="page-"+page;
+    });
+
+    document.querySelectorAll(".nav-item").forEach(button=>{
+        button.classList.toggle(
+            "active",
+            button.dataset.page===page
+        );
+    });
+
+    window.history.replaceState(
+        null,
+        "",
+        "#"+page
+    );
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    refreshIcons();
+}
+
+document.querySelectorAll("[data-page]").forEach(button=>{
+    button.addEventListener("click",()=>{
+        setPage(button.dataset.page);
+    });
+});
+
+document.querySelectorAll("[data-page-link]").forEach(button=>{
+    button.addEventListener("click",()=>{
+        setPage(button.dataset.pageLink);
+    });
+});
+
+/* =========================================
+   AVATARES E REDES
+========================================= */
+
+function renderAvatar(creator,className){
+    const photo=safeUrl(creator.photo_url);
+
+    const initial=escapeHTML(
+        (creator.name||"?").trim().charAt(0).toUpperCase()
+    );
+
+    if(photo){
+        return `
+            <img
+                class="${className}"
+                src="${escapeHTML(photo)}"
+                alt="${escapeHTML(creator.name)}"
+                loading="lazy"
+                onerror="
+                    this.style.display='none';
+                    this.nextElementSibling.style.display='grid'
+                "
+            >
+
+            <div
+                class="${className} creator-initial"
+                style="display:none"
+            >
+                ${initial}
+            </div>
+        `;
+    }
+
+    return `
+        <div class="${className} creator-initial">
+            ${initial}
+        </div>
+    `;
+}
+
+function renderSocialLinks(creator){
+    const links=[];
+    const mainUrl=safeUrl(creator.profile_url);
+
+    if(mainUrl){
+        const platform=creator.platform||"other";
+
+        links.push({
+            url:mainUrl,
+            label:platformNames[platform]||"Perfil",
+            icon:platformIcons[platform]||"external-link",
+            primary:true
+        });
+    }
+
+    [
+        {
+            url:creator.instagram_url,
+            label:"Instagram",
+            icon:"instagram"
+        },
+        {
+            url:creator.youtube_url,
+            label:"YouTube",
+            icon:"youtube"
+        },
+        {
+            url:creator.tiktok_url,
+            label:"TikTok",
+            icon:"music-2"
+        }
+    ].forEach(item=>{
+        const url=safeUrl(item.url);
+
+        if(
+            !url||
+            url===mainUrl||
+            links.some(link=>link.url===url)
+        )return;
+
+        links.push({
+            ...item,
+            url,
+            primary:false
+        });
+    });
+
+    return links.map(link=>`
+        <a
+            href="${escapeHTML(link.url)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link ${link.primary?"primary":""}"
+        >
+            <i data-lucide="${link.icon}"></i>
+            ${escapeHTML(link.label)}
+        </a>
+    `).join("");
+}
+
+/* =========================================
+   ESTADOS VAZIOS
+========================================= */
+
+function showEmpty(element,title,description){
+    element.innerHTML=`
+        <div class="empty-state">
+            <i data-lucide="users"></i>
+            <h3>${escapeHTML(title)}</h3>
+            <p>${escapeHTML(description)}</p>
+        </div>
+    `;
+
+    refreshIcons();
+}
+
+/* =========================================
+   DESTAQUES
+========================================= */
+
+function createFeaturedCard(creator){
+    const profile=safeUrl(creator.profile_url);
+
+    const content=`
+        <div class="featured-top">
+
+            ${renderAvatar(creator,"featured-avatar")}
+
+            <div>
+                <h3>${escapeHTML(creator.name)}</h3>
+
+                <small>
+                    ${escapeHTML(
+                        platformNames[creator.platform]||"Criador"
+                    )}
+                </small>
+            </div>
+
+        </div>
+
+        <span class="featured-tag">
+            Creator em destaque
+        </span>
+    `;
+
+    return profile
+        ?`
+            <a
+                class="featured-card"
+                href="${escapeHTML(profile)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ${content}
+            </a>
+        `
+        :`
+            <div class="featured-card">
+                ${content}
+            </div>
+        `;
+}
+
+function renderFeatured(){
+    const featured=allCreators.filter(c=>c.featured);
+
+    document.getElementById("totalFeatured").textContent=
+        featured.length.toString().padStart(2,"0");
+
+    if(!featured.length){
+        showEmpty(
+            featuredGrid,
+            "Sem destaques",
+            "Nenhum creator foi selecionado para esta seção."
+        );
+        return;
+    }
+
+    featuredGrid.innerHTML=
+        featured.map(createFeaturedCard).join("");
+
+    refreshIcons();
+}
+
+/* =========================================
+   INFLUENCERS
+========================================= */
+
+function createCreatorCard(creator){
+    const platform=creator.platform||"other";
+
+    return `
+        <article class="creator-card">
+
+            <div class="creator-cover"></div>
+
+            <div class="creator-content">
+
+                ${renderAvatar(creator,"creator-avatar")}
+
+                <h3 class="creator-name">
+                    ${escapeHTML(creator.name)}
+                </h3>
+
+                <div class="creator-platform">
+
+                    <i data-lucide="${
+                        platformIcons[platform]||"user"
+                    }"></i>
+
+                    ${escapeHTML(
+                        platformNames[platform]||"Criador"
+                    )}
+
+                </div>
+
+                <p class="creator-description">
+                    ${escapeHTML(
+                        creator.description||
+                        "Sem descrição cadastrada."
+                    )}
+                </p>
+
+                <div class="creator-socials">
+                    ${renderSocialLinks(creator)}
+                </div>
+
+            </div>
+
+        </article>
+    `;
+}
+
+function renderCreators(){
+    const search=creatorSearch.value.trim().toLowerCase();
+
+    const filtered=allCreators.filter(creator=>{
+
+        const matchesSearch=[
+            creator.name,
+            creator.description,
+            creator.platform
+        ].join(" ").toLowerCase().includes(search);
+
+        const matchesPlatform=
+            currentFilter==="all"||
+            creator.platform===currentFilter;
+
+        return matchesSearch&&matchesPlatform;
+    });
+
+    if(!filtered.length){
+        showEmpty(
+            creatorsGrid,
+            "Nenhum creator encontrado",
+            "Altere a pesquisa ou selecione outro filtro."
+        );
+        return;
+    }
+
+    creatorsGrid.innerHTML=
+        filtered.map(createCreatorCard).join("");
+
+    refreshIcons();
+}
+
+creatorSearch.addEventListener("input",renderCreators);
+
+document.querySelectorAll("[data-filter]").forEach(button=>{
+    button.addEventListener("click",()=>{
+
+        currentFilter=button.dataset.filter;
+
+        document.querySelectorAll("[data-filter]").forEach(item=>{
+            item.classList.toggle(
+                "active",
+                item===button
+            );
+        });
+
+        renderCreators();
+    });
+});
+
+/* =========================================
+   FILTRO DE VÍDEOS POR CREATOR
+========================================= */
+
+function belongsToCreator(video,creator){
+
+    const idFields=[
+        "influencer_id",
+        "creator_id",
+        "user_id",
+        "author_id",
+        "profile_id"
+    ];
+
+    const nameFields=[
+        "influencer_name",
+        "creator_name",
+        "author_name",
+        "username",
+        "creator"
+    ];
+
+    for(const field of idFields){
+        if(
+            video[field]!==undefined&&
+            video[field]!==null
+        ){
+            if(
+                String(video[field])===
+                String(creator.id)
+            ){
+                return true;
+            }
+        }
+    }
+
+    for(const field of nameFields){
+        const value=video[field];
+
+        if(
+            value&&
+            String(value).trim().toLowerCase()===
+            String(creator.name).trim().toLowerCase()
+        ){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function populateVideoCreatorFilter(){
+    const select=document.getElementById("videoCreatorFilter");
+
+    select.innerHTML=`
+        <option value="all">Todos os influencers</option>
+    `;
+
+    allCreators.forEach(creator=>{
+        const option=document.createElement("option");
+
+        option.value=String(creator.id);
+        option.textContent=creator.name;
+
+        select.appendChild(option);
+    });
+}
+
+function applyVideoFilter(){
+    selectedCreator=document.getElementById(
+        "videoCreatorFilter"
+    ).value;
+
+    const creator=allCreators.find(
+        c=>String(c.id)===String(selectedCreator)
+    );
+
+    document.getElementById("feedHeading").textContent=
+        creator?creator.name.toUpperCase():"VÍDEOS";
+
+    document.getElementById("feedSubheading").textContent=
+        creator
+            ?`Conteúdos de ${creator.name}.`
+            :"Deslize para cima e descubra os conteúdos dos creators.";
+
+    visibleVideos=creator
+        ?allVideos.filter(video=>belongsToCreator(video,creator))
+        :allVideos;
+
+    renderVideoFeed();
+}
+
+document.getElementById("videoCreatorFilter")
+    .addEventListener("change",applyVideoFilter);
+
+/* =========================================
+   YOUTUBE E TIKTOK
+========================================= */
+
+function youtubeId(value){
+    try{
+        const url=new URL(value);
+
+        if(
+            ["youtu.be","www.youtu.be"].includes(url.hostname)
+        ){
+            return url.pathname.split("/").filter(Boolean)[0]||"";
+        }
+
+        if(url.pathname.startsWith("/shorts/")){
+            return url.pathname.split("/")[2]||"";
+        }
+
+        if(url.pathname.startsWith("/embed/")){
+            return url.pathname.split("/")[2]||"";
+        }
+
+        return url.searchParams.get("v")||"";
+
+    }catch{
+        return "";
+    }
+}
+
+function tiktokId(value){
+    const match=String(value).match(/\/video\/(\d+)/);
+    return match?match[1]:"";
+}
+
+function createFeedItem(video,index){
+    const url=safeUrl(video.video_url);
+
+    if(!url)return "";
+
+    const platform=String(
+        video.platform||""
+    ).toLowerCase();
+
+    const isYoutube=platform==="youtube";
+    const isTikTok=platform==="tiktok";
+
+    const id=isYoutube?youtubeId(url):"";
+    const tId=isTikTok?tiktokId(url):"";
+
+    let media="";
+
+    if(isYoutube&&id){
+
+        media=`
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0"
+                title="${escapeHTML(video.title||"Vídeo")}"
+                loading="${index===0?"eager":"lazy"}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        `;
+
+    }else if(isTikTok&&tId){
+
+        media=`
+            <div class="feed-tiktok">
+
+                <blockquote
+                    class="tiktok-embed"
+                    cite="${escapeHTML(url)}"
+                    data-video-id="${escapeHTML(tId)}"
+                    style="max-width:100%;min-width:0"
+                >
+                    <section></section>
+                </blockquote>
+
+            </div>
+        `;
+
+    }else{
+
+        media=`
+            <a
+                class="feed-cover"
+                href="${escapeHTML(url)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <i data-lucide="play-circle"></i>
+                <span>Assistir publicação original</span>
+            </a>
+        `;
+    }
+
+    return `
+        <article
+            class="feed-item"
+            data-video-index="${index}"
+        >
+
+            ${media}
+
+            <div class="feed-overlay">
+
+                <span class="feed-platform">
+                    ${isTikTok?"TikTok":isYoutube?"YouTube":escapeHTML(platform)}
+                </span>
+
+                <h3 class="feed-title">
+                    ${escapeHTML(video.title||"Vídeo da IMPERIUMz")}
+                </h3>
+
+                <p class="feed-description">
+                    ${escapeHTML(
+                        video.description||
+                        "Conteúdo da comunidade IMPERIUMz."
+                    )}
+                </p>
+
+                <a
+                    class="feed-open"
+                    href="${escapeHTML(url)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Abrir publicação
+                    <i data-lucide="external-link"></i>
+                </a>
+
+            </div>
+
+        </article>
+    `;
+}
+
+/* =========================================
+   FEED DE VÍDEOS
+========================================= */
+
+function updateFeedPosition(){
+    const items=[
+        ...videosGrid.querySelectorAll(".feed-item")
+    ];
+
+    if(!items.length){
+        document.getElementById("feedPosition").textContent="0 / 0";
+        return;
+    }
+
+    const current=Math.round(
+        videosGrid.scrollTop/videosGrid.clientHeight
+    );
+
+    document.getElementById("feedPosition").textContent=
+        `${Math.min(current+1,items.length)} / ${items.length}`;
+}
+
+function renderVideoFeed(){
+    videosGrid.scrollTop=0;
+
+    if(!visibleVideos.length){
+
+        const creator=allCreators.find(
+            c=>String(c.id)===String(selectedCreator)
+        );
+
+        showEmpty(
+            videosGrid,
+            creator
+                ?"Nenhum vídeo encontrado para este creator"
+                :"Nenhum vídeo publicado",
+            creator
+                ?"Ainda não encontramos vídeos associados a este perfil."
+                :"As publicações da IMPERIUMz aparecerão aqui."
+        );
+
+        document.getElementById("feedPosition").textContent="0 / 0";
+
+        return;
+    }
+
+    videosGrid.innerHTML=
+        visibleVideos.map(createFeedItem).join("");
+
+    refreshIcons();
+
+    if(
+        visibleVideos.some(
+            v=>String(v.platform).toLowerCase()==="tiktok"
+        )
+    ){
+        if(!document.querySelector('script[data-tiktok-embed]')){
+
+            const script=document.createElement("script");
+
+            script.src="https://www.tiktok.com/embed.js";
+            script.async=true;
+            script.dataset.tiktokEmbed="true";
+
+            document.body.appendChild(script);
+
+        }else if(window.tiktokEmbed){
+
+            window.tiktokEmbed.lib.render();
+
+        }
+    }
+
+    updateFeedPosition();
+}
+
+videosGrid.addEventListener("scroll",()=>{
+    window.requestAnimationFrame(updateFeedPosition);
+});
+
+document.getElementById("previousVideo")
+    .addEventListener("click",()=>{
+        videosGrid.scrollBy({
+            top:-videosGrid.clientHeight,
+            behavior:"smooth"
+        });
+    });
+
+document.getElementById("nextVideo")
+    .addEventListener("click",()=>{
+        videosGrid.scrollBy({
+            top:videosGrid.clientHeight,
+            behavior:"smooth"
+        });
+    });
+
+/* =========================================
+   CARREGAR INFLUENCERS DO SUPABASE
+========================================= */
+
+async function loadInfluencers(){
+    try{
+
+        const {data,error}=await db
+            .from("influencers")
+            .select(`
+                id,
+                name,
+                community_slug,
+                description,
+                photo_url,
+                platform,
+                profile_url,
+                instagram_url,
+                youtube_url,
+                tiktok_url,
+                active,
+                featured,
+                created_at
+            `)
+            .eq("community_slug",COMMUNITY_SLUG)
+            .eq("active",true)
+            .order("featured",{ascending:false})
+            .order("created_at",{ascending:false});
+
+        if(error)throw error;
+
+        allCreators=data||[];
+
+        const total=allCreators.length
+            .toString()
+            .padStart(2,"0");
+
+        document.getElementById("totalCreators").textContent=total;
+        document.getElementById("heroTotal").textContent=total;
+
+        renderFeatured();
+        renderCreators();
+        populateVideoCreatorFilter();
+
+    }catch(error){
+
+        console.error("Erro ao carregar influencers:",error);
+
+        document.getElementById("totalCreators").textContent="--";
+        document.getElementById("totalFeatured").textContent="--";
+        document.getElementById("heroTotal").textContent="--";
+
+        showEmpty(
+            featuredGrid,
+            "Erro ao carregar destaques",
+            "Não foi possível acessar os dados."
+        );
+
+        showEmpty(
+            creatorsGrid,
+            "Erro ao carregar influencers",
+            "Verifique a conexão com o banco de dados."
+        );
+    }
+}
+
+/* =========================================
+   CARREGAR VÍDEOS DO SUPABASE
+========================================= */
+
+async function loadVideos(){
+    videosGrid.innerHTML=`
+        <div class="loading-state">
+            <div class="spinner"></div>
+            Carregando publicações...
+        </div>
+    `;
+
+    try{
+
+        const {data,error}=await db
+            .from("posts")
+            .select("*")
+            .eq("community_slug",COMMUNITY_SLUG)
+            .eq("active",true)
+            .order("created_at",{ascending:false});
+
+        if(error)throw error;
+
+        allVideos=(data||[]).filter(video=>
+            ["youtube","tiktok"].includes(
+                String(video.platform||"").toLowerCase()
+            )
+        );
+
+        visibleVideos=allVideos;
+
+        renderVideoFeed();
+
+    }catch(error){
+
+        console.error("Erro ao carregar vídeos:",error);
+
+        showEmpty(
+            videosGrid,
+            "Erro ao carregar vídeos",
+            "Não foi possível acessar as publicações do ACEN Central."
+        );
+    }
+}
+
+/* =========================================
+   INICIALIZAÇÃO
+========================================= */
+
+document.querySelectorAll(".currentYear").forEach(element=>{
+    element.textContent=new Date().getFullYear();
+});
+
+getSavedSettings();
+
+applyTheme(savedSettings.theme,false);
+applyColor(savedSettings.color,false);
+applyBackground(savedSettings.background,false);
+
+refreshIcons();
+
+const initialPage=location.hash.replace("#","");
+
+setPage(
+    validPages.includes(initialPage)
+        ?initialPage
+        :"highlights"
+);
+
+Promise.all([
+    loadInfluencers(),
+    loadVideos()
+]);
+</script>
+
+</body>
+</html>
